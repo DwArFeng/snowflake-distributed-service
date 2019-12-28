@@ -7,8 +7,8 @@ SnowFlake分布式服务是一个轻量级的全局ID分发服务，全局ID的�
 ### 项目的主要模块
 模块名称|模块路径|说明
 :---|:---|:---
-**node**|**snowflake-distributed-service-node**|可部署的服务节点
-**api**|**snowflake-distributed-service-api**|可以通过引入该模块快速的调用此服务
+**node**|**snowflake-distributed-service-node**|**可部署的服务节点**
+**api**|**snowflake-distributed-service-api**|**可以通过引入该模块快速的调用此服务**
 stack|snowflake-distributed-service-stack|接口定义
 impl|snowflake-distributed-service-impl|项目实现
 sdk|snowflake-distributed-service-sdk|开发工具
@@ -27,14 +27,14 @@ sdk|snowflake-distributed-service-sdk|开发工具
     该项目同作者的依赖项目：
     * [[github] dutil-作者大学时代开始编写的Java实用工具集合](https://github.com/DwArFeng/dutil) 或者 [[gitee]  dutil-作者大学时代开始编写的Java实用工具集合](https://gitee.com/DwArFeng/dutil)
     
-3. 使用maven安装本项目(为了api能够实用，请安装，而不是打包)
+3. 使用maven安装本项目(为了api能够使用，请安装，而不是打包)
 
     ```mvn clean install```
     
-4. 找到目录 `snowflake-distributed-service-node/target/snowflake-distributed-service-node-alpha-[版本号]-release.tar.gz` 并解压
+4. 找到目录 `snowflake-distributed-service-node/target/snowflake-distributed-service-node-alpha-[项目版本]-release.tar.gz` 并解压
 
     ```shell script
-    tar -zxcf snowflake-distributed-service-node-[版本号]-release.tar.gz
+    tar -zxcf snowflake-distributed-service-node-[项目版本]-release.tar.gz
     ```
    
 5. 修改配置文件
@@ -68,7 +68,7 @@ sdk|snowflake-distributed-service-sdk|开发工具
     # 日志的根目录
     logdir=/var/log/snowflake
     # 可执行的jar名称(自动配置好，不需要修改)
-    executable_jar_name=snowflake-distributed-service-node-alpha-0.0.1.a-SNAPSHOT.jar
+    executable_jar_name=snowflake-distributed-service-node-[项目版本].jar
     
     cd $basedir || exit
     nohup /bin/java -Dlog.dir=$logdir -jar $basedir/lib/$executable_jar_name >/dev/null 2>&1 &
