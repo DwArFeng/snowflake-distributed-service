@@ -6,7 +6,7 @@
 
     <groupId>com.dwarfeng</groupId>
     <artifactId>snowflake-distributed-service</artifactId>
-    <version>alpha-0.0.1.a-SNAPSHOT</version>
+    <version>0.0.1.a</version>
 
     <packaging>pom</packaging>
 
@@ -336,27 +336,27 @@
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>snowflake-distributed-service-stack</artifactId>
-                <version>alpha-0.0.1.a-SNAPSHOT</version>
+                <version>0.0.1.a</version>
             </dependency>
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>snowflake-distributed-service-sdk</artifactId>
-                <version>alpha-0.0.1.a-SNAPSHOT</version>
+                <version>0.0.1.a</version>
             </dependency>
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>snowflake-distributed-service-impl</artifactId>
-                <version>alpha-0.0.1.a-SNAPSHOT</version>
+                <version>0.0.1.a</version>
             </dependency>
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>snowflake-distributed-service-node</artifactId>
-                <version>alpha-0.0.1.a-SNAPSHOT</version>
+                <version>0.0.1.a</version>
             </dependency>
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>snowflake-distributed-service-api</artifactId>
-                <version>alpha-0.0.1.a-SNAPSHOT</version>
+                <version>0.0.1.a</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
