@@ -50,7 +50,7 @@ sdk|snowflake-distributed-service-sdk|开发工具
     # dubbo 提供者主机名称
     dubbo.host=192.168.154.1
     ```
-    conf/dubbo/connection.properties
+    conf/snow-flake/device.properties
     ```
     # Worker ID，最大为31，新的节点序列号向下递减，最少到0。
     snowflake.workder_id=31
