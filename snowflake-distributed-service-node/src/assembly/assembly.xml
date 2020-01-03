@@ -46,6 +46,11 @@
             <fileMode>0644</fileMode>
         </file>
         <file>
+            <outputDirectory>./</outputDirectory>
+            <source>../CHANGELOG.md</source>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
             <outputDirectory>lib</outputDirectory>
             <source>${project.build.directory}/${project.name}-${project.version}.jar</source>
             <fileMode>0755</fileMode>
