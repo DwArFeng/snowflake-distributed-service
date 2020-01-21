@@ -1,13 +1,19 @@
 package com.dwarfeng.sfds.impl.service;
 
-import com.dwarfeng.sfds.sdk.interceptor.TimeAnalyse;
-import com.dwarfeng.sfds.sdk.util.ServiceExceptionCodes;
 import com.dwarfeng.sfds.sdk.util.SnowFlakeConstants;
-import com.dwarfeng.sfds.stack.exception.ServiceException;
+import com.dwarfeng.sfds.stack.service.LongIdService;
+import com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException;
+import com.dwarfeng.subgrade.sdk.exception.ServiceExceptionHelper;
+import com.dwarfeng.subgrade.sdk.interceptor.BehaviorAnalyse;
+import com.dwarfeng.subgrade.stack.bean.key.LongIdKey;
+import com.dwarfeng.subgrade.stack.exception.ServiceException;
+import com.dwarfeng.subgrade.stack.exception.ServiceExceptionMapper;
+import com.dwarfeng.subgrade.stack.log.LogLevel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
@@ -23,10 +29,13 @@ import javax.annotation.PostConstruct;
  * 加起来刚好64位，为一个Long型。<br>
  * SnowFlake的优点是，整体上按照时间自增排序，并且整个分布式系统内不会产生ID碰撞(由数据中心ID和机器ID作区分)，并且效率较高，经测试，SnowFlake每秒能够产生26万ID左右。
  */
-@Component
-public class GuidServiceDelegate {
+@Service
+public class LongIdServiceImpl implements LongIdService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(GuidServiceDelegate.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LongIdServiceImpl.class);
+
+    @Autowired
+    private ServiceExceptionMapper sem;
 
     /**
      * 工作机器ID(0~31)
@@ -62,44 +71,53 @@ public class GuidServiceDelegate {
         }
     }
 
-    /**
-     * 获得下一个ID (该方法是线程安全的)
-     *
-     * @return SnowflakeId
-     */
-    @TimeAnalyse
-    public synchronized long nextGuid() throws ServiceException {
-        long timestamp = timeGen();
+    @Override
+    @BehaviorAnalyse
+    public long nextLongId() throws ServiceException {
+        return internalNextLong();
+    }
 
-        //如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
-        if (timestamp < lastTimestamp) {
-            LOGGER.warn(String.format("检测到系统时钟回退, 服务将会在 %d 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp));
-            IllegalStateException e = new IllegalStateException(String.format("Clock moved backwards. Refusing to generate id for %d milliseconds", lastTimestamp - timestamp));
-            throw new ServiceException(ServiceExceptionCodes.CLOCK_MOVED_BACKWARDS, e);
-        }
+    @Override
+    @BehaviorAnalyse
+    public LongIdKey nextLongIdKey() throws ServiceException {
+        return new LongIdKey(internalNextLong());
+    }
 
-        //如果是同一时间生成的，则进行毫秒内序列
-        if (lastTimestamp == timestamp) {
-            sequence = (sequence + 1) & SnowFlakeConstants.SEQUENCE_MASK;
-            //毫秒内序列溢出
-            if (sequence == 0) {
-                //阻塞到下一个毫秒,获得新的时间戳
-                timestamp = tilNextMillis(lastTimestamp);
+    private synchronized long internalNextLong() throws ServiceException {
+        try {
+            long timestamp = timeGen();
+
+            //如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
+            if (timestamp < lastTimestamp) {
+                LOGGER.warn(String.format("检测到系统时钟回退, 服务将会在 %d 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp));
+                throw new ClockMovedBackwardsException(String.format("Clock moved backwards. Refusing to generate id for %d milliseconds", lastTimestamp - timestamp));
             }
-        }
-        //时间戳改变，毫秒内序列重置
-        else {
-            sequence = 0L;
-        }
 
-        //上次生成ID的时间截
-        lastTimestamp = timestamp;
+            //如果是同一时间生成的，则进行毫秒内序列
+            if (lastTimestamp == timestamp) {
+                sequence = (sequence + 1) & SnowFlakeConstants.SEQUENCE_MASK;
+                //毫秒内序列溢出
+                if (sequence == 0) {
+                    //阻塞到下一个毫秒,获得新的时间戳
+                    timestamp = tilNextMillis(lastTimestamp);
+                }
+            }
+            //时间戳改变，毫秒内序列重置
+            else {
+                sequence = 0L;
+            }
 
-        //移位并通过或运算拼到一起组成64位的ID
-        return ((timestamp - SnowFlakeConstants.TWEPOCH) << SnowFlakeConstants.TIMESTAMP_LEFT_SHIFT) //
-                | (datacenterId << SnowFlakeConstants.DATACENTER_ID_SHIFT) //
-                | (workerId << SnowFlakeConstants.WORKER_ID_SHIFT) //
-                | sequence;
+            //上次生成ID的时间截
+            lastTimestamp = timestamp;
+
+            //移位并通过或运算拼到一起组成64位的ID
+            return ((timestamp - SnowFlakeConstants.TWEPOCH) << SnowFlakeConstants.TIMESTAMP_LEFT_SHIFT) //
+                    | (datacenterId << SnowFlakeConstants.DATACENTER_ID_SHIFT) //
+                    | (workerId << SnowFlakeConstants.WORKER_ID_SHIFT) //
+                    | sequence;
+        } catch (Exception e) {
+            throw ServiceExceptionHelper.logAndThrow("生成序列时发生异常", LogLevel.WARN, sem, e);
+        }
     }
 
     /**

@@ -5,7 +5,7 @@
     <parent>
         <artifactId>snowflake-distributed-service</artifactId>
         <groupId>com.dwarfeng</groupId>
-        <version>0.0.1.b</version>
+        <version>1.0.0.a</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -20,4 +20,12 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+    <dependencies>
+        <!-- subgrade组件 -->
+        <dependency>
+            <groupId>com.dwarfeng</groupId>
+            <artifactId>subgrade-stack</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -16,5 +16,5 @@
     <dubbo:registry address="${dubbo.zookeeper.address}"/>
 
     <!-- 向注册中心注册暴露服务地址,注册服务 -->
-    <dubbo:reference id="guidService" interface="com.dwarfeng.sfds.stack.service.GuidService"/>
+    <dubbo:reference id="longIdService" interface="com.dwarfeng.sfds.stack.service.LongIdService"/>
 </beans>

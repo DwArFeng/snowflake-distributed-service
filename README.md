@@ -94,23 +94,52 @@ sdk|snowflake-distributed-service-sdk|开发工具
  
  ### 服务的调用
  
- 1. 参照 ```snowflake-distributed-service-api``` 项目
+ 所有服务的调用参照 ```snowflake-distributed-service-api``` 项目
  
-    src/test/java/com/dwarfeng/sfds/api/impl/GuidApiImplTest.java
+ * 通过rpc进行调用
+ 
+    src/test/java/com/dwarfeng/sfds/rpc/impl/LongIdRpcImplTest.java
     ```java
     @RunWith(SpringJUnit4ClassRunner.class)
     @ContextConfiguration(locations = "classpath:spring/application-context*.xml")
-    public class GuidApiImplTest {
+    public class LongIdRpcImplTest {
     
         @Autowired
-        private GuidApi guidApi;
+        private LongIdRpc longIdRpc;
     
         @Test
-        public void nextGuid() throws ServiceException {
+        public void nextLongId() throws ServiceException {
             for (int i = 0; i < 100; i++) {
-                //CT.trace是作者的dutil项目中的的方法。
-                //用于在控制台中输出系统时间与输出文本组成的格式化字符。
-                CT.trace(guidApi.nextGuid());
+                CT.trace(longIdRpc.nextLongId());
+            }
+        }
+    
+        @Test
+        public void nextLongIdKey() throws ServiceException {
+            for (int i = 0; i < 100; i++) {
+                CT.trace(longIdRpc.nextLongIdKey());
+            }
+        }
+    }
+    ```
+   
+  * 与subgrade集成
+  
+    subgrade是作者的全项目通用工具类，提供了基于Spring框架的大量快捷的开发工具，本项目与其集成，提供了 ```SnowFlakeLongIdKeyFetcher```
+    
+    src/test/java/com/dwarfeng/sfds/integration/subgrade/SnowFlakeLongIdKeyFetcherTest.java
+    ```java
+    @RunWith(SpringJUnit4ClassRunner.class)
+    @ContextConfiguration(locations = "classpath:spring/application-context*.xml")
+    public class SnowFlakeLongIdKeyFetcherTest {
+    
+        @Autowired
+        private KeyFetcher<LongIdKey> keyKeyFetcher;
+    
+        @Test
+        public void fetchKey() throws KeyFetchException {
+            for (int i = 0; i < 100; i++) {
+                CT.trace(keyKeyFetcher.fetchKey());
             }
         }
     }

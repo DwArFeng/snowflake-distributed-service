@@ -7,8 +7,10 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--扫描api的实现包。 -->
-    <context:component-scan base-package="com.dwarfeng.sfds.api.impl"/>
+    <!--扫描rpc的实现包。 -->
+    <context:component-scan base-package="com.dwarfeng.sfds.rpc.impl"/>
+    <!--扫描subgrade集成的实现包。 -->
+    <context:component-scan base-package="com.dwarfeng.sfds.integration.subgrade"/>
     <!--扫描aop增强所在的包。 -->
-    <context:component-scan base-package="com.dwarfeng.sfds.sdk.interceptor"/>
+    <context:component-scan base-package="com.dwarfeng.subgrade.sdk.interceptor"/>
 </beans>

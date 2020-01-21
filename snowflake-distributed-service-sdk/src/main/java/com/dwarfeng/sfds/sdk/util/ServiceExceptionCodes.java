@@ -1,6 +1,6 @@
 package com.dwarfeng.sfds.sdk.util;
 
-import com.dwarfeng.sfds.stack.exception.ServiceException;
+import com.dwarfeng.subgrade.stack.exception.ServiceException;
 
 /**
  * 服务异常代码。
@@ -11,11 +11,7 @@ import com.dwarfeng.sfds.stack.exception.ServiceException;
 public final class ServiceExceptionCodes {
 
     /**
-     * 未定义错误代码，代表未定义的错误。
-     */
-    public static final ServiceException.Code UNDEFINE = new ServiceException.Code(0, "undefine");
-    /**
-     * 参数验证失败。
+     * 时钟后移异常。
      */
     public static final ServiceException.Code CLOCK_MOVED_BACKWARDS = new ServiceException.Code(100, "clock moved backwards");
 

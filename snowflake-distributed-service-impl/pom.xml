@@ -7,7 +7,7 @@
     <parent>
         <artifactId>snowflake-distributed-service</artifactId>
         <groupId>com.dwarfeng</groupId>
-        <version>0.0.1.b</version>
+        <version>1.0.0.a</version>
     </parent>
 
     <artifactId>snowflake-distributed-service-impl</artifactId>
@@ -53,6 +53,19 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
+        </dependency>
+        <!-- subgrade组件 -->
+        <dependency>
+            <groupId>com.dwarfeng</groupId>
+            <artifactId>subgrade-stack</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dwarfeng</groupId>
+            <artifactId>subgrade-sdk</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dwarfeng</groupId>
+            <artifactId>subgrade-impl</artifactId>
         </dependency>
         <!-- 程序自身模块 -->
         <dependency>
