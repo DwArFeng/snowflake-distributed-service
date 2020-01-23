@@ -7,7 +7,7 @@
     <parent>
         <artifactId>snowflake-distributed-service</artifactId>
         <groupId>com.dwarfeng</groupId>
-        <version>1.0.0.a</version>
+        <version>1.0.1.a</version>
     </parent>
 
     <artifactId>snowflake-distributed-service-node</artifactId>
