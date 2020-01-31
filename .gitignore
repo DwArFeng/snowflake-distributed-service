@@ -53,10 +53,10 @@ buildNumber.properties
 ## Logger Files
 #################
 /snowflake-distributed-service-node/logs/
-/snowflake-distributed-service-api/logs/
+/snowflake-distributed-service-impl/logs/
 
 #################
 ## Configuration Files
 #################
 /snowflake-distributed-service-node/conf/
-/snowflake-distributed-service-api/conf/
+/snowflake-distributed-service-impl/conf/

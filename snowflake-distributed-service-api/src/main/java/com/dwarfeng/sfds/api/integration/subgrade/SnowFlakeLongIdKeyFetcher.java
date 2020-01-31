@@ -1,4 +1,4 @@
-package com.dwarfeng.sfds.integration.subgrade;
+package com.dwarfeng.sfds.api.integration.subgrade;
 
 import com.dwarfeng.sfds.stack.service.LongIdService;
 import com.dwarfeng.subgrade.stack.bean.key.KeyFetcher;
