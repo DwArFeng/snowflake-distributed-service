@@ -4,7 +4,7 @@ import com.dwarfeng.sfds.sdk.util.SnowFlakeConstants;
 import com.dwarfeng.sfds.stack.service.LongIdService;
 import com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException;
 import com.dwarfeng.subgrade.sdk.exception.ServiceExceptionHelper;
-import com.dwarfeng.subgrade.sdk.interceptor.BehaviorAnalyse;
+import com.dwarfeng.subgrade.sdk.interceptor.analyse.BehaviorAnalyse;
 import com.dwarfeng.subgrade.stack.bean.key.LongIdKey;
 import com.dwarfeng.subgrade.stack.exception.ServiceException;
 import com.dwarfeng.subgrade.stack.exception.ServiceExceptionMapper;

@@ -51,10 +51,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-        </dependency>
         <!-- 日志处理 -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
