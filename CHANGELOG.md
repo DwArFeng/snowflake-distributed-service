@@ -1,11 +1,12 @@
 # ChangeLog
 
-### v1.1.0.a
+### v1.2.0.a
 
 #### 功能构建
 
 - ExceptionCode偏移量可配置化。
 - 升级 subgrade 工程的依赖。
+- 优化 log4j2.xml 日志配置。
 
 #### Bug修复
 
