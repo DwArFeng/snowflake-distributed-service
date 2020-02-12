@@ -7,6 +7,7 @@
 - ExceptionCode偏移量可配置化。
 - 升级 subgrade 工程的依赖。
 - 优化 log4j2.xml 日志配置。
+- 更改该项目在dubbo中的应用名称为snowflake-node。
 
 #### Bug修复
 
