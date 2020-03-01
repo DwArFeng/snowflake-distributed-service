@@ -259,6 +259,26 @@
                         <artifactId>hibernate-core</artifactId>
                         <groupId>org.hibernate</groupId>
                     </exclusion>
+                    <exclusion>
+                        <artifactId>hibernate-validator</artifactId>
+                        <groupId>org.hibernate.validator</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>javax.el</artifactId>
+                        <groupId>org.glassfish</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>dozer</artifactId>
+                        <groupId>net.sf.dozer</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>dozer-spring</artifactId>
+                        <groupId>net.sf.dozer</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>fastjson</artifactId>
+                        <groupId>com.alibaba</groupId>
+                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
@@ -285,6 +305,34 @@
                     <exclusion>
                         <artifactId>dom4j</artifactId>
                         <groupId>dom4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>hibernate-validator</artifactId>
+                        <groupId>org.hibernate.validator</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>dutil-develop</artifactId>
+                        <groupId>com.dwarfeng</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>javax.el</artifactId>
+                        <groupId>org.glassfish</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>dozer</artifactId>
+                        <groupId>net.sf.dozer</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>dozer-spring</artifactId>
+                        <groupId>net.sf.dozer</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>commons-beanutils</artifactId>
+                        <groupId>commons-beanutils</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>fastjson</artifactId>
+                        <groupId>com.alibaba</groupId>
                     </exclusion>
                 </exclusions>
             </dependency>
