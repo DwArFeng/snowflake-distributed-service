@@ -60,11 +60,13 @@
             <source>src/assembly/snowflake-start.sh</source>
             <filtered>true</filtered>
             <fileMode>0755</fileMode>
+            <lineEnding>unix</lineEnding>
         </file>
         <file>
             <outputDirectory>bin</outputDirectory>
             <source>src/assembly/snowflake-stop.sh</source>
             <fileMode>0755</fileMode>
+            <lineEnding>unix</lineEnding>
         </file>
     </files>
 </assembly>
