@@ -1,6 +1,23 @@
 # ChangeLog
 
-### Release_1.2.3.a_20200302_build_A
+### Release_1.2.3_20200326_build_B
+
+#### 功能构建
+
+- 更新subgrade依赖至beta-0.3.2.b。
+- 更新dutil依赖至beta-0.2.1.a。
+
+#### Bug修复
+
+- (无)
+
+#### 功能移除
+
+- (无)
+
+---
+
+### Release_1.2.3_20200302_build_A
 
 #### 功能构建
 
@@ -16,7 +33,7 @@
 
 ---
 
-### Release_1.2.2.a_20200301_build_A
+### Release_1.2.2_20200301_build_A
 
 #### 功能构建
 
@@ -32,7 +49,7 @@
 
 ---
 
-### Release_1.2.1.a_20200225_build_A
+### Release_1.2.1_20200225_build_A
 
 #### 功能构建
 
