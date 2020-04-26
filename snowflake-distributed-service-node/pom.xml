@@ -20,6 +20,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- 主方法类声明 -->
+        <mainClass>com.dwarfeng.sfds.node.launcher.Launcher</mainClass>
     </properties>
 
     <dependencies>
@@ -110,17 +112,10 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
-                    <archive>  
-                        <manifest>  
-                             <addClasspath>true</addClasspath>  
-                             <classpathPrefix>./</classpathPrefix>  
-                             <mainClass>com.dwarfeng.sfds.node.launcher.Launcher</mainClass>  
-                        </manifest>
-                    </archive>
                     <finalName>${project.name}-${project.version}</finalName>
                 </configuration>
             </plugin>
-            <!-- Maven 资源插件，拥有拷贝配置文件。 -->
+            <!-- Maven 装配插件，用于装配项目文件。 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
