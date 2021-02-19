@@ -66,6 +66,11 @@
             <groupId>com.dwarfeng</groupId>
             <artifactId>subgrade-impl</artifactId>
         </dependency>
+        <!-- spring-telqos组件 -->
+        <dependency>
+            <groupId>com.dwarfeng</groupId>
+            <artifactId>spring-telqos-core</artifactId>
+        </dependency>
         <!-- 程序自身模块 -->
         <dependency>
             <groupId>com.dwarfeng</groupId>
