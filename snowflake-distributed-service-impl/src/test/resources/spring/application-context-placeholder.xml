@@ -4,12 +4,12 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 设置配置文件的路径 -->
     <context:property-placeholder
-            location="classpath:snow-flake/*.properties"
+            location="classpath:dubbo/*.properties,classpath:snowflake/*.properties"
             local-override="true"
             properties-ref="refProperties"/>
 
@@ -18,7 +18,9 @@
         <property name="locations">
             <list>
                 <!--suppress SpringXmlModelInspection -->
-                <value>file:conf/test.snow-flake/*.properties</value>
+                <value>file:conf/test.dubbo/*.properties</value>
+                <!--suppress SpringXmlModelInspection -->
+                <value>file:conf/test.snowflake/*.properties</value>
             </list>
         </property>
     </bean>

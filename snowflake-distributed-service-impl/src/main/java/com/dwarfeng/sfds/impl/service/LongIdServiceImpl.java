@@ -40,7 +40,7 @@ public class LongIdServiceImpl implements LongIdService {
     /**
      * 工作机器ID(0~31)
      */
-    @Value("${snowflake.workder_id}")
+    @Value("${snowflake.worker_id}")
     private long workerId;
 
     /**
