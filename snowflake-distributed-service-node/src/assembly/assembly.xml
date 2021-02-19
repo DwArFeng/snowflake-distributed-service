@@ -25,11 +25,22 @@
             <fileMode>0644</fileMode>
         </fileSet>
         <fileSet>
-            <outputDirectory>conf/snow-flake</outputDirectory>
-            <directory>src/main/resources/snow-flake</directory>
+            <outputDirectory>conf/snowflake</outputDirectory>
+            <directory>src/main/resources/snowflake</directory>
             <includes>
                 <include>*.properties</include>
             </includes>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <outputDirectory>conf/telqos</outputDirectory>
+            <directory>src/main/resources/telqos</directory>
+            <includes>
+                <include>*.properties</include>
+            </includes>
+            <excludes>
+                <exclude>banner.txt</exclude>
+            </excludes>
             <fileMode>0644</fileMode>
         </fileSet>
     </fileSets>
