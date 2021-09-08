@@ -27,7 +27,7 @@
         <fastJson.version>1.2.47</fastJson.version>
         <joda-time.version>2.5</joda-time.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
-        <dubbo.version>2.7.6</dubbo.version>
+        <dubbo.version>2.7.13</dubbo.version>
         <netty.version>4.1.43.Final</netty.version>
         <curator.version>4.2.0</curator.version>
         <zkclient.version>0.11</zkclient.version>
