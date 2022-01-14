@@ -31,13 +31,11 @@
         <netty.version>4.1.43.Final</netty.version>
         <curator.version>4.2.0</curator.version>
         <zkclient.version>0.11</zkclient.version>
-        <httpcomponents.version>4.4.1</httpcomponents.version>
         <noggit.version>0.6</noggit.version>
         <zookeeper.version>3.4.14</zookeeper.version>
         <aspectj.version>1.8.2</aspectj.version>
         <spring.data.redis.version>1.7.11.RELEASE</spring.data.redis.version>
         <el.version>3.0.0</el.version>
-        <hibernate-validator.version>6.0.18.Final</hibernate-validator.version>
         <log4j2.version>2.17.1</log4j2.version>
         <slf4j.version>1.7.5</slf4j.version>
         <dozer.version>5.5.1</dozer.version>
@@ -168,33 +166,16 @@
                         <artifactId>log4j</artifactId>
                         <groupId>log4j</groupId>
                     </exclusion>
+                    <exclusion>
+                        <artifactId>netty</artifactId>
+                        <groupId>io.netty</groupId>
+                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.noggit</groupId>
                 <artifactId>noggit</artifactId>
                 <version>${noggit.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>${httpcomponents.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpmime</artifactId>
-                <version>${httpcomponents.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpcore</artifactId>
-                <version>${httpcomponents.version}</version>
-            </dependency>
-            <!-- Hibernate验证器 -->
-            <dependency>
-                <groupId>org.hibernate.validator</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>${hibernate-validator.version}</version>
             </dependency>
             <!-- EL组件 -->
             <dependency>
