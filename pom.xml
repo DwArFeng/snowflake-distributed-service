@@ -23,12 +23,12 @@
         <!-- 进行版本声明 -->
         <!-- 集中定义依赖版本号 -->
         <junit.version>4.13.1</junit.version>
-        <spring.version>5.3.14</spring.version>
+        <spring.version>5.3.19</spring.version>
         <fastJson.version>1.2.47</fastJson.version>
         <joda-time.version>2.5</joda-time.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <dubbo.version>2.7.15</dubbo.version>
-        <netty.version>4.1.43.Final</netty.version>
+        <netty.version>4.1.77.Final</netty.version>
         <curator.version>4.2.0</curator.version>
         <zkclient.version>0.11</zkclient.version>
         <noggit.version>0.6</noggit.version>
@@ -40,7 +40,7 @@
         <slf4j.version>1.7.5</slf4j.version>
         <dozer.version>5.5.1</dozer.version>
         <dutil.version>beta-0.2.1.a</dutil.version>
-        <subgrade.version>1.2.4.a</subgrade.version>
+        <subgrade.version>1.2.6.a</subgrade.version>
         <spring-terminator.version>1.0.7.a</spring-terminator.version>
         <spring-telqos.version>1.1.1.a</spring-telqos.version>
         <!-- Maven插件版本声明 -->
@@ -253,6 +253,18 @@
                         <artifactId>fastjson</artifactId>
                         <groupId>com.alibaba</groupId>
                     </exclusion>
+                    <exclusion>
+                        <artifactId>mybatis</artifactId>
+                        <groupId>org.mybatis</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>mybatis-spring</artifactId>
+                        <groupId>org.mybatis</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>mybatis</artifactId>
+                        <groupId>org.mybatis</groupId>
+                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
@@ -307,6 +319,14 @@
                     <exclusion>
                         <artifactId>fastjson</artifactId>
                         <groupId>com.alibaba</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>mybatis-spring</artifactId>
+                        <groupId>org.mybatis</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>mybatis</artifactId>
+                        <groupId>org.mybatis</groupId>
                     </exclusion>
                 </exclusions>
             </dependency>
