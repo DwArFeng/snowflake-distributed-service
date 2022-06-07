@@ -11,7 +11,6 @@ import com.dwarfeng.subgrade.stack.exception.ServiceExceptionMapper;
 import com.dwarfeng.subgrade.stack.log.LogLevel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +33,7 @@ public class LongIdServiceImpl implements LongIdService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LongIdServiceImpl.class);
 
-    @Autowired
-    private ServiceExceptionMapper sem;
+    private final ServiceExceptionMapper sem;
 
     /**
      * 工作机器ID(0~31)
@@ -59,15 +57,27 @@ public class LongIdServiceImpl implements LongIdService {
      */
     private long lastTimestamp = -1L;
 
+    public LongIdServiceImpl(ServiceExceptionMapper sem) {
+        this.sem = sem;
+    }
+
     @PostConstruct
     public void paramCheck() {
         if (workerId > SnowFlakeConstants.MAX_WORKER_ID || workerId < 0) {
-            LOGGER.error(String.format("Workder ID 不能大于 %d 或者小于 0, 将抛出异常...", SnowFlakeConstants.MAX_WORKER_ID));
-            throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", SnowFlakeConstants.MAX_WORKER_ID));
+            LOGGER.error(String.format(
+                    "Worker ID 不能大于 %d 或者小于 0, 将抛出异常...", SnowFlakeConstants.MAX_WORKER_ID
+            ));
+            throw new IllegalArgumentException(String.format(
+                    "worker Id can't be greater than %d or less than 0", SnowFlakeConstants.MAX_WORKER_ID
+            ));
         }
         if (datacenterId > SnowFlakeConstants.MAX_DATACENTER_ID || datacenterId < 0) {
-            LOGGER.error(String.format("Datacenter ID 不能大于 %d 或者小于 0, 将抛出异常...", SnowFlakeConstants.MAX_DATACENTER_ID));
-            throw new IllegalArgumentException(String.format("datacenter Id can't be greater than %d or less than 0", SnowFlakeConstants.MAX_DATACENTER_ID));
+            LOGGER.error(String.format(
+                    "Datacenter ID 不能大于 %d 或者小于 0, 将抛出异常...", SnowFlakeConstants.MAX_DATACENTER_ID
+            ));
+            throw new IllegalArgumentException(String.format(
+                    "datacenter Id can't be greater than %d or less than 0", SnowFlakeConstants.MAX_DATACENTER_ID
+            ));
         }
     }
 
@@ -89,8 +99,12 @@ public class LongIdServiceImpl implements LongIdService {
 
             //如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
             if (timestamp < lastTimestamp) {
-                LOGGER.warn(String.format("检测到系统时钟回退, 服务将会在 %d 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp));
-                throw new ClockMovedBackwardsException(String.format("Clock moved backwards. Refusing to generate id for %d milliseconds", lastTimestamp - timestamp));
+                LOGGER.warn(String.format(
+                        "检测到系统时钟回退, 服务将会在 %d 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp
+                ));
+                throw new ClockMovedBackwardsException(String.format(
+                        "Clock moved backwards. Refusing to generate id for %d milliseconds", lastTimestamp - timestamp
+                ));
             }
 
             //如果是同一时间生成的，则进行毫秒内序列

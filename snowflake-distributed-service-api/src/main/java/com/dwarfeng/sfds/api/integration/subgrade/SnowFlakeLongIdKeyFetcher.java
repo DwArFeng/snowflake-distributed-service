@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SnowFlakeLongIdKeyFetcher implements KeyFetcher<LongIdKey> {
 
+    // 由于许多依赖此工程的项目使用了此类的无参数构造器，因此无法将此处的 @Autowired 依赖装配改为构造器依赖装配。
+    @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
     @Autowired
     @Qualifier("longIdService")
     private LongIdService delegate;
