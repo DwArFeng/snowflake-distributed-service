@@ -6,6 +6,7 @@
 
 - 增加 QOS 运维指令。
   - com.dwarfeng.sfds.impl.service.telqos.GenCsvCommand。
+  - com.dwarfeng.sfds.impl.service.telqos.GenCommand。
 
 - 增加 `LongIdService` 的批量生成方法。
   - com.dwarfeng.sfds.stack.service.LongIdService.nextLongId(int)。
