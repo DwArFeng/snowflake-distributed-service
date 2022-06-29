@@ -5,6 +5,7 @@ import com.dwarfeng.sfds.stack.service.LongIdService;
 import com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException;
 import com.dwarfeng.subgrade.sdk.exception.ServiceExceptionHelper;
 import com.dwarfeng.subgrade.sdk.interceptor.analyse.BehaviorAnalyse;
+import com.dwarfeng.subgrade.sdk.interceptor.analyse.SkipRecord;
 import com.dwarfeng.subgrade.stack.bean.key.LongIdKey;
 import com.dwarfeng.subgrade.stack.exception.ServiceException;
 import com.dwarfeng.subgrade.stack.exception.ServiceExceptionMapper;
@@ -15,6 +16,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Twitter_Snowflake<br>
@@ -93,6 +97,20 @@ public class LongIdServiceImpl implements LongIdService {
         return new LongIdKey(internalNextLong());
     }
 
+    @Override
+    @BehaviorAnalyse
+    @SkipRecord
+    public List<Long> nextLongId(int number) throws ServiceException {
+        return internalNextLong(number);
+    }
+
+    @Override
+    @BehaviorAnalyse
+    @SkipRecord
+    public List<LongIdKey> nextLongIdKey(int number) throws ServiceException {
+        return internalNextLong(number).stream().map(LongIdKey::new).collect(Collectors.toList());
+    }
+
     private synchronized long internalNextLong() throws ServiceException {
         try {
             long timestamp = timeGen();
@@ -129,6 +147,56 @@ public class LongIdServiceImpl implements LongIdService {
                     | (datacenterId << SnowFlakeConstants.DATACENTER_ID_SHIFT) //
                     | (workerId << SnowFlakeConstants.WORKER_ID_SHIFT) //
                     | sequence;
+        } catch (Exception e) {
+            throw ServiceExceptionHelper.logAndThrow("生成序列时发生异常", LogLevel.WARN, sem, e);
+        }
+    }
+
+    private synchronized List<Long> internalNextLong(int number) throws ServiceException {
+        try {
+            long timestamp = timeGen();
+
+            //如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
+            if (timestamp < lastTimestamp) {
+                LOGGER.warn(String.format(
+                        "检测到系统时钟回退, 服务将会在 %d 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp
+                ));
+                throw new ClockMovedBackwardsException(String.format(
+                        "Clock moved backwards. Refusing to generate id for %d milliseconds", lastTimestamp - timestamp
+                ));
+            }
+
+            List<Long> result = new ArrayList<>(number);
+
+            // 对 number 进行 for 操作。
+            for (int i = 0; i < number; i++) {
+                //如果是同一时间生成的，则进行毫秒内序列
+                if (lastTimestamp == timestamp) {
+                    sequence = (sequence + 1) & SnowFlakeConstants.SEQUENCE_MASK;
+                    //毫秒内序列溢出
+                    if (sequence == 0) {
+                        //阻塞到下一个毫秒,获得新的时间戳
+                        timestamp = tilNextMillis(lastTimestamp);
+                    }
+                }
+                //时间戳改变，毫秒内序列重置
+                else {
+                    sequence = 0L;
+                }
+                //移位并通过或运算拼到一起组成64位的ID
+                result.add(
+                        ((timestamp - SnowFlakeConstants.TWEPOCH) << SnowFlakeConstants.TIMESTAMP_LEFT_SHIFT) //
+                                | (datacenterId << SnowFlakeConstants.DATACENTER_ID_SHIFT) //
+                                | (workerId << SnowFlakeConstants.WORKER_ID_SHIFT) //
+                                | sequence
+                );
+
+                //上次生成ID的时间截
+                lastTimestamp = timestamp;
+            }
+
+            //移位并通过或运算拼到一起组成64位的ID
+            return result;
         } catch (Exception e) {
             throw ServiceExceptionHelper.logAndThrow("生成序列时发生异常", LogLevel.WARN, sem, e);
         }

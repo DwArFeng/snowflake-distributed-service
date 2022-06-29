@@ -4,7 +4,12 @@
 
 #### 功能构建
 
-- (无)
+- 增加 QOS 运维指令。
+  - com.dwarfeng.sfds.impl.service.telqos.GenCsvCommand。
+
+- 增加 `LongIdService` 的批量生成方法。
+  - com.dwarfeng.sfds.stack.service.LongIdService.nextLongId(int)。
+  - com.dwarfeng.sfds.stack.service.LongIdService.nextLongIdKey(int)。
 
 #### Bug修复
 
