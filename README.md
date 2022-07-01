@@ -103,29 +103,41 @@ SnowFlake分布式服务是一个轻量级的全局ID分发服务，全局ID的�
 * 通过rpc进行调用
 
   `src/test/java/com/dwarfeng/sfds/rpc/impl/LongIdServiceImplTest.java`
-   ```java
-   @RunWith(SpringJUnit4ClassRunner.class)
-   @ContextConfiguration(locations = "classpath:spring/application-context*.xml")
-   public class LongIdServiceImplTest {
-   
-       @Autowired
-       private LongIdService longIdService;
-   
-       @Test
-       public void nextLongId() throws ServiceException {
-           for (int i = 0; i < 100; i++) {
-               CT.trace(longIdService.nextLongId());
-           }
-       }
-   
-       @Test
-       public void nextLongIdKey() throws ServiceException {
-           for (int i = 0; i < 100; i++) {
-               CT.trace(longIdService.nextLongIdKey());
-           }
-       }
-   }
-   ```
+  ```java
+  @RunWith(SpringJUnit4ClassRunner.class)
+  @ContextConfiguration(locations = "classpath:spring/application-context*.xml")
+  public class LongIdServiceImplTest {
+
+    @Autowired
+    private LongIdService longIdService;
+
+    @Test
+    public void nextLongId() throws ServiceException {
+        for (int i = 0; i < 100; i++) {
+            CT.trace(longIdService.nextLongId());
+        }
+    }
+
+    @Test
+    public void nextLongIdKey() throws ServiceException {
+        for (int i = 0; i < 100; i++) {
+            CT.trace(longIdService.nextLongIdKey());
+        }
+    }
+
+    @Test
+    public void nextLongIdSize() throws ServiceException {
+        List<Long> longs = longIdService.nextLongId(100);
+        longs.forEach(CT::trace);
+    }
+
+    @Test
+    public void nextLongIdKeySize() throws ServiceException {
+        List<LongIdKey> longIdKeys = longIdService.nextLongIdKey(100);
+        longIdKeys.forEach(CT::trace);
+    }
+  }
+  ```
 
 * 与subgrade集成
 
@@ -136,15 +148,21 @@ SnowFlake分布式服务是一个轻量级的全局ID分发服务，全局ID的�
   @RunWith(SpringJUnit4ClassRunner.class)
   @ContextConfiguration(locations = "classpath:spring/application-context*.xml")
   public class SnowFlakeLongIdKeyFetcherTest {
-  
-      @Autowired
-      private KeyFetcher<LongIdKey> keyKeyFetcher;
-  
-      @Test
-      public void fetchKey() throws KeyFetchException {
-          for (int i = 0; i < 100; i++) {
-              CT.trace(keyKeyFetcher.fetchKey());
-          }
-      }
+
+    @Autowired
+    private KeyFetcher<LongIdKey> keyKeyFetcher;
+
+    @Test
+    public void fetchKey() throws KeyFetchException {
+        for (int i = 0; i < 100; i++) {
+            CT.trace(keyKeyFetcher.fetchKey());
+        }
+    }
+
+    @Test
+    public void batchFetchKey() throws KeyFetchException {
+        List<LongIdKey> longIdKeys = keyKeyFetcher.batchFetchKey(100);
+        longIdKeys.forEach(CT::trace);
+    }
   }
   ```

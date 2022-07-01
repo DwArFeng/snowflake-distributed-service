@@ -71,6 +71,12 @@
             <groupId>com.dwarfeng</groupId>
             <artifactId>spring-telqos-core</artifactId>
         </dependency>
+        <!-- dutil组件 -->
+        <dependency>
+            <groupId>com.dwarfeng</groupId>
+            <artifactId>dutil-basic</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!-- 程序自身模块 -->
         <dependency>
             <groupId>com.dwarfeng</groupId>

@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring/application-context*.xml")
 public class SnowFlakeLongIdKeyFetcherTest {
@@ -22,5 +24,11 @@ public class SnowFlakeLongIdKeyFetcherTest {
         for (int i = 0; i < 100; i++) {
             CT.trace(keyKeyFetcher.fetchKey());
         }
+    }
+
+    @Test
+    public void batchFetchKey() throws KeyFetchException {
+        List<LongIdKey> longIdKeys = keyKeyFetcher.batchFetchKey(100);
+        longIdKeys.forEach(CT::trace);
     }
 }
