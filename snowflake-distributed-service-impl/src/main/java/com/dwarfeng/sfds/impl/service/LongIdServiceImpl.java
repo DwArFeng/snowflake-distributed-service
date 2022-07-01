@@ -100,8 +100,8 @@ public class LongIdServiceImpl implements LongIdService {
     @Override
     @BehaviorAnalyse
     @SkipRecord
-    public List<Long> nextLongId(int number) throws ServiceException {
-        return internalNextLong(number);
+    public List<Long> nextLongId(int size) throws ServiceException {
+        return internalNextLong(size);
     }
 
     @Override

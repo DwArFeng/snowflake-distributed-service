@@ -20,14 +20,14 @@ public class GenCsvCommand extends CliCommand {
     private static final String IDENTITY = "gencsv";
     private static final String DESCRIPTION = "生成ID并导出到CSV操作";
 
-    private static final String CMD_OPTION_NUMBER = "n";
+    private static final String CMD_OPTION_SIZE = "s";
     private static final String CMD_OPTION_FILE = "f";
 
     private static final String CMD_LINE_SYNTAX_INTERACTIVELY = "gencsv";
-    private static final String CMD_LINE_SYNTAX_NUMBER = "gencsv -" + CMD_OPTION_NUMBER + " [number]";
+    private static final String CMD_LINE_SYNTAX_SIZE = "gencsv -" + CMD_OPTION_SIZE + " [size]";
     private static final String CMD_LINE_SYNTAX_FILE = "gencsv -" + CMD_OPTION_FILE + " [file-path]";
     private static final String CMD_LINE_SYNTAX = CMD_LINE_SYNTAX_INTERACTIVELY + System.lineSeparator() +
-            CMD_LINE_SYNTAX_NUMBER + System.lineSeparator() + CMD_LINE_SYNTAX_FILE;
+            CMD_LINE_SYNTAX_SIZE + System.lineSeparator() + CMD_LINE_SYNTAX_FILE;
 
     private static final String DEFAULT_FILE_NAME = "export.csv";
 
@@ -41,8 +41,8 @@ public class GenCsvCommand extends CliCommand {
     @Override
     protected List<Option> buildOptions() {
         List<Option> list = new ArrayList<>();
-        list.add(Option.builder(CMD_OPTION_NUMBER).optionalArg(true).hasArg(true).type(Number.class)
-                .argName("number").desc("生成数量").build());
+        list.add(Option.builder(CMD_OPTION_SIZE).optionalArg(true).hasArg(true).type(Number.class)
+                .argName("size").desc("生成数量").build());
         list.add(Option.builder(CMD_OPTION_FILE).optionalArg(true).hasArg(true).type(String.class)
                 .argName("file-path").desc("生成的CSV的路径").build());
         return list;
@@ -51,13 +51,13 @@ public class GenCsvCommand extends CliCommand {
     @Override
     protected void executeWithCmd(Context context, CommandLine cmd) throws TelqosException {
         try {
-            int number;
+            int size;
             File file;
-            if (cmd.hasOption(CMD_OPTION_NUMBER)) {
-                number = ((Number) cmd.getParsedOptionValue(CMD_OPTION_NUMBER)).intValue();
+            if (cmd.hasOption(CMD_OPTION_SIZE)) {
+                size = ((Number) cmd.getParsedOptionValue(CMD_OPTION_SIZE)).intValue();
             } else {
                 context.sendMessage("请输入需要生成的 ID 的数量:");
-                number = Integer.parseInt(context.receiveMessage());
+                size = Integer.parseInt(context.receiveMessage());
             }
             if (cmd.hasOption(CMD_OPTION_FILE)) {
                 file = new File(((String) cmd.getParsedOptionValue(CMD_OPTION_FILE)));
@@ -72,7 +72,7 @@ public class GenCsvCommand extends CliCommand {
                     FileWriter fw = new FileWriter(file);
                     BufferedWriter bw = new BufferedWriter(fw, 4096)
             ) {
-                List<Long> longs = longIdService.nextLongId(number);
+                List<Long> longs = longIdService.nextLongId(size);
                 for (Long aLong : longs) {
                     bw.write(Long.toString(aLong));
                     bw.write(System.lineSeparator());
