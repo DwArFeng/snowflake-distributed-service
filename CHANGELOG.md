@@ -12,6 +12,9 @@
   - com.dwarfeng.sfds.stack.service.LongIdService.nextLongId(int)。
   - com.dwarfeng.sfds.stack.service.LongIdService.nextLongIdKey(int)。
 
+- 升级 `subgrade` 依赖为 `1.2.8.a`，并更新相对应的 API。
+  - com.dwarfeng.sfds.api.integration.subgrade.SnowFlakeLongIdKeyFetcher。
+
 #### Bug修复
 
 - (无)

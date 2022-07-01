@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class SnowFlakeLongIdKeyFetcher implements KeyFetcher<LongIdKey> {
 
@@ -22,6 +24,15 @@ public class SnowFlakeLongIdKeyFetcher implements KeyFetcher<LongIdKey> {
     public LongIdKey fetchKey() throws KeyFetchException {
         try {
             return delegate.nextLongIdKey();
+        } catch (ServiceException e) {
+            throw new KeyFetchException(e);
+        }
+    }
+
+    @Override
+    public List<LongIdKey> batchFetchKey(int size) throws KeyFetchException {
+        try {
+            return delegate.nextLongIdKey(size);
         } catch (ServiceException e) {
             throw new KeyFetchException(e);
         }

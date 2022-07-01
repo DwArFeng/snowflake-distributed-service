@@ -39,8 +39,7 @@
         <log4j2.version>2.17.1</log4j2.version>
         <slf4j.version>1.7.5</slf4j.version>
         <dozer.version>5.5.1</dozer.version>
-        <dutil.version>beta-0.2.2.a</dutil.version>
-        <subgrade.version>1.2.7.a</subgrade.version>
+        <subgrade.version>1.2.8.a</subgrade.version>
         <spring-terminator.version>1.0.7.a</spring-terminator.version>
         <spring-telqos.version>1.1.3.a</spring-telqos.version>
         <!-- Maven插件版本声明 -->
@@ -346,17 +345,12 @@
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>spring-telqos-api</artifactId>
                 <version>${spring-telqos.version}</version>
-            </dependency>
-            <!-- dutil组件 -->
-            <dependency>
-                <groupId>com.dwarfeng</groupId>
-                <artifactId>dutil-basic</artifactId>
-                <version>${dutil.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dwarfeng</groupId>
-                <artifactId>dutil-develop</artifactId>
-                <version>${dutil.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>dutil-basic</artifactId>
+                        <groupId>com.dwarfeng</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!-- 程序自身组件 -->
             <dependency>
