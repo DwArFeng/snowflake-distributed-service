@@ -1,10 +1,17 @@
 # ChangeLog
 
-### Release_1.4.8_20220903_build_A
+### Release_1.4.8_20220905_build_A
 
 #### 功能构建
 
-- (无)
+- 插件升级。
+  - 升级 `maven-deploy-plugin` 插件版本为 `2.8.2`。
+
+- 依赖升级。
+  - 升级 `spring-terminator` 依赖版本为 `1.0.9.a`。
+  - 升级 `dutil` 依赖版本为 `beta-0.3.1.a` 以规避漏洞。
+  - 升级 `subgrade` 依赖版本为 `1.2.9.a` 以规避漏洞。
+  - 升级 `spring-telqos` 依赖版本为 `1.1.4.a` 以规避漏洞。
 
 #### Bug修复
 
