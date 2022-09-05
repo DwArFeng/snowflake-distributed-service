@@ -45,7 +45,6 @@
         <spring-telqos.version>1.1.4.a</spring-telqos.version>
         <!-- Maven插件版本声明 -->
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-        <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
         <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
