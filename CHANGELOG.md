@@ -20,6 +20,7 @@
 #### 功能移除
 
 - 移除 `tomcat7-maven-plugin` 的版本声明。
+- 移除 `joda-time` 的版本声明。
 
 ---
 
