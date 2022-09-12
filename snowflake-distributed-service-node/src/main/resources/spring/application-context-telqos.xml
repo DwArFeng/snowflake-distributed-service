@@ -18,7 +18,6 @@
             <telqos:command-impl ref="shutdownCommand"/>
             <telqos:command-impl ref="dubboCommand"/>
             <telqos:command-impl ref="memoryCommand"/>
-            <telqos:command-impl ref="genCsvCommand"/>
             <telqos:command-impl ref="genCommand"/>
         </telqos:command>
     </telqos:config>

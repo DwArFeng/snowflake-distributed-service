@@ -7,13 +7,17 @@
 - 依赖升级。
   - 升级 `subgrade` 依赖版本为 `1.2.10.a` 以规避漏洞。
 
+- 优化 telqos 指令。
+  - com.dwarfeng.sfds.impl.service.telqos.GenCommand。
+
 #### Bug修复
 
 - (无)
 
 #### 功能移除
 
-- (无)
+- 删除 telqos 指令。
+  - com.dwarfeng.sfds.impl.service.telqos.GenCsvCommand。
 
 ---
 
