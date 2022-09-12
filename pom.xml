@@ -39,7 +39,7 @@
         <slf4j.version>1.7.5</slf4j.version>
         <dozer.version>5.5.1</dozer.version>
         <dutil.version>beta-0.3.1.a</dutil.version>
-        <subgrade.version>1.2.9.a</subgrade.version>
+        <subgrade.version>1.2.10.a</subgrade.version>
         <spring-terminator.version>1.0.9.a</spring-terminator.version>
         <spring-telqos.version>1.1.4.a</spring-telqos.version>
         <!-- Maven插件版本声明 -->
