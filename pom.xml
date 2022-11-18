@@ -25,22 +25,22 @@
         <junit.version>4.13.2</junit.version>
         <spring.version>5.3.20</spring.version>
         <fastjson.version>1.2.83</fastjson.version>
-        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <gson.version>2.8.9</gson.version>
+        <snakeyaml.version>1.33</snakeyaml.version>
         <dubbo.version>2.7.18</dubbo.version>
         <netty.version>4.1.77.Final</netty.version>
+        <zookeeper.version>3.5.7</zookeeper.version>
+        <guava.version>31.1-jre</guava.version>
         <curator.version>4.3.0</curator.version>
-        <zkclient.version>0.11</zkclient.version>
-        <noggit.version>0.6</noggit.version>
-        <zookeeper.version>3.4.14</zookeeper.version>
-        <aspectj.version>1.8.2</aspectj.version>
-        <spring.data.redis.version>1.7.11.RELEASE</spring.data.redis.version>
+        <aspectj.version>1.9.7</aspectj.version>
         <log4j2.version>2.17.1</log4j2.version>
         <slf4j.version>1.7.5</slf4j.version>
         <dozer.version>5.5.1</dozer.version>
         <dutil.version>beta-0.3.2.a</dutil.version>
-        <subgrade.version>1.2.14.a-SNAPSHOT</subgrade.version>
-        <spring-terminator.version>1.0.9.a</spring-terminator.version>
-        <spring-telqos.version>1.1.4.a</spring-telqos.version>
+        <subgrade.version>1.2.14.a</subgrade.version>
+        <spring-terminator.version>1.0.10.a</spring-terminator.version>
+        <spring-telqos.version>1.1.5.a</spring-telqos.version>
         <!-- Maven插件版本声明 -->
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
@@ -53,53 +53,115 @@
     <!-- 只定义依赖的版本，并不实际依赖 -->
     <dependencyManagement>
         <dependencies>
-            <!-- AspectJ组件 -->
+            <!-- AspectJ 组件 -->
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.apache.zookeeper</groupId>
-                <artifactId>zookeeper</artifactId>
-                <version>${zookeeper.version}</version>
-            </dependency>
-            <!-- Apache工具组件 -->
+            <!-- Apache 工具组件 -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
             </dependency>
-            <!-- FastJson Json处理工具包 -->
+            <!-- FastJson Json 处理工具包 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
-            <!-- Dubbo分布式包 -->
+            <!-- Gson 组件 -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+            <!-- Snakeyaml 组件 -->
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
+            </dependency>
+            <!-- Dubbo 分布式包 -->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
                 <exclusions>
-                    <!-- 排除或者不适用dubbo中指定的spring版本 -->
                     <exclusion>
                         <groupId>org.springframework</groupId>
                         <artifactId>spring</artifactId>
                     </exclusion>
+                    <exclusion>
+                        <artifactId>gson</artifactId>
+                        <groupId>com.google.code.gson</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>snakeyaml</artifactId>
+                        <groupId>org.yaml</groupId>
+                    </exclusion>
                 </exclusions>
-                <version>${dubbo.version}</version>
             </dependency>
-            <!-- Netty网络连接包 -->
+            <!-- Netty 网络连接包 -->
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
                 <version>${netty.version}</version>
             </dependency>
-            <!-- Curator框架 -->
+            <!-- Zookeeper 客户端 -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>netty-handler</artifactId>
+                        <groupId>io.netty</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>netty-transport-native-epoll</artifactId>
+                        <groupId>io.netty</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>slf4j-api</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>slf4j-log4j12</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- Guava 组件 -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <!-- Curator 框架 -->
             <dependency>
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-recipes</artifactId>
                 <version>${curator.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>zookeeper</artifactId>
+                        <groupId>org.apache.zookeeper</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>guava</artifactId>
+                        <groupId>com.google.guava</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!-- 单元测试 -->
             <dependency>
@@ -150,31 +212,6 @@
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
             </dependency>
-            <!-- zookeeper客户端 -->
-            <dependency>
-                <groupId>com.101tec</groupId>
-                <artifactId>zkclient</artifactId>
-                <version>${zkclient.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>slf4j-log4j12</artifactId>
-                        <groupId>org.slf4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>log4j</artifactId>
-                        <groupId>log4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>netty</artifactId>
-                        <groupId>io.netty</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.noggit</groupId>
-                <artifactId>noggit</artifactId>
-                <version>${noggit.version}</version>
-            </dependency>
             <!-- Dozer模块 -->
             <dependency>
                 <groupId>net.sf.dozer</groupId>
@@ -202,22 +239,6 @@
                         <groupId>javax.xml.bind</groupId>
                     </exclusion>
                     <exclusion>
-                        <artifactId>spring-data-redis</artifactId>
-                        <groupId>org.springframework.data</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>spring-orm</artifactId>
-                        <groupId>org.springframework</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>kafka-clients</artifactId>
-                        <groupId>org.apache.kafka</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>spring-kafka</artifactId>
-                        <groupId>org.springframework.kafka</groupId>
-                    </exclusion>
-                    <exclusion>
                         <artifactId>spring-orm</artifactId>
                         <groupId>org.springframework</groupId>
                     </exclusion>
@@ -228,10 +249,6 @@
                     <exclusion>
                         <artifactId>hibernate-validator</artifactId>
                         <groupId>org.hibernate.validator</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>javax.el</artifactId>
-                        <groupId>org.glassfish</groupId>
                     </exclusion>
                     <exclusion>
                         <artifactId>dozer</artifactId>
@@ -261,6 +278,22 @@
                         <artifactId>javax.servlet-api</artifactId>
                         <groupId>javax.servlet</groupId>
                     </exclusion>
+                    <exclusion>
+                        <artifactId>jedis</artifactId>
+                        <groupId>redis.clients</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-data-redis</artifactId>
+                        <groupId>org.springframework.data</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>kafka-clients</artifactId>
+                        <groupId>org.apache.kafka</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-kafka</artifactId>
+                        <groupId>org.springframework.kafka</groupId>
+                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
@@ -269,36 +302,8 @@
                 <version>${subgrade.version}</version>
                 <exclusions>
                     <exclusion>
-                        <artifactId>spring-data-redis</artifactId>
-                        <groupId>org.springframework.data</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>spring-orm</artifactId>
-                        <groupId>org.springframework</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>spring-kafka</artifactId>
-                        <groupId>org.springframework.kafka</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>hibernate-core</artifactId>
-                        <groupId>org.hibernate</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>dom4j</artifactId>
-                        <groupId>dom4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>hibernate-validator</artifactId>
-                        <groupId>org.hibernate.validator</groupId>
-                    </exclusion>
-                    <exclusion>
                         <artifactId>dutil-develop</artifactId>
                         <groupId>com.dwarfeng</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>javax.el</artifactId>
-                        <groupId>org.glassfish</groupId>
                     </exclusion>
                     <exclusion>
                         <artifactId>dozer</artifactId>
@@ -307,22 +312,6 @@
                     <exclusion>
                         <artifactId>dozer-spring</artifactId>
                         <groupId>net.sf.dozer</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>commons-beanutils</artifactId>
-                        <groupId>commons-beanutils</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>fastjson</artifactId>
-                        <groupId>com.alibaba</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>mybatis-spring</artifactId>
-                        <groupId>org.mybatis</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>mybatis</artifactId>
-                        <groupId>org.mybatis</groupId>
                     </exclusion>
                 </exclusions>
             </dependency>
