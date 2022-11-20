@@ -25,7 +25,6 @@
         <junit.version>4.13.2</junit.version>
         <spring.version>5.3.20</spring.version>
         <fastjson.version>1.2.83</fastjson.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
         <gson.version>2.8.9</gson.version>
         <snakeyaml.version>1.33</snakeyaml.version>
         <dubbo.version>2.7.18</dubbo.version>
@@ -36,7 +35,6 @@
         <aspectj.version>1.9.7</aspectj.version>
         <log4j2.version>2.17.1</log4j2.version>
         <slf4j.version>1.7.5</slf4j.version>
-        <dozer.version>5.5.1</dozer.version>
         <dutil.version>beta-0.3.2.a</dutil.version>
         <subgrade.version>1.2.14.a</subgrade.version>
         <spring-terminator.version>1.0.10.a</spring-terminator.version>
@@ -58,12 +56,6 @@
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
-            </dependency>
-            <!-- Apache 工具组件 -->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang3.version}</version>
             </dependency>
             <!-- FastJson Json 处理工具包 -->
             <dependency>
@@ -172,9 +164,9 @@
             </dependency>
             <!-- 日志处理 -->
             <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-slf4j-impl</artifactId>
-                <version>${log4j2.version}</version>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
@@ -182,9 +174,9 @@
                 <version>${log4j2.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>${log4j2.version}</version>
             </dependency>
             <!-- Spring -->
             <dependency>
@@ -211,17 +203,6 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
-            </dependency>
-            <!-- Dozer模块 -->
-            <dependency>
-                <groupId>net.sf.dozer</groupId>
-                <artifactId>dozer</artifactId>
-                <version>${dozer.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>net.sf.dozer</groupId>
-                <artifactId>dozer-spring</artifactId>
-                <version>${dozer.version}</version>
             </dependency>
             <!-- subgrade组件 -->
             <dependency>

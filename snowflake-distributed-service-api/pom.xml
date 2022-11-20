@@ -76,7 +76,6 @@
         <dependency>
             <groupId>com.dwarfeng</groupId>
             <artifactId>dutil-basic</artifactId>
-            <scope>test</scope>
         </dependency>
         <!-- 程序自身模块 -->
         <dependency>
