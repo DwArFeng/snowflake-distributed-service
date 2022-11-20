@@ -283,6 +283,10 @@
                 <version>${subgrade.version}</version>
                 <exclusions>
                     <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                    <exclusion>
                         <artifactId>dutil-develop</artifactId>
                         <groupId>com.dwarfeng</groupId>
                     </exclusion>
