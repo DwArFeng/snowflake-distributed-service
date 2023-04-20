@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.dwarfeng</groupId>
@@ -15,7 +19,7 @@
 
     <properties>
         <!-- 进行工程编码声明 -->
-        <!-- 进行JDK版本声明 -->
+        <!-- 进行 JDK 版本声明 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -39,7 +43,7 @@
         <subgrade.version>1.2.14.a</subgrade.version>
         <spring-terminator.version>1.0.10.a</spring-terminator.version>
         <spring-telqos.version>1.1.5.a</spring-telqos.version>
-        <!-- Maven插件版本声明 -->
+        <!-- Maven 插件版本声明 -->
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
@@ -204,7 +208,7 @@
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
             </dependency>
-            <!-- subgrade组件 -->
+            <!-- Subgrade 组件 -->
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>subgrade-stack</artifactId>
@@ -300,13 +304,13 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!-- spring-terminator组件 -->
+            <!-- Spring-terminator组件 -->
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>spring-terminator</artifactId>
                 <version>${spring-terminator.version}</version>
             </dependency>
-            <!-- spring-telqos组件 -->
+            <!-- Spring-telqos组件 -->
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>spring-telqos-core</artifactId>
@@ -323,7 +327,7 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!-- dutil组件 -->
+            <!-- Dutil 组件 -->
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>dutil-basic</artifactId>
