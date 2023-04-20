@@ -1,6 +1,9 @@
-<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
-          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+<assembly
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+        xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0
+        http://maven.apache.org/xsd/assembly-2.0.0.xsd"
+>
     <id>release</id>
 
     <formats>
@@ -43,14 +46,44 @@
             </excludes>
             <fileMode>0644</fileMode>
         </fileSet>
+        <fileSet>
+            <outputDirectory>opt</outputDirectory>
+            <directory>src/main/resources/opt</directory>
+            <includes>
+                <include>*.xml</include>
+            </includes>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <outputDirectory>libext</outputDirectory>
+            <directory>src/main/resources/libext</directory>
+            <includes>
+                <include>README.md</include>
+                <include>*.xml</include>
+            </includes>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <outputDirectory>optext</outputDirectory>
+            <directory>src/main/resources/optext</directory>
+            <includes>
+                <include>README.md</include>
+                <include>*.xml</include>
+            </includes>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <outputDirectory>confext</outputDirectory>
+            <directory>src/main/resources/confext</directory>
+            <includes>
+                <include>README.md</include>
+                <include>*.properties</include>
+            </includes>
+            <fileMode>0644</fileMode>
+        </fileSet>
     </fileSets>
 
     <files>
-        <file>
-            <outputDirectory>./</outputDirectory>
-            <source>../LICENSE</source>
-            <fileMode>0644</fileMode>
-        </file>
         <file>
             <outputDirectory>./</outputDirectory>
             <source>../README.md</source>
@@ -59,6 +92,11 @@
         <file>
             <outputDirectory>./</outputDirectory>
             <source>../CHANGELOG.md</source>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <outputDirectory>./</outputDirectory>
+            <source>../LICENSE</source>
             <fileMode>0644</fileMode>
         </file>
         <file>
