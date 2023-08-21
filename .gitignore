@@ -62,3 +62,23 @@ buildNumber.properties
 /snowflake-distributed-service-node/conf/
 /snowflake-distributed-service-impl/conf/
 /snowflake-distributed-service-api/conf/
+
+#################
+## Libext Files
+#################
+/snowflake-distributed-service-node/libext/
+
+#################
+## Opt Files
+#################
+/snowflake-distributed-service-node/opt/
+
+#################
+## Optext Files
+#################
+/snowflake-distributed-service-node/optext/
+
+#################
+## Confext Files
+#################
+/snowflake-distributed-service-node/confext/
