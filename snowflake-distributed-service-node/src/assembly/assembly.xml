@@ -50,6 +50,7 @@
             <outputDirectory>opt</outputDirectory>
             <directory>src/main/resources/opt</directory>
             <includes>
+                <include>README.md</include>
                 <include>*.xml</include>
             </includes>
             <fileMode>0644</fileMode>
