@@ -1,7 +1,7 @@
 package com.dwarfeng.sfds.impl.service;
 
 import com.dwarfeng.dutil.basic.io.CT;
-import com.dwarfeng.sfds.stack.service.LongIdService;
+import com.dwarfeng.sfds.stack.service.GenerateService;
 import com.dwarfeng.subgrade.stack.bean.key.LongIdKey;
 import com.dwarfeng.subgrade.stack.exception.ServiceException;
 import org.junit.Test;
@@ -12,37 +12,36 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-@Deprecated
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring/application-context*.xml")
-public class LongIdServiceImplTest {
+public class GenerateServiceImplTest {
 
     @Autowired
-    private LongIdService longIdService;
+    private GenerateService generateService;
 
     @Test
-    public void nextLongId() throws ServiceException {
+    public void testGenerateLong() throws ServiceException {
         for (int i = 0; i < 100; i++) {
-            CT.trace(longIdService.nextLongId());
+            CT.trace(generateService.generateLong());
         }
     }
 
     @Test
-    public void nextLongIdKey() throws ServiceException {
+    public void testGenerateLongIdKey() throws ServiceException {
         for (int i = 0; i < 100; i++) {
-            CT.trace(longIdService.nextLongIdKey());
+            CT.trace(generateService.generateLongIdKey());
         }
     }
 
     @Test
-    public void nextLongIdSize() throws ServiceException {
-        List<Long> longs = longIdService.nextLongId(100);
+    public void testGenerateLongWithSize() throws ServiceException {
+        List<Long> longs = generateService.generateLong(100);
         longs.forEach(CT::trace);
     }
 
     @Test
-    public void nextLongIdKeySize() throws ServiceException {
-        List<LongIdKey> longIdKeys = longIdService.nextLongIdKey(100);
+    public void testGenerateLongIdKeyWithSize() throws ServiceException {
+        List<LongIdKey> longIdKeys = generateService.generateLongIdKey(100);
         longIdKeys.forEach(CT::trace);
     }
 }

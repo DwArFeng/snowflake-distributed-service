@@ -24,6 +24,13 @@
 
     <!-- 向注册中心注册暴露服务地址,注册服务 -->
     <dubbo:service
+            interface="com.dwarfeng.sfds.stack.service.GenerateService"
+            ref="generateServiceImpl"
+            group="${dubbo.provider.group}"
+    />
+    <!-- 对外暴露此过时服务，以解决兼容性问题 -->
+    <!--suppress DeprecatedClassUsageInspection -->
+    <dubbo:service
             interface="com.dwarfeng.sfds.stack.service.LongIdService"
             ref="longIdServiceImpl"
             group="${dubbo.provider.group}"

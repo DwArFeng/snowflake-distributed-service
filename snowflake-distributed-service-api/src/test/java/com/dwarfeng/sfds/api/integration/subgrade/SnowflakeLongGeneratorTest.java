@@ -1,9 +1,7 @@
 package com.dwarfeng.sfds.api.integration.subgrade;
 
 import com.dwarfeng.dutil.basic.io.CT;
-import com.dwarfeng.subgrade.stack.bean.key.KeyFetcher;
-import com.dwarfeng.subgrade.stack.bean.key.LongIdKey;
-import com.dwarfeng.subgrade.stack.exception.KeyFetchException;
+import com.dwarfeng.subgrade.stack.exception.GenerateException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,24 +10,23 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-@Deprecated
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring/application-context*.xml")
-public class SnowFlakeLongIdKeyFetcherTest {
+public class SnowflakeLongGeneratorTest {
 
     @Autowired
-    private KeyFetcher<LongIdKey> keyKeyFetcher;
+    private SnowflakeLongGenerator generator;
 
     @Test
-    public void fetchKey() throws KeyFetchException {
+    public void testGenerate() throws GenerateException {
         for (int i = 0; i < 100; i++) {
-            CT.trace(keyKeyFetcher.fetchKey());
+            CT.trace(generator.generate());
         }
     }
 
     @Test
-    public void batchFetchKey() throws KeyFetchException {
-        List<LongIdKey> longIdKeys = keyKeyFetcher.batchFetchKey(100);
-        longIdKeys.forEach(CT::trace);
+    public void testBatchGenerate() throws GenerateException {
+        List<Long> longs = generator.batchGenerate(100);
+        longs.forEach(CT::trace);
     }
 }

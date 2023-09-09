@@ -4,6 +4,14 @@
 
 #### 功能构建
 
+- 优化项目结构。
+  - 将 snowflake 算法的实现从 service 下放到 handler。
+  - 过时 com.dwarfeng.sfds.stack.service.LongIdService 及其相关引用。
+  - 新增 com.dwarfeng.sfds.stack.service.GenerateService。
+  - 过时 com.dwarfeng.sfds.api.integration.subgrade.SnowFlakeLongIdKeyFetcher。
+  - 新增 com.dwarfeng.sfds.api.integration.subgrade.SnowflakeLongGenerator。
+  - 新增 com.dwarfeng.sfds.api.integration.subgrade.SnowflakeLongIdKeyGenerator。
+
 - 将项目中的 aop 代理模式更改为基于类的代理模式。
 
 - 优化文件格式。

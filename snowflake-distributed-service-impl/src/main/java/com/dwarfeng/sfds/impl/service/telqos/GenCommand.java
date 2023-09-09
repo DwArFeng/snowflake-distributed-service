@@ -1,6 +1,6 @@
 package com.dwarfeng.sfds.impl.service.telqos;
 
-import com.dwarfeng.sfds.stack.service.LongIdService;
+import com.dwarfeng.sfds.stack.service.GenerateQosService;
 import com.dwarfeng.springtelqos.node.config.TelqosCommand;
 import com.dwarfeng.springtelqos.sdk.command.CliCommand;
 import com.dwarfeng.springtelqos.stack.command.Context;
@@ -39,11 +39,11 @@ public class GenCommand extends CliCommand {
     private static final int DEFAULT_SIZE = 10;
     private static final String DEFAULT_FILE_NAME = "export.csv";
 
-    private final LongIdService longIdService;
+    private final GenerateQosService generateQosService;
 
-    public GenCommand(LongIdService longIdService) {
+    public GenCommand(GenerateQosService generateQosService) {
         super(IDENTITY, DESCRIPTION, CMD_LINE_SYNTAX);
-        this.longIdService = longIdService;
+        this.generateQosService = generateQosService;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class GenCommand extends CliCommand {
                 context.sendMessage("请输入需要生成的 ID 的数量:");
                 size = Integer.parseInt(context.receiveMessage());
             }
-            List<Long> longs = longIdService.nextLongId(size);
+            List<Long> longs = generateQosService.generateLong(size);
 
             if (cmd.hasOption(CMD_OPTION_FILE)) {
                 print2File(longs, context, cmd);
