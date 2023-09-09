@@ -6,6 +6,7 @@
 
 - 优化文件格式。
   - 优化 `application-context-*.xml` 文件的格式。
+  - 优化 `*.properties` 文件的格式。
 
 - 依赖升级。
   - 升级 `subgrade` 依赖版本为 `1.4.5.a` 并解决兼容性问题，以应用其新功能。
