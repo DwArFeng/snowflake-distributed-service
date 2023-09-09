@@ -9,7 +9,9 @@
 
 #### Bug修复
 
-- (无)
+- 修复 impl 模块 dubbo 相关的配置错误。
+  - spring/application-context-dubbo.xml。
+  - dubbo/connection.properties。
 
 #### 功能移除
 
