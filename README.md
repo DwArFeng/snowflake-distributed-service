@@ -24,17 +24,18 @@ SnowFlake分布式服务是一个轻量级的全局ID分发服务，全局ID的�
    ```
 
 2. 使用maven安装该项目的依赖项目。  
-   该项目引用同作者的其它项目，如dutil，不过这些项目并不在中心仓库中，如果提示找不到这些引用，
-   请在github或者gitee查找同作者的项目，并使用以下指令。
+   该项目引用同作者的其它项目，如 dutil，不过这些项目并不在中心仓库中，如果提示找不到这些引用，
+   请在 github 或者 gitee 查找同作者的项目，并使用以下指令。
    ```
    mvn clean install
    ```  
    该项目同作者的依赖项目：
 
-* [[github] dutil-作者大学时代开始编写的Java实用工具集合](https://github.com/DwArFeng/dutil)
-  或者 [[gitee]  dutil-作者大学时代开始编写的Java实用工具集合](https://gitee.com/DwArFeng/dutil)
+   (全球) [[github] dutil-作者大学时代开始编写的Java实用工具集合](https://github.com/DwArFeng/dutil)
 
-3. 使用maven安装本项目(为了api能够使用，请安装，而不是打包)。
+   (中国) [[gitee]  dutil-作者大学时代开始编写的Java实用工具集合](https://gitee.com/DwArFeng/dutil)
+
+3. 使用maven安装本项目(为了 api 能够使用，请安装，而不是打包)。
    ```shell script
    mvn clean install
    ```
@@ -57,7 +58,7 @@ SnowFlake分布式服务是一个轻量级的全局ID分发服务，全局ID的�
    # dubbo 提供者主机名称
    dubbo.host=192.168.154.1
    ```
-   conf/snow-flake/device.properties
+   conf/snowflake/device.properties
    ```
    # Worker ID，最大为31，新的节点序列号向下递减，最少到0。
    snowflake.workder_id=31
@@ -100,9 +101,9 @@ SnowFlake分布式服务是一个轻量级的全局ID分发服务，全局ID的�
 
 ### 服务的调用
 
-所有服务的调用参照 ```snowflake-distributed-service-api``` 项目
+所有服务的调用参照 ```snowflake-distributed-service-api``` 项目。
 
-* 通过rpc进行调用。  
+* 通过 rpc 进行调用。  
   `src/test/java/com/dwarfeng/sfds/rpc/impl/LongIdServiceImplTest.java`
    ```java
    @RunWith(SpringJUnit4ClassRunner.class)
@@ -140,31 +141,32 @@ SnowFlake分布式服务是一个轻量级的全局ID分发服务，全局ID的�
    }
    ```
 
-* 与subgrade集成
+* 与 subgrade 集成
 
-  subgrade是作者的全项目通用工具类，提供了基于Spring框架的大量快捷的开发工具，本项目与其集成，提供了 ```SnowFlakeLongIdKeyFetcher```
-  。
+  subgrade 是作者的全项目通用工具类，提供了基于Spring框架的大量快捷的开发工具，本项目与其集成，
+  提供了 `SnowflakeLongGenerator`。
 
-  `com.dwarfeng.sfds.api.integration.subgrade.SnowFlakeLongIdKeyFetcherTest`
+  `com.dwarfeng.sfds.api.integration.subgrade.SnowflakeLongIdKeyGeneratorTest`
+
   ```java
   @RunWith(SpringJUnit4ClassRunner.class)
   @ContextConfiguration(locations = "classpath:spring/application-context*.xml")
-  public class SnowFlakeLongIdKeyFetcherTest {
-
-    @Autowired
-    private KeyFetcher<LongIdKey> keyKeyFetcher;
-
-    @Test
-    public void fetchKey() throws KeyFetchException {
-        for (int i = 0; i < 100; i++) {
-            CT.trace(keyKeyFetcher.fetchKey());
-        }
-    }
-
-    @Test
-    public void batchFetchKey() throws KeyFetchException {
-        List<LongIdKey> longIdKeys = keyKeyFetcher.batchFetchKey(100);
-        longIdKeys.forEach(CT::trace);
-    }
+  public class SnowflakeLongIdKeyGeneratorTest {
+  
+      @Autowired
+      private SnowflakeLongIdKeyGenerator generator;
+  
+      @Test
+      public void testGenerate() throws GenerateException {
+          for (int i = 0; i < 100; i++) {
+              CT.trace(generator.generate());
+          }
+      }
+  
+      @Test
+      public void testBatchGenerate() throws GenerateException {
+          List<LongIdKey> longIdKeys = generator.batchGenerate(100);
+          longIdKeys.forEach(CT::trace);
+      }
   }
   ```
