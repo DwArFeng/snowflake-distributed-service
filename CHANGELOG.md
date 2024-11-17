@@ -4,6 +4,10 @@
 
 #### 功能构建
 
+- 优化 `node` 模块部分服务启停脚本的注释。
+  - binres/snowflake-start.bat。
+  - binres/snowflake-start.sh。
+
 - 优化项目的启停脚本，以规避潜在的路径问题。
   - binres/statistics-stop.sh。
   - binres/statistics-start.sh。
