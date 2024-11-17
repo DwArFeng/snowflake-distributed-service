@@ -4,6 +4,10 @@
 
 #### 功能构建
 
+- 部分 dubbo 消费者服务注册配置添加 `check="false"` 属性。
+  - generateService。
+  - longIdService。
+
 - 依赖升级。
 - 增加依赖 `spring` 以应用其新功能，版本为 `5.3.39`。
 - 增加依赖 `netty` 以应用其新功能，版本为 `4.1.115.Final`。

@@ -26,6 +26,7 @@
     <dubbo:reference
             id="generateService"
             interface="com.dwarfeng.sfds.stack.service.GenerateService"
+            check="false"
             group="${dubbo.consumer.snowflake.group}"
     />
     <!-- 引用过时服务，以进行单元测试 -->
@@ -33,6 +34,7 @@
     <dubbo:reference
             id="longIdService"
             interface="com.dwarfeng.sfds.stack.service.LongIdService"
+            check="false"
             group="${dubbo.consumer.snowflake.group}"
     />
 </beans>
