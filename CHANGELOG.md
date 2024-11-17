@@ -4,6 +4,10 @@
 
 #### 功能构建
 
+- 优化项目的启停脚本，以规避潜在的路径问题。
+  - binres/statistics-stop.sh。
+  - binres/statistics-start.sh。
+
 - 部分 dubbo 消费者服务注册配置添加 `check="false"` 属性。
   - generateService。
   - longIdService。
