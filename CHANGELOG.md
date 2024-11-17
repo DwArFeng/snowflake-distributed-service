@@ -16,6 +16,9 @@
 
 - 修复装配文件中的缺失的配置。
 
+- 修正 dubbo 配置中不合适的应用名称。
+  - `snowflake-distributed-service-api` 模块 `application-context-dubbo.xml`。
+
 #### 功能移除
 
 - (无)
