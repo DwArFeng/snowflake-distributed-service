@@ -4,6 +4,8 @@
 
 #### 功能构建
 
+- 优化项目启停脚本设置程序的根目录的方式。
+
 - 优化 `node` 模块部分服务启停脚本的注释。
   - binres/snowflake-start.bat。
   - binres/snowflake-start.sh。
