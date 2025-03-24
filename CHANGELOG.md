@@ -28,7 +28,8 @@
 
 #### Bug修复
 
-- (无)
+- 修复配置文件中错误的配置项。
+  - `application-context-dubbo.xml`。
 
 #### 功能移除
 

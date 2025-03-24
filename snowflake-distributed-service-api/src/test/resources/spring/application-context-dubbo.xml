@@ -9,7 +9,7 @@
         http://dubbo.apache.org/schema/dubbo/dubbo.xsd"
 >
 
-    <dubbo:application name="snowflake-test">
+    <dubbo:application name="snowflake-api">
         <dubbo:parameter key="qos.enable" value="false"/>
     </dubbo:application>
 
