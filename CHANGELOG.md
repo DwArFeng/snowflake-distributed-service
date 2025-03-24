@@ -4,6 +4,15 @@
 
 #### 功能构建
 
+- 更新 README.md。
+
+- Wiki 编写。
+  - 构建 wiki 目录结构。
+  - docs/wiki/en_US/Contents.md。
+  - docs/wiki/en_US/Introduction.md。
+  - docs/wiki/zh_CN/Contents.md。
+  - docs/wiki/zh_CN/Introduction.md。
+
 - 依赖升级。
   - 升级 `subgrade` 依赖版本为 `1.5.8.a` 以规避漏洞。
   - 升级 `spring-telqos` 依赖版本为 `1.1.11.b` 以规避漏洞。
