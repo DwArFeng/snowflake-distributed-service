@@ -4,6 +4,9 @@
 
 #### 功能构建
 
+- 类名优化。
+  - SnowFlakeConstants -> SnowflakeConstants。
+
 - 更新 README.md。
 
 - Wiki 编写。

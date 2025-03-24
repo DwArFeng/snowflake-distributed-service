@@ -1,6 +1,6 @@
 package com.dwarfeng.sfds.impl.handler;
 
-import com.dwarfeng.sfds.sdk.util.SnowFlakeConstants;
+import com.dwarfeng.sfds.sdk.util.SnowflakeConstants;
 import com.dwarfeng.sfds.stack.handler.GenerateHandler;
 import com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException;
 import com.dwarfeng.subgrade.sdk.exception.HandlerExceptionHelper;
@@ -78,20 +78,20 @@ public class GenerateHandlerImpl implements GenerateHandler {
 
     @PostConstruct
     public void paramCheck() {
-        if (workerId > SnowFlakeConstants.MAX_WORKER_ID || workerId < 0) {
+        if (workerId > SnowflakeConstants.MAX_WORKER_ID || workerId < 0) {
             LOGGER.error(String.format(
-                    "Worker ID 不能大于 %d 或者小于 0, 将抛出异常...", SnowFlakeConstants.MAX_WORKER_ID
+                    "Worker ID 不能大于 %d 或者小于 0, 将抛出异常...", SnowflakeConstants.MAX_WORKER_ID
             ));
             throw new IllegalArgumentException(String.format(
-                    "worker Id can't be greater than %d or less than 0", SnowFlakeConstants.MAX_WORKER_ID
+                    "worker Id can't be greater than %d or less than 0", SnowflakeConstants.MAX_WORKER_ID
             ));
         }
-        if (datacenterId > SnowFlakeConstants.MAX_DATACENTER_ID || datacenterId < 0) {
+        if (datacenterId > SnowflakeConstants.MAX_DATACENTER_ID || datacenterId < 0) {
             LOGGER.error(String.format(
-                    "Datacenter ID 不能大于 %d 或者小于 0, 将抛出异常...", SnowFlakeConstants.MAX_DATACENTER_ID
+                    "Datacenter ID 不能大于 %d 或者小于 0, 将抛出异常...", SnowflakeConstants.MAX_DATACENTER_ID
             ));
             throw new IllegalArgumentException(String.format(
-                    "datacenter Id can't be greater than %d or less than 0", SnowFlakeConstants.MAX_DATACENTER_ID
+                    "datacenter Id can't be greater than %d or less than 0", SnowflakeConstants.MAX_DATACENTER_ID
             ));
         }
     }
@@ -145,7 +145,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
 
         //如果是同一时间生成的，则进行毫秒内序列
         if (lastTimestamp == timestamp) {
-            sequence = (sequence + 1) & SnowFlakeConstants.SEQUENCE_MASK;
+            sequence = (sequence + 1) & SnowflakeConstants.SEQUENCE_MASK;
             //毫秒内序列溢出
             if (sequence == 0) {
                 //阻塞到下一个毫秒,获得新的时间戳
@@ -161,9 +161,9 @@ public class GenerateHandlerImpl implements GenerateHandler {
         lastTimestamp = timestamp;
 
         //移位并通过或运算拼到一起组成64位的ID
-        return ((timestamp - SnowFlakeConstants.TWEPOCH) << SnowFlakeConstants.TIMESTAMP_LEFT_SHIFT) //
-                | (datacenterId << SnowFlakeConstants.DATACENTER_ID_SHIFT) //
-                | (workerId << SnowFlakeConstants.WORKER_ID_SHIFT) //
+        return ((timestamp - SnowflakeConstants.TWEPOCH) << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT) //
+                | (datacenterId << SnowflakeConstants.DATACENTER_ID_SHIFT) //
+                | (workerId << SnowflakeConstants.WORKER_ID_SHIFT) //
                 | sequence;
     }
 
@@ -184,7 +184,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
         for (int i = 0; i < number; i++) {
             //如果是同一时间生成的，则进行毫秒内序列
             if (lastTimestamp == timestamp) {
-                sequence = (sequence + 1) & SnowFlakeConstants.SEQUENCE_MASK;
+                sequence = (sequence + 1) & SnowflakeConstants.SEQUENCE_MASK;
                 //毫秒内序列溢出
                 if (sequence == 0) {
                     //阻塞到下一个毫秒,获得新的时间戳
@@ -197,9 +197,9 @@ public class GenerateHandlerImpl implements GenerateHandler {
             }
             //移位并通过或运算拼到一起组成64位的ID
             result.add(
-                    ((timestamp - SnowFlakeConstants.TWEPOCH) << SnowFlakeConstants.TIMESTAMP_LEFT_SHIFT) //
-                            | (datacenterId << SnowFlakeConstants.DATACENTER_ID_SHIFT) //
-                            | (workerId << SnowFlakeConstants.WORKER_ID_SHIFT) //
+                    ((timestamp - SnowflakeConstants.TWEPOCH) << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT) //
+                            | (datacenterId << SnowflakeConstants.DATACENTER_ID_SHIFT) //
+                            | (workerId << SnowflakeConstants.WORKER_ID_SHIFT) //
                             | sequence
             );
 

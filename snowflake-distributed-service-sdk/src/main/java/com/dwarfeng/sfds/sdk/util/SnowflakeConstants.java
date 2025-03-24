@@ -6,7 +6,7 @@ package com.dwarfeng.sfds.sdk.util;
  * @author DwArFeng
  * @since 0.0.1-alpha
  */
-public final class SnowFlakeConstants {
+public final class SnowflakeConstants {
 
     /**
      * 开始时间截 (2015-01-01)
@@ -60,7 +60,7 @@ public final class SnowFlakeConstants {
      */
     public static final long SEQUENCE_MASK = ~(-1L << SEQUENCE_BITS);
 
-    public SnowFlakeConstants() {
+    public SnowflakeConstants() {
         throw new IllegalStateException("禁止实例化");
     }
 }
