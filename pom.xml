@@ -342,12 +342,6 @@
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>spring-telqos-api</artifactId>
                 <version>${spring-telqos.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>netty-tcnative-boringssl-static</artifactId>
-                        <groupId>io.netty</groupId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <!-- 程序自身组件 -->
             <dependency>

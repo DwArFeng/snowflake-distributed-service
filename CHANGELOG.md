@@ -4,6 +4,9 @@
 
 #### 功能构建
 
+- 依赖优化。
+  - 去除 `com.dwarfeng:spring-telqos-api` 中不必要的排除项。
+
 - 类名优化。
   - SnowFlakeConstants -> SnowflakeConstants。
 
