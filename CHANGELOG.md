@@ -4,6 +4,9 @@
 
 #### 功能构建
 
+- 为部分工具类中方法的入口参数增加 `@NotNull` 注解。
+  - com.dwarfeng.sfds.impl.service.telqos.CommandUtil。
+
 - 依赖优化。
   - 去除 `com.dwarfeng:spring-telqos-api` 中不必要的排除项。
 

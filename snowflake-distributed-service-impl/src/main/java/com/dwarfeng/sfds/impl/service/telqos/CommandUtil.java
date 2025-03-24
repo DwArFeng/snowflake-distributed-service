@@ -1,5 +1,6 @@
 package com.dwarfeng.sfds.impl.service.telqos;
 
+import javax.annotation.Nonnull;
 import java.util.StringJoiner;
 
 /**
@@ -20,14 +21,14 @@ public final class CommandUtil {
      * @param commandOption 指定的选项。
      * @return 拼接前缀之后的选项。
      */
-    public static String concatOptionPrefix(String commandOption) {
+    public static String concatOptionPrefix(@Nonnull String commandOption) {
         if (commandOption.contains("-")) {
             return "--" + commandOption;
         }
         return "-" + commandOption;
     }
 
-    public static String syntax(String... patterns) {
+    public static String syntax(@Nonnull String... patterns) {
         StringJoiner sj = new StringJoiner(System.lineSeparator());
         for (String pattern : patterns) {
             sj.add(pattern);
@@ -35,7 +36,7 @@ public final class CommandUtil {
         return sj.toString();
     }
 
-    public static String optionMismatchMessage(String... patterns) {
+    public static String optionMismatchMessage(@Nonnull String... patterns) {
         StringJoiner sj = new StringJoiner(", --", "下列选项必须且只能含有一个: --", "");
         for (String pattern : patterns) {
             sj.add(pattern);
