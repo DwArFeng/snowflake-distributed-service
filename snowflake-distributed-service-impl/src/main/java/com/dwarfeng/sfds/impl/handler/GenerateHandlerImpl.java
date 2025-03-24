@@ -79,17 +79,13 @@ public class GenerateHandlerImpl implements GenerateHandler {
     @PostConstruct
     public void paramCheck() {
         if (workerId > SnowflakeConstants.MAX_WORKER_ID || workerId < 0) {
-            LOGGER.error(String.format(
-                    "Worker ID 不能大于 %d 或者小于 0, 将抛出异常...", SnowflakeConstants.MAX_WORKER_ID
-            ));
+            LOGGER.error("Worker ID 不能大于 {} 或者小于 0, 将抛出异常...", SnowflakeConstants.MAX_WORKER_ID);
             throw new IllegalArgumentException(String.format(
                     "worker Id can't be greater than %d or less than 0", SnowflakeConstants.MAX_WORKER_ID
             ));
         }
         if (datacenterId > SnowflakeConstants.MAX_DATACENTER_ID || datacenterId < 0) {
-            LOGGER.error(String.format(
-                    "Datacenter ID 不能大于 %d 或者小于 0, 将抛出异常...", SnowflakeConstants.MAX_DATACENTER_ID
-            ));
+            LOGGER.error("Datacenter ID 不能大于 {} 或者小于 0, 将抛出异常...", SnowflakeConstants.MAX_DATACENTER_ID);
             throw new IllegalArgumentException(String.format(
                     "datacenter Id can't be greater than %d or less than 0", SnowflakeConstants.MAX_DATACENTER_ID
             ));
@@ -137,9 +133,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
 
         //如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
         if (timestamp < lastTimestamp) {
-            LOGGER.warn(String.format(
-                    "检测到系统时钟回退, 服务将会在 %d 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp
-            ));
+            LOGGER.warn("检测到系统时钟回退, 服务将会在 {} 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp);
             throw new ClockMovedBackwardsException(lastTimestamp - timestamp);
         }
 
@@ -172,9 +166,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
 
         //如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
         if (timestamp < lastTimestamp) {
-            LOGGER.warn(String.format(
-                    "检测到系统时钟回退, 服务将会在 %d 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp
-            ));
+            LOGGER.warn("检测到系统时钟回退, 服务将会在 {} 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp);
             throw new ClockMovedBackwardsException(lastTimestamp - timestamp);
         }
 

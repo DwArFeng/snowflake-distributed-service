@@ -12,7 +12,7 @@ public final class SnowflakeConstants {
      * 开始时间截 (2015-01-01)
      */
     // 该单词系专有术语，忽略相关的拼写警告。
-    @SuppressWarnings("SpellCheckingInspection")
+    @SuppressWarnings({"SpellCheckingInspection", "RedundantSuppression"})
     public static final long TWEPOCH = 1420041600000L;
 
     /**
