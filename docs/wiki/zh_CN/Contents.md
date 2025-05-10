@@ -15,3 +15,9 @@
 ## 快速开始
 
 - [Quick Start](./QuickStart.md) - 快速开始，用最快的方式体验本项目。
+
+## 安装、部署、初始化
+
+### 安装
+
+- [System Requirements](./SystemRequirements.md) - 系统需求，详细说明本项目推荐的系统要求，以及其它版本的测试报告。
