@@ -21,29 +21,29 @@ import java.util.stream.Collectors;
  *
  * <p>
  * <b>Twitter_Snowflake</b><br>
- * SnowFlake 的结构如下(每部分用-分开):<br>
- * <code>0 - 0000000000 0000000000 0000000000 0000000000 0 - 00000 - 00000 - 000000000000 </code><br>
+ * SnowFlake 的结构如下（每部分用-分开）：<br>
+ * <code>0 - 0000000000 0000000000 0000000000 0000000000 0 - 00000 - 00000 - 000000000000 </code>
  * <ul>
  *     <li>
  *         1 位标识，由于 long 基本类型在 Java 中是带符号的，最高位是符号位，正数是 0，负数是 1，所以id一般是正数，最高位是 0。
  *     </li>
  *     <li>
- *         41 位时间截(毫秒级)，注意，41 位时间截不是存储当前时间的时间截，而是存储时间截的差值（当前时间截 - 开始时间截)
- *         得到的值），这里的的开始时间截，一般是我们的id生成器开始使用的时间，
- *         由我们程序来指定的（如下下面程序 IdWorker 类的startTime属性）。
+ *         41 位时间截（毫秒级），注意，41 位时间截不是存储当前时间的时间截，
+ *         而是存储时间截的差值（当前时间截 - 开始时间截得到的值），这里的的开始时间截，一般是我们的 ID 生成器开始使用的时间，
+ *         由我们程序来指定的（如下下面程序 IdWorker 类的 startTime 属性）。
  *         41位的时间截，可以使用 69 年，年 <code>T = (1L << 41) / (1000L * 60 * 60 * 24 * 365) = 69</code>。
  *     </li>
  *     <li>
  *         10 位的数据机器位，可以部署在 1024 个节点，包括 5 位 datacenterId 和 5 位 workerId。
  *     </li>
  *     <li>
- *         12 位序列，毫秒内的计数，12 位的计数顺序号支持每个节点每毫秒(同一机器，同一时间截)产生 4096 个 ID 序号。
+ *         12 位序列，毫秒内的计数，12 位的计数顺序号支持每个节点每毫秒 （同一机器，同一时间截） 产生 4096 个 ID 序号。
  *     </li>
  * </ul>
  * 以上比特位加起来刚好 64 位，为一个 {@link Long} 型。
  *
  * <p>
- * SnowFlake的优点是，整体上按照时间自增排序，并且整个分布式系统内不会产生 ID 碰撞(由数据中心 ID 和机器 ID 作区分)，
+ * SnowFlake 的优点是，整体上按照时间自增排序，并且整个分布式系统内不会产生 ID 碰撞 （由数据中心 ID 和机器 ID 作区分），
  * 并且效率较高，经测试，SnowFlake 每秒能够产生 26 万 ID 左右。
  *
  * @author DwArFeng
@@ -55,24 +55,24 @@ public class GenerateHandlerImpl implements GenerateHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(GenerateHandlerImpl.class);
 
     /**
-     * 工作机器ID(0~31)
+     * 工作机器 ID (0~31)。
      */
     @Value("${snowflake.worker_id}")
     private long workerId;
 
     /**
-     * 数据中心ID(0~31)
+     * 数据中心 ID (0~31)。
      */
     @Value("${snowflake.datacenter_id}")
     private long datacenterId;
 
     /**
-     * 毫秒内序列(0~4095)
+     * 毫秒内序列 (0~4095)。
      */
     private long sequence = 0L;
 
     /**
-     * 上次生成ID的时间截
+     * 上次生成 ID 的时间截。
      */
     private long lastTimestamp = -1L;
 
@@ -131,30 +131,30 @@ public class GenerateHandlerImpl implements GenerateHandler {
     private synchronized long internalGenerate() throws Exception {
         long timestamp = timeGen();
 
-        //如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
+        // 如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常。
         if (timestamp < lastTimestamp) {
             LOGGER.warn("检测到系统时钟回退, 服务将会在 {} 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp);
             throw new ClockMovedBackwardsException(lastTimestamp - timestamp);
         }
 
-        //如果是同一时间生成的，则进行毫秒内序列
+        // 如果是同一时间生成的，则进行毫秒内序列。
         if (lastTimestamp == timestamp) {
             sequence = (sequence + 1) & SnowflakeConstants.SEQUENCE_MASK;
-            //毫秒内序列溢出
+            // 毫秒内序列溢出。
             if (sequence == 0) {
-                //阻塞到下一个毫秒,获得新的时间戳
+                // 阻塞到下一个毫秒,获得新的时间戳。
                 timestamp = tilNextMillis(lastTimestamp);
             }
         }
-        //时间戳改变，毫秒内序列重置
+        // 时间戳改变，毫秒内序列重置。
         else {
             sequence = 0L;
         }
 
-        //上次生成ID的时间截
+        // 上次生成ID的时间截。
         lastTimestamp = timestamp;
 
-        //移位并通过或运算拼到一起组成64位的ID
+        // 移位并通过或运算拼到一起组成64位的ID。
         return ((timestamp - SnowflakeConstants.TWEPOCH) << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT) //
                 | (datacenterId << SnowflakeConstants.DATACENTER_ID_SHIFT) //
                 | (workerId << SnowflakeConstants.WORKER_ID_SHIFT) //
@@ -164,7 +164,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
     private synchronized List<Long> internalGenerate(int number) throws Exception {
         long timestamp = timeGen();
 
-        //如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
+        // 如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常。
         if (timestamp < lastTimestamp) {
             LOGGER.warn("检测到系统时钟回退, 服务将会在 {} 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp);
             throw new ClockMovedBackwardsException(lastTimestamp - timestamp);
@@ -174,20 +174,20 @@ public class GenerateHandlerImpl implements GenerateHandler {
 
         // 对 number 进行 for 操作。
         for (int i = 0; i < number; i++) {
-            //如果是同一时间生成的，则进行毫秒内序列
+            // 如果是同一时间生成的，则进行毫秒内序列。
             if (lastTimestamp == timestamp) {
                 sequence = (sequence + 1) & SnowflakeConstants.SEQUENCE_MASK;
-                //毫秒内序列溢出
+                // 毫秒内序列溢出。
                 if (sequence == 0) {
-                    //阻塞到下一个毫秒,获得新的时间戳
+                    // 阻塞到下一个毫秒,获得新的时间戳。
                     timestamp = tilNextMillis(lastTimestamp);
                 }
             }
-            //时间戳改变，毫秒内序列重置
+            // 时间戳改变，毫秒内序列重置。
             else {
                 sequence = 0L;
             }
-            //移位并通过或运算拼到一起组成64位的ID
+            // 移位并通过或运算拼到一起组成64位的ID。
             result.add(
                     ((timestamp - SnowflakeConstants.TWEPOCH) << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT) //
                             | (datacenterId << SnowflakeConstants.DATACENTER_ID_SHIFT) //
@@ -195,18 +195,18 @@ public class GenerateHandlerImpl implements GenerateHandler {
                             | sequence
             );
 
-            //上次生成ID的时间截
+            // 上次生成ID的时间截。
             lastTimestamp = timestamp;
         }
 
-        //移位并通过或运算拼到一起组成64位的ID
+        // 移位并通过或运算拼到一起组成64位的ID。
         return result;
     }
 
     /**
      * 阻塞到下一个毫秒，直到获得新的时间戳。
      *
-     * @param lastTimestamp 上次生成ID的时间截。
+     * @param lastTimestamp 上次生成 ID 的时间截。
      * @return 当前时间戳。
      */
     private long tilNextMillis(long lastTimestamp) {
@@ -220,7 +220,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
     /**
      * 返回以毫秒为单位的当前时间。
      *
-     * @return 当前时间(毫秒)。
+     * @return 当前时间（毫秒）。
      */
     private long timeGen() {
         return System.currentTimeMillis();

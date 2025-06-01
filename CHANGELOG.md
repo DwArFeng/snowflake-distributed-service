@@ -4,6 +4,10 @@
 
 #### 功能构建
 
+- 优化部分类中的文档注释以及代码注释。
+  - com.dwarfeng.sfds.impl.handler.GenerateHandlerImpl。
+  - com.dwarfeng.sfds.sdk.util.SnowflakeConstants。
+
 - Wiki 编写。
   - docs/wiki/zh_CN/AboutSnowflake.md。
 
