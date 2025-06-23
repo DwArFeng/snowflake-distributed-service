@@ -1,8 +1,9 @@
 package com.dwarfeng.sfds.impl.handler;
 
 import com.dwarfeng.sfds.sdk.util.SnowflakeConstants;
+import com.dwarfeng.sfds.sdk.util.SystemPropertyConstants;
+import com.dwarfeng.sfds.stack.exception.ClockMovedBackwardsException;
 import com.dwarfeng.sfds.stack.handler.GenerateHandler;
-import com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException;
 import com.dwarfeng.subgrade.sdk.exception.HandlerExceptionHelper;
 import com.dwarfeng.subgrade.stack.bean.key.LongIdKey;
 import com.dwarfeng.subgrade.stack.exception.HandlerException;
@@ -53,6 +54,13 @@ import java.util.stream.Collectors;
 public class GenerateHandlerImpl implements GenerateHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GenerateHandlerImpl.class);
+
+    private static final boolean USE_DEPRECATED_CLOCK_MOVED_BACKWARDS_EXCEPTION = Boolean.parseBoolean(
+            System.getProperty(
+                    SystemPropertyConstants.USE_DEPRECATED_STACK_SERVICE_EXCEPTION,
+                    Boolean.FALSE.toString()
+            )
+    );
 
     /**
      * 工作机器 ID (0~31)。
@@ -134,7 +142,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
         // 如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常。
         if (timestamp < lastTimestamp) {
             LOGGER.warn("检测到系统时钟回退, 服务将会在 {} 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp);
-            throw new ClockMovedBackwardsException(lastTimestamp - timestamp);
+            throwClockMovedBackwardsException(lastTimestamp - timestamp);
         }
 
         // 如果是同一时间生成的，则进行毫秒内序列。
@@ -167,7 +175,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
         // 如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常。
         if (timestamp < lastTimestamp) {
             LOGGER.warn("检测到系统时钟回退, 服务将会在 {} 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp);
-            throw new ClockMovedBackwardsException(lastTimestamp - timestamp);
+            throwClockMovedBackwardsException(lastTimestamp - timestamp);
         }
 
         List<Long> result = new ArrayList<>(number);
@@ -201,6 +209,28 @@ public class GenerateHandlerImpl implements GenerateHandler {
 
         // 移位并通过或运算拼到一起组成64位的ID。
         return result;
+    }
+
+    /**
+     * 抛出时钟回拨异常。
+     *
+     * <p>
+     * 该方法通过判断项目的系统参数，决定抛出新的 {@link ClockMovedBackwardsException} 或是过时的
+     * {@link com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException}。
+     *
+     * @param duration 时钟回拨的持续时间（毫秒）。
+     * @throws ClockMovedBackwardsException                                           新的时钟回拨异常。
+     * @throws com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException 过时的时钟回拨异常。
+     */
+    // 为了兼容旧版本，使用 @SuppressWarnings 注解来抑制过时警告。
+    @SuppressWarnings("deprecation")
+    private void throwClockMovedBackwardsException(long duration) throws
+            ClockMovedBackwardsException, com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException {
+        if (USE_DEPRECATED_CLOCK_MOVED_BACKWARDS_EXCEPTION) {
+            throw new com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException(duration);
+        } else {
+            throw new ClockMovedBackwardsException(duration);
+        }
     }
 
     /**

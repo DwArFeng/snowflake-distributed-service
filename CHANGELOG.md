@@ -4,7 +4,10 @@
 
 ### 功能构建
 
-- (无)
+- 优化项目结构。
+  - 新建 com.dwarfeng.sfds.stack.exception.ClockMovedBackwardsException 异常类，以符合项目结构规范。
+  - 过时 com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException 异常类。
+  - 调整相关的业务逻辑以及配置类。
 
 ### Bug 修复
 
