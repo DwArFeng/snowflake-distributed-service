@@ -1,24 +1,24 @@
 # ChangeLog
 
-### Release_1.7.0_20250623_build_A
+## Release_1.7.0_20250623_build_A
 
-#### 功能构建
-
-- (无)
-
-#### Bug修复
+### 功能构建
 
 - (无)
 
-#### 功能移除
+### Bug 修复
+
+- (无)
+
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.6.4_20250601_build_A
+## Release_1.6.4_20250601_build_A
 
-#### 功能构建
+### 功能构建
 
 - 优化部分类中的文档注释以及代码注释。
   - com.dwarfeng.sfds.impl.handler.GenerateHandlerImpl。
@@ -30,38 +30,38 @@
 - 依赖升级。
   - 升级 `subgrade` 依赖版本为 `1.5.10.a` 以规避漏洞。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.6.3_20250510_build_A
+## Release_1.6.3_20250510_build_A
 
-#### 功能构建
+### 功能构建
 
 - Wiki 编写。
   - docs/wiki/zh_CN/SystemRequirements.md。
 
-#### Bug修复
+### Bug 修复
 
 - 修正错误的 dubbo 应用名称。
   - 修正 `api` 模块中错误的 dubbo 应用名称。
   - 修正 `impl` 模块中错误的 dubbo 应用名称。
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.6.2_20250506_build_A
+## Release_1.6.2_20250506_build_A
 
-#### 功能构建
+### 功能构建
 
 - Wiki 编写。
   - docs/wiki/zh_CN/QuickStart.md。
@@ -69,19 +69,19 @@
 - 依赖升级。
   - 升级 `spring-telqos` 依赖版本为 `1.1.13.a` 以规避漏洞。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.6.1_20250504_build_A
+## Release_1.6.1_20250504_build_A
 
-#### 功能构建
+### 功能构建
 
 - Wiki 编写。
   - docs/wiki/zh_CN/VersionBlacklist.md。
@@ -91,19 +91,19 @@
   - 升级 `subgrade` 依赖版本为 `1.5.9.a` 以规避漏洞。
   - 升级 `spring-telqos` 依赖版本为 `1.1.12.a` 以规避漏洞。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.6.0_20250324_build_A
+## Release_1.6.0_20250324_build_A
 
-#### 功能构建
+### 功能构建
 
 - 为部分工具类中方法的入口参数增加 `@NotNull` 注解。
   - com.dwarfeng.sfds.impl.service.telqos.CommandUtil。
@@ -127,20 +127,20 @@
   - 升级 `subgrade` 依赖版本为 `1.5.8.a` 以规避漏洞。
   - 升级 `spring-telqos` 依赖版本为 `1.1.11.b` 以规避漏洞。
 
-#### Bug修复
+### Bug 修复
 
 - 修复配置文件中错误的配置项。
   - `application-context-dubbo.xml`。
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.5.3_20241117_build_A
+## Release_1.5.3_20241117_build_A
 
-#### 功能构建
+### 功能构建
 
 - 优化项目启停脚本设置程序的根目录的方式。
 
@@ -164,22 +164,22 @@
   - 增加依赖 `spring-terminator` 以应用其新功能，版本为 `1.0.14.a`。
   - 增加依赖 `spring-telqos` 以应用其新功能，版本为 `1.1.11.a`。
 
-#### Bug修复
+### Bug 修复
 
 - 修复装配文件中的缺失的配置。
 
 - 修正 dubbo 配置中不合适的应用名称。
   - `snowflake-distributed-service-api` 模块 `application-context-dubbo.xml`。
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.5.2_20240731_build_A
+## Release_1.5.2_20240731_build_A
 
-#### 功能构建
+### 功能构建
 
 - 增加预设的运维指令。
   - com.dwarfeng.springtelqos.api.integration.log4j2.Log4j2Command。
@@ -206,19 +206,19 @@
 
 - 优化 `README.md` 文件中的内容。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.5.1_20231227_build_A
+## Release_1.5.1_20231227_build_A
 
-#### 功能构建
+### 功能构建
 
 - 依赖升级。
   - 升级 `spring` 依赖版本为 `5.3.31` 并解决兼容性问题，以应用其新功能。
@@ -228,19 +228,19 @@
   - 升级 `spring-terminator` 依赖版本为 `1.0.12.a` 以规避漏洞。
   - 升级 `spring-telqos` 依赖版本为 `1.1.8.a` 以规避漏洞。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.5.0_20230909_build_A
+## Release_1.5.0_20230909_build_A
 
-#### 功能构建
+### 功能构建
 
 - 优化项目结构。
   - 将 snowflake 算法的实现从 service 下放到 handler。
@@ -259,21 +259,21 @@
 - 依赖升级。
   - 升级 `subgrade` 依赖版本为 `1.4.5.a` 并解决兼容性问题，以应用其新功能。
 
-#### Bug修复
+### Bug 修复
 
 - 修复 impl 模块 dubbo 相关的配置错误。
   - spring/application-context-dubbo.xml。
   - dubbo/connection.properties。
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.4.12_20230821_build_A
+## Release_1.4.12_20230821_build_A
 
-#### 功能构建
+### 功能构建
 
 - dubbo 微服务增加分组配置。
 
@@ -286,21 +286,21 @@
   - 升级 `log4j2` 依赖版本为 `2.17.2` 以规避漏洞。
   - 升级 `spring-telqos` 依赖版本为 `1.1.7.a` 以应用其新功能。
 
-#### Bug修复
+### Bug 修复
 
 - 补充 `assembly.xml` 中缺失的配置。
 
 - 补充 `.gitignore` 中缺失的配置。
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.4.11_20230420_build_A
+## Release_1.4.11_20230420_build_A
 
-#### 功能构建
+### 功能构建
 
 - 优化项目结构，增加项目目录。
   - `./confext/`。
@@ -321,19 +321,19 @@
   - 升级 `spring-terminator` 依赖版本为 `1.0.11.a` 以规避漏洞。
   - 升级 `spring-telqos` 依赖版本为 `1.1.6.a` 以规避漏洞。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.4.10_20221120_build_A
+## Release_1.4.10_20221120_build_A
 
-#### 功能构建
+### 功能构建
 
 - 优化 `README.md` 的格式。
 
@@ -352,11 +352,11 @@
   - 升级 `spring-terminator` 依赖版本为 `1.0.10.a` 以规避漏洞。
   - 升级 `spring-telqos` 依赖版本为 `1.1.5.a` 以规避漏洞。
 
-#### Bug修复
+### Bug 修复
 
 - 修正所有 xml 配置文件的格式错误。
 
-#### 功能移除
+### 功能移除
 
 - 删除不需要的依赖。
   - 删除 `el` 依赖。
@@ -365,9 +365,9 @@
 
 ---
 
-### Release_1.4.9_20220912_build_A
+## Release_1.4.9_20220912_build_A
 
-#### 功能构建
+### 功能构建
 
 - 依赖升级。
   - 升级 `subgrade` 依赖版本为 `1.2.10.a` 以规避漏洞。
@@ -375,20 +375,20 @@
 - 优化 telqos 指令。
   - com.dwarfeng.sfds.impl.service.telqos.GenCommand。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - 删除 telqos 指令。
   - com.dwarfeng.sfds.impl.service.telqos.GenCsvCommand。
 
 ---
 
-### Release_1.4.8_20220905_build_A
+## Release_1.4.8_20220905_build_A
 
-#### 功能构建
+### 功能构建
 
 - 插件升级。
   - 升级 `maven-deploy-plugin` 插件版本为 `2.8.2`。
@@ -399,20 +399,20 @@
   - 升级 `subgrade` 依赖版本为 `1.2.9.a` 以规避漏洞。
   - 升级 `spring-telqos` 依赖版本为 `1.1.4.a` 以规避漏洞。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - 移除 `tomcat7-maven-plugin` 的版本声明。
 - 移除 `joda-time` 的版本声明。
 
 ---
 
-### Release_1.4.7_20220701_build_A
+## Release_1.4.7_20220701_build_A
 
-#### 功能构建
+### 功能构建
 
 - 增加 QOS 运维指令。
   - com.dwarfeng.sfds.impl.service.telqos.GenCsvCommand。
@@ -425,19 +425,19 @@
 - 升级 `subgrade` 依赖为 `1.2.8.a`，并更新相对应的 API。
   - com.dwarfeng.sfds.api.integration.subgrade.SnowFlakeLongIdKeyFetcher。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.4.6_20220607_build_A
+## Release_1.4.6_20220607_build_A
 
-#### 功能构建
+### 功能构建
 
 - 依赖升级。
   - 升级 `junit` 依赖版本为 `4.13.2` 以规避漏洞。
@@ -449,87 +449,87 @@
 
 - 将工程中的 `Spring Bean` 注册方式尽可能地由 `@Autowired` 变更为构造器注入。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.4.5_20220523_build_A
+## Release_1.4.5_20220523_build_A
 
-#### 功能构建
+### 功能构建
 
 - 优化项目的依赖。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.4.4_20220521_build_A
+## Release_1.4.4_20220521_build_A
 
-#### 功能构建
+### 功能构建
 
 - 升级 `spring` 依赖版本为 `5.3.19` 以规避漏洞。
 
 - 升级 `netty` 依赖版本为 `4.1.77.Final` 以规避漏洞。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.4.3_20220303_build_A
+## Release_1.4.3_20220303_build_A
 
-#### 功能构建
+### 功能构建
 
 - 升级 `subgrade` 依赖版本为 `1.2.4.a`。
 - 优化程序的启停脚本。
 - 更新 README.md。
 
-#### Bug修复
+### Bug 修复
 
 - 修正调用 `ServiceExceptionCodes.setExceptionCodeOffset` 后，报警代码不更新的 bug。
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.4.2_20220115_build_A
+## Release_1.4.2_20220115_build_A
 
-#### 功能构建
+### 功能构建
 
 - 升级 `spring` 依赖版本为 `5.3.14`。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.4.1_20220114_build_A
+## Release_1.4.1_20220114_build_A
 
-#### 功能构建
+### 功能构建
 
 - 优化程序的配置结构。
 
@@ -543,245 +543,245 @@
 
 - 删除部分项目运行中不需要的依赖。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.4.0_20210219_build_A
+## Release_1.4.0_20210219_build_A
 
-#### 功能构建
+### 功能构建
 
 - 依赖更新。
 - 引入 spring-telqos 组件。
 - 规范配置文件的目录名称。
 
-#### Bug修复
+### Bug 修复
 
 - 修复部分配置文件的单词拼写错误。
 - 修复bat启动脚本对于带空格的路径表现异常的bug。
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.3.0_20200426_build_A
+## Release_1.3.0_20200426_build_A
 
-#### 功能构建
+### 功能构建
 
 - 更新工程的打包方式为最新规范。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.2.5_20200426_build_A
+## Release_1.2.5_20200426_build_A
 
-#### 功能构建
+### 功能构建
 
 - 升级subgrade依赖至1.0.0.a。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.2.4_20200327_build_A
+## Release_1.2.4_20200327_build_A
 
-#### 功能构建
+### 功能构建
 
 - 使用spring-terminator维护程序的启动和停止。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.2.3_20200326_build_B
+## Release_1.2.3_20200326_build_B
 
-#### 功能构建
+### 功能构建
 
 - 更新subgrade依赖至beta-0.3.2.b。
 - 更新dutil依赖至beta-0.2.1.a。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.2.3_20200302_build_A
+## Release_1.2.3_20200302_build_A
 
-#### 功能构建
+### 功能构建
 
 - (无)
 
-#### Bug修复
+### Bug 修复
 
 - 修改pom.xml配置，避免项目install时的报警。
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.2.2_20200301_build_A
+## Release_1.2.2_20200301_build_A
 
-#### 功能构建
+### 功能构建
 
 - 更改启动脚本的文件换行风格为unix。
 
-#### Bug修复
+### Bug 修复
 
 - 去除掉无用的依赖，压缩项目体积。
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### Release_1.2.1_20200225_build_A
+## Release_1.2.1_20200225_build_A
 
-#### 功能构建
+### 功能构建
 
 - 升级subgrade依赖版本为beta-0.2.5.a。
 
-#### Bug修复
+### Bug 修复
 
 - 修正冲突的依赖并去掉无用的依赖。
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### v1.2.0.a
+## v1.2.0.a
 
-#### 功能构建
+### 功能构建
 
 - ExceptionCode偏移量可配置化。
 - 升级 subgrade 工程的依赖。
 - 优化 log4j2.xml 日志配置。
 - 更改该项目在dubbo中的应用名称为snowflake-node。
 
-#### Bug修复
+### Bug 修复
 
 - 修正pom.xml中的坐标引入错误。
 - 清除pom.xml中多余的坐标。
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### v1.1.0.a
+## v1.1.0.a
 
-#### 功能构建
+### 功能构建
 
 - 优化程序结构，去掉api中无意义的rpc类。
 - 以更合理的形式组织测试。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### v1.0.1.b
+## v1.0.1.b
 
-#### 功能构建
+### 功能构建
 
 - 升级subgrade依赖为beta-0.0.2.a
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### v1.0.1.a
+## v1.0.1.a
 
-#### 功能构建
+### 功能构建
 
 - 更新项目依赖。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### v1.0.0.a
+## v1.0.0.a
 
-#### 功能构建
+### 功能构建
 
 - 将该项目整合至subgrade中。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
 
 ---
 
-### v0.0.1.b
+## v0.0.1.b
 
-#### 功能构建
+### 功能构建
 
 - 删除api中多余的配置文件。
 - 建立CHANGELOG.md，并且项目打包时装配该文件至根目录。
 - 修改README.md中的部分错别字和语法错误。
 
-#### Bug修复
+### Bug 修复
 
 - (无)
 
-#### 功能移除
+### 功能移除
 
 - (无)
