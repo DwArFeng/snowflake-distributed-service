@@ -15,6 +15,7 @@
 ## 快速开始
 
 - [Quick Start](./QuickStart.md) - 快速开始，用最快的方式体验本项目。
+- [Compile by Source](./CompileBySource.md) - 源码编译，详细说明如何从源码编译本项目。
 
 ## 安装、部署、初始化
 

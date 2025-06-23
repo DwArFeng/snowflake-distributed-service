@@ -4,6 +4,9 @@
 
 ### 功能构建
 
+- Wiki 编写。
+  - docs/wiki/zh_CN/CompileBySource.md。
+
 - 优化项目结构。
   - 新建 com.dwarfeng.sfds.stack.exception.ClockMovedBackwardsException 异常类，以符合项目结构规范。
   - 过时 com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException 异常类。
