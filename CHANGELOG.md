@@ -4,6 +4,10 @@
 
 ### 功能构建
 
+- Wiki 编写。
+  - docs/wiki/zh_CN/ShellScripts.md。
+  - docs/wiki/zh_CN/BatchScripts.md。
+
 - 依赖升级。
   - 升级 `subgrade` 依赖版本为 `1.5.11.a` 以规避漏洞。
   - 升级 `spring-telqos` 依赖版本为 `1.1.14.a` 以规避漏洞。
