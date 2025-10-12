@@ -4,6 +4,11 @@
 
 ### 功能构建
 
+- 优化启停脚本注释，以规避潜在的字符集问题。
+  - binres/snowflake-start.bat。
+  - binres/snowflake-start.sh。
+  - binres/snowflake-stop.sh。
+
 - 优化开发环境支持。
   - 在 .gitignore 中添加 Cursor IDE 相关文件的忽略规则。
 
