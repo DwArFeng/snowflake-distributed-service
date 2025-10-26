@@ -167,3 +167,13 @@ wiki 为项目的开发人员为本项目编写的详细文档，包含不同语
       }
   }
   ```
+
+## 运行截图
+
+Telnet 运维平台 banner：
+
+![Telnet 运维平台 banner](./docs/wiki/zh-CN/images/TelqosBanner.png "Telnet 运维平台 banner")
+
+Telnet 运维平台指令合集：
+
+![Telnet 运维平台指令合集](./docs/wiki/zh-CN/images/TelqosCommands.png "Telnet 运维平台指令合集")
