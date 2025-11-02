@@ -75,6 +75,17 @@ public class GenerateHandlerImpl implements GenerateHandler {
     private long datacenterId;
 
     /**
+     * 开始时间截（毫秒）。
+     * <p>
+     * 用于计算生成 ID 中的时间戳部分，计算公式为：生成 ID 中的时间戳部分 = (当前时间戳 - twepoch) << 22
+     * 如果未配置此项，将使用 {@link SnowflakeConstants#TWEPOCH} 的默认值。
+     */
+    // 该单词系专有术语，忽略相关的拼写警告。
+    @SuppressWarnings({"SpellCheckingInspection", "RedundantSuppression"})
+    @Value("${snowflake.twepoch:#{T(com.dwarfeng.sfds.sdk.util.SnowflakeConstants).TWEPOCH}}")
+    private long twepoch;
+
+    /**
      * 毫秒内序列 (0~4095)。
      */
     private long sequence = 0L;
@@ -163,7 +174,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
         lastTimestamp = timestamp;
 
         // 移位并通过或运算拼到一起组成64位的ID。
-        return ((timestamp - SnowflakeConstants.TWEPOCH) << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT) //
+        return ((timestamp - twepoch) << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT) //
                 | (datacenterId << SnowflakeConstants.DATACENTER_ID_SHIFT) //
                 | (workerId << SnowflakeConstants.WORKER_ID_SHIFT) //
                 | sequence;
@@ -197,7 +208,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
             }
             // 移位并通过或运算拼到一起组成64位的ID。
             result.add(
-                    ((timestamp - SnowflakeConstants.TWEPOCH) << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT) //
+                    ((timestamp - twepoch) << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT) //
                             | (datacenterId << SnowflakeConstants.DATACENTER_ID_SHIFT) //
                             | (workerId << SnowflakeConstants.WORKER_ID_SHIFT) //
                             | sequence
@@ -261,6 +272,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
         return "GenerateHandlerImpl{" +
                 "workerId=" + workerId +
                 ", datacenterId=" + datacenterId +
+                ", twepoch=" + twepoch +
                 ", sequence=" + sequence +
                 ", lastTimestamp=" + lastTimestamp +
                 '}';

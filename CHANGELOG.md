@@ -4,6 +4,9 @@
 
 ### 功能构建
 
+- 新增配置项，为更多的参数提供配置支持。
+  - snowflake/twepoch.properties。
+
 - 依赖升级。
   - 升级 `subgrade` 依赖版本为 `1.7.1.a` 以规避漏洞。
 
