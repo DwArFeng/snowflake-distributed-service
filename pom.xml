@@ -38,8 +38,10 @@
         <guava.version>32.0.1-jre</guava.version>
         <curator.version>4.3.0</curator.version>
         <aspectj.version>1.9.7</aspectj.version>
+        <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
         <slf4j.version>1.7.36</slf4j.version>
         <log4j2.version>2.17.2</log4j2.version>
+        <mapstruct.version>1.5.3.Final</mapstruct.version>
         <dutil.version>beta-0.3.2.a</dutil.version>
         <subgrade.version>1.7.1.a</subgrade.version>
         <spring-terminator.version>1.0.14.a</spring-terminator.version>
@@ -219,6 +221,24 @@
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <!-- Hibernate 验证器 -->
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>jboss-logging</artifactId>
+                        <groupId>org.jboss.logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- Mapstruct 框架 -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
             </dependency>
             <!-- Dutil 组件 -->
             <dependency>

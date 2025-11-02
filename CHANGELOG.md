@@ -4,6 +4,10 @@
 
 ### 功能构建
 
+- 增加依赖。
+  - 增加依赖 `hibernate-validator` 以应用其新功能，版本为 `6.2.5.Final`。
+  - 增加依赖 `mapstruct` 以应用其新功能，版本为 `1.5.3.Final`。
+
 - 优化运维指令。
   - com.dwarfeng.sfds.impl.service.telqos.GenerateCommand。
 
