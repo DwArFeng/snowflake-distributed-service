@@ -4,6 +4,9 @@
 
 ### 功能构建
 
+- 优化运维指令。
+  - com.dwarfeng.sfds.impl.service.telqos.GenerateCommand。
+
 - 新增配置项，为更多的参数提供配置支持。
   - snowflake/twepoch.properties。
 

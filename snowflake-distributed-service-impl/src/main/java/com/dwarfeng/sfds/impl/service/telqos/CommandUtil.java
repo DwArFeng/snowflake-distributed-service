@@ -1,5 +1,8 @@
 package com.dwarfeng.sfds.impl.service.telqos;
 
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.lang3.tuple.Pair;
+
 import javax.annotation.Nonnull;
 import java.util.StringJoiner;
 
@@ -9,7 +12,7 @@ import java.util.StringJoiner;
  * @author DwArFeng
  * @since 1.4.9
  */
-public final class CommandUtil {
+final class CommandUtil {
 
     /**
      * 拼接选项的前缀，用于生成选项说明书。
@@ -36,10 +39,24 @@ public final class CommandUtil {
         return sj.toString();
     }
 
+    public static Pair<String, Integer> analyseCommand(
+            @Nonnull CommandLine commandLine, @Nonnull String... commandOptions
+    ) {
+        int i = 0;
+        String subCmd = null;
+        for (String commandOption : commandOptions) {
+            if (commandLine.hasOption(commandOption)) {
+                i++;
+                subCmd = commandOption;
+            }
+        }
+        return Pair.of(subCmd, i);
+    }
+
     public static String optionMismatchMessage(@Nonnull String... patterns) {
-        StringJoiner sj = new StringJoiner(", --", "下列选项必须且只能含有一个: --", "");
+        StringJoiner sj = new StringJoiner(", ", "下列选项必须且只能含有一个: ", "");
         for (String pattern : patterns) {
-            sj.add(pattern);
+            sj.add(concatOptionPrefix(pattern));
         }
         return sj.toString();
     }
