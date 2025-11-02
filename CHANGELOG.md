@@ -4,6 +4,9 @@
 
 ### 功能构建
 
+- 增加插件。
+  - 增加插件 `maven-compiler-plugin` 以应用其新功能，版本为 `3.8.1`。
+
 - 增加依赖。
   - 增加依赖 `hibernate-validator` 以应用其新功能，版本为 `6.2.5.Final`。
   - 增加依赖 `mapstruct` 以应用其新功能，版本为 `1.5.3.Final`。
