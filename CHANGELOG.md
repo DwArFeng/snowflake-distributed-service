@@ -4,6 +4,9 @@
 
 ### 功能构建
 
+- 新增运维指令。
+  - com.dwarfeng.sfds.impl.service.telqos.ResolveCommand。
+
 - 实现核心机制。
   - 解析机制。
 
