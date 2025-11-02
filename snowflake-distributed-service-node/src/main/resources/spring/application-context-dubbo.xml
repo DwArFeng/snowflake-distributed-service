@@ -28,6 +28,11 @@
             ref="generateServiceImpl"
             group="${dubbo.provider.group}"
     />
+    <dubbo:service
+            interface="com.dwarfeng.sfds.stack.service.ResolveService"
+            ref="resolveServiceImpl"
+            group="${dubbo.provider.group}"
+    />
     <!-- 对外暴露此过时服务，以解决兼容性问题 -->
     <!--suppress DeprecatedClassUsageInspection -->
     <dubbo:service
