@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -22,6 +23,11 @@ public class ResolveServiceImplTest {
 
     @Autowired
     private GenerateService generateService;
+
+    // 该单词系专有术语，忽略相关的拼写警告。
+    @SuppressWarnings({"SpellCheckingInspection", "RedundantSuppression"})
+    @Value("${snowflake.twepoch:#{T(com.dwarfeng.sfds.sdk.util.SnowflakeConstants).TWEPOCH}}")
+    private long twepoch;
 
     @Test
     public void testForResolveLong() throws ServiceException {
@@ -50,7 +56,7 @@ public class ResolveServiceImplTest {
                 "实际时间戳应该等于时间戳差值加上基准时间戳",
                 result.getTimestampDelta() + result.getTwepoch(), result.getTimestamp()
         );
-        Assert.assertEquals("基准时间戳应该等于常量值", SnowflakeConstants.TWEPOCH, result.getTwepoch());
+        Assert.assertEquals("基准时间戳应该等于 twepoch 值", twepoch, result.getTwepoch());
 
         // 验证解析结果与生成逻辑一致（反向计算验证）
         long reconstructedId = ((result.getTimestampDelta() << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT)
@@ -88,7 +94,7 @@ public class ResolveServiceImplTest {
                 "实际时间戳应该等于时间戳差值加上基准时间戳",
                 result.getTimestampDelta() + result.getTwepoch(), result.getTimestamp()
         );
-        Assert.assertEquals("基准时间戳应该等于常量值", SnowflakeConstants.TWEPOCH, result.getTwepoch());
+        Assert.assertEquals("基准时间戳应该等于 twepoch 值", twepoch, result.getTwepoch());
 
         // 验证解析结果与生成逻辑一致（反向计算验证）
         long reconstructedId = ((result.getTimestampDelta() << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT)
@@ -107,8 +113,7 @@ public class ResolveServiceImplTest {
 
             // 基本验证
             Assert.assertEquals("原始 ID 应该与输入 ID 一致", id, result.getOriginalId());
-            Assert.assertTrue("" +
-                            "序列号应该在有效范围内",
+            Assert.assertTrue("序列号应该在有效范围内",
                     result.getSequence() >= 0 && result.getSequence() <= SnowflakeConstants.SEQUENCE_MASK
             );
             Assert.assertTrue(
@@ -129,4 +134,3 @@ public class ResolveServiceImplTest {
         }
     }
 }
-

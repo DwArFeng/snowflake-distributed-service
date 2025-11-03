@@ -16,7 +16,8 @@
 
 ### Bug 修复
 
-- (无)
+- 修复单元测试代码中的 bug。
+  - com.dwarfeng.sfds.impl.service.ResolveServiceImplTest。
 
 ### 功能移除
 
