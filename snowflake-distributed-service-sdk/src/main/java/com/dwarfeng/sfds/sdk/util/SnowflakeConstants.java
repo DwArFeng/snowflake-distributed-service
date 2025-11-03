@@ -9,11 +9,19 @@ package com.dwarfeng.sfds.sdk.util;
 public final class SnowflakeConstants {
 
     /**
+     * 默认开始时间截 (2015-01-01)。
+     */
+    public static final long DEFAULT_TWEPOCH = 1420041600000L;
+
+    /**
      * 开始时间截 (2015-01-01)。
+     *
+     * @deprecated 该命名与当前用途不适配，请使用 {@link #DEFAULT_TWEPOCH} 代替。
      */
     // 该单词系专有术语，忽略相关的拼写警告。
+    @Deprecated
     @SuppressWarnings({"SpellCheckingInspection", "RedundantSuppression"})
-    public static final long TWEPOCH = 1420041600000L;
+    public static final long TWEPOCH = DEFAULT_TWEPOCH;
 
     /**
      * 机器 ID 所占的位数。

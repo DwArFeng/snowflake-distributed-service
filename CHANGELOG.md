@@ -4,6 +4,10 @@
 
 ### 功能构建
 
+- 重构 SnowflakeConstants 常量类。
+  - 新增 `DEFAULT_TWEPOCH` 常量，并将 `TWEPOCH` 标记为 `@Deprecated`。
+  - 更新相关代码和配置文件的文档注释及配置引用。
+
 - 优化部分 Bean 对象的文档注释。
   - com.dwarfeng.sfds.stack.bean.dto.ResolveResult。
 

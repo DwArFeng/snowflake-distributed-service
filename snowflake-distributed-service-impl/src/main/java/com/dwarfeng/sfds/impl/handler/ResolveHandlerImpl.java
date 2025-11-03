@@ -28,11 +28,11 @@ public class ResolveHandlerImpl implements ResolveHandler {
      * 开始时间截（毫秒）。
      * <p>
      * 用于计算解析 ID 中的时间戳部分，计算公式为：实际时间戳 = timestampDelta + twepoch
-     * 如果未配置此项，将使用 {@link SnowflakeConstants#TWEPOCH} 的默认值。
+     * 如果未配置此项，将使用 {@link SnowflakeConstants#DEFAULT_TWEPOCH} 的默认值。
      */
     // 该单词系专有术语，忽略相关的拼写警告。
     @SuppressWarnings({"SpellCheckingInspection", "RedundantSuppression"})
-    @Value("${snowflake.twepoch:#{T(com.dwarfeng.sfds.sdk.util.SnowflakeConstants).TWEPOCH}}")
+    @Value("${snowflake.twepoch:#{T(com.dwarfeng.sfds.sdk.util.SnowflakeConstants).DEFAULT_TWEPOCH}}")
     private long twepoch;
 
     @PostConstruct
