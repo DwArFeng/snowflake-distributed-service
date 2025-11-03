@@ -18,32 +18,32 @@ public class ResolveResult implements Dto {
     private long originalId;
 
     /**
-     * 序列号（0~4095）。
+     * 序列号（0 - 4095）。
      */
     private long sequence;
 
     /**
-     * 工作机器 ID（0~31）。
+     * 工作机器 ID（0 - 31）。
      */
     private long workerId;
 
     /**
-     * 数据中心 ID（0~31）。
+     * 数据中心 ID（0 - 31）。
      */
     private long datacenterId;
 
     /**
-     * 时间戳差值（毫秒）。
+     * 时间戳差值。
      */
     private long timestampDelta;
 
     /**
-     * 实际时间戳（毫秒）。
+     * 实际时间戳。
      */
     private long timestamp;
 
     /**
-     * 使用的基准时间戳（毫秒）。
+     * 使用的基准时间戳。
      */
     private long twepoch;
 

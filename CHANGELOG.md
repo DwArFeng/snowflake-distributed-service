@@ -4,6 +4,9 @@
 
 ### 功能构建
 
+- 优化部分 Bean 对象的文档注释。
+  - com.dwarfeng.sfds.stack.bean.dto.ResolveResult。
+
 - 增加预设的运维指令。
   - com.dwarfeng.springtelqos.api.integration.system.UptimeCommand。
   - com.dwarfeng.springtelqos.api.integration.system.JmxRemoteCommand。
