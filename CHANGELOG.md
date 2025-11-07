@@ -4,6 +4,10 @@
 
 ### 功能构建
 
+- 增加预设的运维指令。
+  - com.dwarfeng.springtelqos.api.integration.system.UptimeCommand。
+  - com.dwarfeng.springtelqos.api.integration.system.JmxRemoteCommand。
+
 - 类优化注释、文档注释格式、代码换行格式。
   - com.dwarfeng.sfds.impl.handler.GenerateHandlerImpl。
   - com.dwarfeng.sfds.impl.service.telqos.GenCommand。
