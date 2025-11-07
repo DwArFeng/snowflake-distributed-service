@@ -4,6 +4,9 @@
 
 ### 功能构建
 
+- Wiki 编写。
+  - docs/wiki/zh-CN/UsingTelqos.md。
+
 - 重构 SnowflakeConstants 常量类。
   - 新增 `DEFAULT_TWEPOCH` 常量，并将 `TWEPOCH` 标记为 `@Deprecated`。
   - 更新相关代码和配置文件的文档注释及配置引用。

@@ -35,3 +35,7 @@
 ## Snowflake 知识
 
 - [About Snowflake](./AboutSnowflake.md) - 关于 Snowflake，介绍了 Snowflake 的基本概念以及在本项目中的应用。
+
+## 维护与调试
+
+- [Using Telqos](./UsingTelqos.md) - 使用 Telqos。Telqos 是本项目的 telnet 运维平台，该文档详细说明了如何使用 Telqos。
