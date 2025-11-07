@@ -4,6 +4,10 @@
 
 ### 功能构建
 
+- 增加预设的运维指令。
+  - com.dwarfeng.springtelqos.api.integration.system.UptimeCommand。
+  - com.dwarfeng.springtelqos.api.integration.system.JmxRemoteCommand。
+
 - 依赖升级。
   - 升级 `spring-telqos` 依赖版本为 `1.1.15.a` 以规避漏洞。
 
