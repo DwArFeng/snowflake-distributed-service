@@ -90,4 +90,3 @@ sh  bin/snowflake-start.sh
 ```shell
 sh  bin/snowflake-stop.sh
 ```
-
