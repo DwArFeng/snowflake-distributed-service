@@ -19,7 +19,7 @@ import java.util.Objects;
 public class GenCommand extends CliCommand {
 
     private static final String IDENTITY = "gen";
-    private static final String DESCRIPTION = "生成ID并导出到CSV操作";
+    private static final String DESCRIPTION = "生成 ID 并导出到 CSV 操作";
 
     private static final String CMD_OPTION_SIZE = "s";
     private static final String CMD_OPTION_FILE = "f";
@@ -52,7 +52,7 @@ public class GenCommand extends CliCommand {
         list.add(Option.builder(CMD_OPTION_SIZE).optionalArg(true).hasArg(true).type(Number.class)
                 .argName("size").desc("生成数量").build());
         list.add(Option.builder(CMD_OPTION_FILE).optionalArg(true).hasArg(true).type(String.class)
-                .argName("file-path").desc("生成的CSV的路径").build());
+                .argName("file-path").desc("生成的 CSV 的路径").build());
         return list;
     }
 
@@ -119,7 +119,7 @@ public class GenCommand extends CliCommand {
             }
             bw.flush();
         }
-        context.sendMessage("CSV文件已导出至 " + file.getAbsolutePath());
+        context.sendMessage("CSV 文件已导出至 " + file.getAbsolutePath());
     }
 
     private void print2Screen(List<Long> longs, Context context) throws Exception {

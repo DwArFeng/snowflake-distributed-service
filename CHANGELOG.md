@@ -4,6 +4,12 @@
 
 ### 功能构建
 
+- 类优化注释、文档注释格式、代码换行格式。
+  - com.dwarfeng.sfds.impl.handler.GenerateHandlerImpl。
+  - com.dwarfeng.sfds.impl.service.telqos.GenCommand。
+  - com.dwarfeng.sfds.sdk.util.SnowflakeConstants。
+  - com.dwarfeng.sfds.stack.service.LongIdService。
+
 - 优化文件格式。
   - 优化 `pom.xml` 文件的格式。
   - 优化 `application-context-*.xml` 文件的格式。

@@ -26,7 +26,7 @@ public final class SnowflakeConstants {
     public static final long DATACENTER_ID_BITS = 5L;
 
     /**
-     * 支持的最大机器 ID，结果是31。
+     * 支持的最大机器 ID，结果是 31。
      *
      * <p>
      * <code>~(-1L << XXX_BITS)</code> 可以快速计算出几位二进制数所能表示的最大十进制数。<br>
@@ -36,7 +36,7 @@ public final class SnowflakeConstants {
     public static final long MAX_WORKER_ID = ~(-1L << WORKER_ID_BITS);
 
     /**
-     * 支持的最大数据标识 ID，结果是31。
+     * 支持的最大数据标识 ID，结果是 31。
      *
      * <p>
      * <code>~(-1L << XXX_BITS)</code> 可以快速计算出几位二进制数所能表示的最大十进制数。<br>
