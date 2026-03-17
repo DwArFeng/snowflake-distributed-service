@@ -65,16 +65,16 @@ public class ResolveHandlerImpl implements ResolveHandler {
      * @return 解析结果。
      */
     private ResolveResult internalResolve(long id) {
-        // 提取序列号（最低12位）
+        // 提取序列号（最低 12 位）
         long sequence = id & SnowflakeConstants.SEQUENCE_MASK;
 
-        // 提取工作机器 ID（第12-16位）
+        // 提取工作机器 ID（第 12-16 位）
         long workerId = (id >> SnowflakeConstants.WORKER_ID_SHIFT) & SnowflakeConstants.MAX_WORKER_ID;
 
-        // 提取数据中心 ID（第17-21位）
+        // 提取数据中心 ID（第 17-21 位）
         long datacenterId = (id >> SnowflakeConstants.DATACENTER_ID_SHIFT) & SnowflakeConstants.MAX_DATACENTER_ID;
 
-        // 提取时间戳差值（最高41位）
+        // 提取时间戳差值（最高 41 位）
         long timestampDelta = id >> SnowflakeConstants.TIMESTAMP_LEFT_SHIFT;
 
         // 计算实际时间戳

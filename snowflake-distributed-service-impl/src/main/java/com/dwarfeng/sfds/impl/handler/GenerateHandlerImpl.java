@@ -26,13 +26,13 @@ import java.util.stream.Collectors;
  * <code>0 - 0000000000 0000000000 0000000000 0000000000 0 - 00000 - 00000 - 000000000000 </code>
  * <ul>
  *     <li>
- *         1 位标识，由于 long 基本类型在 Java 中是带符号的，最高位是符号位，正数是 0，负数是 1，所以id一般是正数，最高位是 0。
+ *         1 位标识，由于 long 基本类型在 Java 中是带符号的，最高位是符号位，正数是 0，负数是 1，所以 id 一般是正数，最高位是 0。
  *     </li>
  *     <li>
  *         41 位时间截（毫秒级），注意，41 位时间截不是存储当前时间的时间截，
  *         而是存储时间截的差值（当前时间截 - 开始时间截得到的值），这里的的开始时间截，一般是我们的 ID 生成器开始使用的时间，
  *         由我们程序来指定的（如下下面程序 IdWorker 类的 startTime 属性）。
- *         41位的时间截，可以使用 69 年，年 <code>T = (1L << 41) / (1000L * 60 * 60 * 24 * 365) = 69</code>。
+ *         41 位的时间截，可以使用 69 年，年 <code>T = (1L << 41) / (1000L * 60 * 60 * 24 * 365) = 69</code>。
  *     </li>
  *     <li>
  *         10 位的数据机器位，可以部署在 1024 个节点，包括 5 位 datacenterId 和 5 位 workerId。
@@ -150,7 +150,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
     private synchronized long internalGenerate() throws Exception {
         long timestamp = timeGen();
 
-        // 如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常。
+        // 如果当前时间小于上一次 ID 生成的时间戳，说明系统时钟回退过这个时候应当抛出异常。
         if (timestamp < lastTimestamp) {
             LOGGER.warn("检测到系统时钟回退, 服务将会在 {} 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp);
             throwClockMovedBackwardsException(lastTimestamp - timestamp);
@@ -170,10 +170,10 @@ public class GenerateHandlerImpl implements GenerateHandler {
             sequence = 0L;
         }
 
-        // 上次生成ID的时间截。
+        // 上次生成 ID 的时间截。
         lastTimestamp = timestamp;
 
-        // 移位并通过或运算拼到一起组成64位的ID。
+        // 移位并通过或运算拼到一起组成 64 位的 ID。
         return ((timestamp - twepoch) << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT) //
                 | (datacenterId << SnowflakeConstants.DATACENTER_ID_SHIFT) //
                 | (workerId << SnowflakeConstants.WORKER_ID_SHIFT) //
@@ -183,7 +183,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
     private synchronized List<Long> internalGenerate(int number) throws Exception {
         long timestamp = timeGen();
 
-        // 如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常。
+        // 如果当前时间小于上一次 ID 生成的时间戳，说明系统时钟回退过这个时候应当抛出异常。
         if (timestamp < lastTimestamp) {
             LOGGER.warn("检测到系统时钟回退, 服务将会在 {} 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp);
             throwClockMovedBackwardsException(lastTimestamp - timestamp);
@@ -206,7 +206,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
             else {
                 sequence = 0L;
             }
-            // 移位并通过或运算拼到一起组成64位的ID。
+            // 移位并通过或运算拼到一起组成 64 位的 ID。
             result.add(
                     ((timestamp - twepoch) << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT) //
                             | (datacenterId << SnowflakeConstants.DATACENTER_ID_SHIFT) //
@@ -214,11 +214,11 @@ public class GenerateHandlerImpl implements GenerateHandler {
                             | sequence
             );
 
-            // 上次生成ID的时间截。
+            // 上次生成 ID 的时间截。
             lastTimestamp = timestamp;
         }
 
-        // 移位并通过或运算拼到一起组成64位的ID。
+        // 移位并通过或运算拼到一起组成 64 位的 ID。
         return result;
     }
 

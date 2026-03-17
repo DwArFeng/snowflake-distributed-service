@@ -4,6 +4,10 @@
 
 ### 功能构建
 
+- `snowflake-distributed-service-impl` 子模块类优化注释、文档注释格式、代码换行格式。
+  - com.dwarfeng.sfds.impl.handler.GenerateHandlerImpl。
+  - com.dwarfeng.sfds.impl.handler.ResolveHandlerImpl。
+
 - `snowflake-distributed-service-sdk` 子模块类优化注释、文档注释格式、代码换行格式。
   - com.dwarfeng.sfds.sdk.util.SnowflakeConstants。
 
