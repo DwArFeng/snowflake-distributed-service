@@ -9,12 +9,12 @@
         http://www.springframework.org/schema/context/spring-context.xsd"
 >
 
-    <!--扫描 handler 的实现包。 -->
+    <!-- 扫描 handler 的实现包。 -->
     <context:component-scan base-package="com.dwarfeng.sfds.impl.handler"/>
-    <!--扫描 service 的实现包。 -->
+    <!-- 扫描 service 的实现包。 -->
     <context:component-scan base-package="com.dwarfeng.sfds.impl.service"/>
-    <!--扫描配置的实现包。 -->
+    <!-- 扫描配置的实现包。 -->
     <context:component-scan base-package="com.dwarfeng.sfds.impl.configuration"/>
-    <!--扫描 aop 增强所在的包。 -->
+    <!-- 扫描 aop 增强所在的包。 -->
     <context:component-scan base-package="com.dwarfeng.subgrade.sdk.interceptor.analyse"/>
 </beans>
