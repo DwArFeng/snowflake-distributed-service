@@ -42,7 +42,7 @@ public interface LongIdService extends Service {
      * 生成下一组 Long ID。
      *
      * @param size 生成 ID 的数量。
-     * @return 下一个LongID。
+     * @return 下一个 LongID。
      * @throws ServiceException 服务异常。
      * @since 1.4.7
      */
