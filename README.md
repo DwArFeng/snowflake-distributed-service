@@ -1,8 +1,8 @@
-# snowflake-distributed-service - SnowFlake分布式服务
+# snowflake-distributed-service - SnowFlake 分布式服务
 
-SnowFlake分布式服务是一个轻量级的全局ID分发服务，全局ID的生成算法使用了SnowFlake算法。
+SnowFlake 分布式服务是一个轻量级的全局 ID 分发服务，全局 ID 的生成算法使用了 SnowFlake 算法。
 
-该服务可以提供大量的全局唯一的ID，ID的大小基于时间，新生成的ID要大于旧的ID，这保证了ID作为主键在数据库存储时的时间有效性。
+该服务可以提供大量的全局唯一的 ID，ID 的大小基于时间，新生成的 ID 要大于旧的 ID，这保证了 ID 作为主键在数据库存储时的时间有效性。
 
 该服务使用 dubbo rpc 分布式框架搭建，可以轻松地进行伸缩，部署新服务时仅仅需要改变配置即可。
 
@@ -29,13 +29,13 @@ wiki 为项目的开发人员为本项目编写的详细文档，包含不同语
 
 ## 服务的使用
 
-1. 下载该项目，推荐使用SSH。
+1. 下载该项目，推荐使用 SSH。
 
    ```
    git clone [本项目名称]
    ```
 
-2. 使用maven安装该项目的依赖项目。
+2. 使用 maven 安装该项目的依赖项目。
 
    该项目引用同作者的其它项目，如 dutil，不过这些项目并不在中心仓库中，如果提示找不到这些引用，
    请在 github 或者 gitee 查找同作者的项目，并使用以下指令。
@@ -46,9 +46,9 @@ wiki 为项目的开发人员为本项目编写的详细文档，包含不同语
 
    该项目同作者的依赖项目：
 
-   (全球) [[github] dutil-作者大学时代开始编写的Java实用工具集合](https://github.com/DwArFeng/dutil)
+   (全球) [[github] dutil-作者大学时代开始编写的 Java 实用工具集合](https://github.com/DwArFeng/dutil)
 
-   (中国) [[gitee]  dutil-作者大学时代开始编写的Java实用工具集合](https://gitee.com/DwArFeng/dutil)
+   (中国) [[gitee]  dutil-作者大学时代开始编写的 Java 实用工具集合](https://gitee.com/DwArFeng/dutil)
 
 3. 使用 maven 安装本项目(为了 api 能够使用，请安装，而不是打包)。
 
@@ -68,11 +68,11 @@ wiki 为项目的开发人员为本项目编写的详细文档，包含不同语
 
    `conf/dubbo/connection.properties`
    ```
-   # Zookeeper地址
+   # Zookeeper 地址
    dubbo.zookeeper.address=zookeeper://192.168.XXX.XXX:2181
    # dubbo 提供者端口
    dubbo.port=20000
-   # dubbo 提供者qos端口
+   # dubbo 提供者 qos 端口
    dubbo.qos.port=21000
    # dubbo 提供者主机名称
    dubbo.host=192.168.154.1
@@ -80,9 +80,9 @@ wiki 为项目的开发人员为本项目编写的详细文档，包含不同语
 
    `conf/snowflake/device.properties`
    ```
-   # Worker ID，最大为31，新的节点序列号向下递减，最少到0。
+   # Worker ID，最大为 31，新的节点序列号向下递减，最少到 0。
    snowflake.workder_id=31
-   # Datacenter ID，最大为31，新的节点序列号向下递减，最少到0。
+   # Datacenter ID，最大为 31，新的节点序列号向下递减，最少到 0。
    snowflake.datacenter_id=31
    ```
 
@@ -140,7 +140,7 @@ wiki 为项目的开发人员为本项目编写的详细文档，包含不同语
 
 - 与 subgrade 集成
 
-  subgrade 是作者的全项目通用工具类，提供了基于Spring框架的大量快捷的开发工具，本项目与其集成，
+  subgrade 是作者的全项目通用工具类，提供了基于 Spring 框架的大量快捷的开发工具，本项目与其集成，
   提供了 `SnowflakeLongGenerator`。
 
   `com.dwarfeng.sfds.api.integration.subgrade.SnowflakeLongIdKeyGeneratorTest`

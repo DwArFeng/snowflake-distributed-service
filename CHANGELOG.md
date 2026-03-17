@@ -4,7 +4,13 @@
 
 ### 功能构建
 
+- 更新 README.md。
+
 - Wiki 更新。
+  - docs/wiki/zh-CN/AboutSnowflake.md。
+  - docs/wiki/zh-CN/Introduction.md。
+  - docs/wiki/zh-CN/QuickStart.md。
+  - docs/wiki/zh-CN/SystemRequirements.md。
   - docs/wiki/en-US/README.md。
   - docs/wiki/zh-CN/README.md。
 

@@ -2,7 +2,7 @@
 
 ## 确认系统需求
 
-- CPU：2核以上。
+- CPU：2 核以上。
 - 内存：1G 以上。
 - 硬盘：10G 以上。
 - CentOS 7。
@@ -90,4 +90,3 @@ sh  bin/snowflake-start.sh
 ```shell
 sh  bin/snowflake-stop.sh
 ```
-
