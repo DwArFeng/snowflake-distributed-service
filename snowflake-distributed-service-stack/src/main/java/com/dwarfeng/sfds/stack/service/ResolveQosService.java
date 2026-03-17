@@ -21,4 +21,3 @@ public interface ResolveQosService extends Service {
      */
     ResolveResult resolveLong(long id) throws ServiceException;
 }
-

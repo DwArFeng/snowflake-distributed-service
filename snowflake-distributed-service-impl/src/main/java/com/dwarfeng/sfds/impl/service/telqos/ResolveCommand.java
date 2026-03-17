@@ -113,4 +113,3 @@ public class ResolveCommand extends CliCommand {
         }
     }
 }
-

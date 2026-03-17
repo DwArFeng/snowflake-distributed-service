@@ -31,4 +31,3 @@ public interface ResolveService extends Service {
      */
     ResolveResult resolveLongIdKey(LongIdKey idKey) throws ServiceException;
 }
-

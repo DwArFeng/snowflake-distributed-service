@@ -31,4 +31,3 @@ public interface ResolveHandler extends Handler {
      */
     ResolveResult resolveLongIdKey(LongIdKey idKey) throws HandlerException;
 }
-

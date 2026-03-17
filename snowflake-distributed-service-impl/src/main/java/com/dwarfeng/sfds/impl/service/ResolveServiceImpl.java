@@ -40,4 +40,3 @@ public class ResolveServiceImpl implements ResolveService {
         }
     }
 }
-
