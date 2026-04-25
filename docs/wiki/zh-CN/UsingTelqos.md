@@ -2,7 +2,7 @@
 
 ## 说明
 
-Telqos 是本项目的 telnet 运维平台。该文档详细说明了本项目的 Telqos 命令。
+Telqos 是本项目的 telnet 运维平台。该文档详细说明了本项目 Telqos 的配置和连接方式。
 
 Telqos 是作者的一个开源项目，它能使用简单的配置快速搭建一个 telnet 运维平台。
 Telqos 项目地址：[Github](https://github.com/DwArFeng/spring-telqos)
@@ -78,3 +78,7 @@ Snowflake Distributed Service 运维系统                                      
 ```
 
 收到此欢迎信息，说明你已经成功连接到了 Telqos 运维平台。
+
+## 参阅
+
+- [Telqos Commands](./TelqosCommands.md) - Telqos 命令说明，详细列出本项目可用命令的语法、参数与示例。
