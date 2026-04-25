@@ -76,6 +76,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
 
     /**
      * 开始时间截（毫秒）。
+     *
      * <p>
      * 用于计算生成 ID 中的时间戳部分，计算公式为：生成 ID 中的时间戳部分 = (当前时间戳 - twepoch) << 22
      * 如果未配置此项，将使用 {@link SnowflakeConstants#DEFAULT_TWEPOCH} 的默认值。

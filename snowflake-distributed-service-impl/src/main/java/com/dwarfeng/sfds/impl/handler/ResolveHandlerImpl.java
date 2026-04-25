@@ -26,6 +26,7 @@ public class ResolveHandlerImpl implements ResolveHandler {
 
     /**
      * 开始时间截（毫秒）。
+     *
      * <p>
      * 用于计算解析 ID 中的时间戳部分，计算公式为：实际时间戳 = timestampDelta + twepoch
      * 如果未配置此项，将使用 {@link SnowflakeConstants#DEFAULT_TWEPOCH} 的默认值。
@@ -65,19 +66,19 @@ public class ResolveHandlerImpl implements ResolveHandler {
      * @return 解析结果。
      */
     private ResolveResult internalResolve(long id) {
-        // 提取序列号（最低 12 位）
+        // 提取序列号（最低 12 位）。
         long sequence = id & SnowflakeConstants.SEQUENCE_MASK;
 
-        // 提取工作机器 ID（第 12-16 位）
+        // 提取工作机器 ID（第 12-16 位）。
         long workerId = (id >> SnowflakeConstants.WORKER_ID_SHIFT) & SnowflakeConstants.MAX_WORKER_ID;
 
-        // 提取数据中心 ID（第 17-21 位）
+        // 提取数据中心 ID（第 17-21 位）。
         long datacenterId = (id >> SnowflakeConstants.DATACENTER_ID_SHIFT) & SnowflakeConstants.MAX_DATACENTER_ID;
 
-        // 提取时间戳差值（最高 41 位）
+        // 提取时间戳差值（最高 41 位）。
         long timestampDelta = id >> SnowflakeConstants.TIMESTAMP_LEFT_SHIFT;
 
-        // 计算实际时间戳
+        // 计算实际时间戳。
         long timestamp = timestampDelta + twepoch;
 
         return new ResolveResult(id, sequence, workerId, datacenterId, timestampDelta, timestamp, twepoch);

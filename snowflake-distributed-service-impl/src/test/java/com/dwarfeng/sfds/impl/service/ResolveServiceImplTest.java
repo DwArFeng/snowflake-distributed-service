@@ -31,13 +31,13 @@ public class ResolveServiceImplTest {
 
     @Test
     public void testForResolveLong() throws ServiceException {
-        // 生成一个 ID
+        // 生成一个 ID。
         long id = generateService.generateLong();
 
-        // 解析 ID
+        // 解析 ID。
         ResolveResult result = resolveService.resolveLong(id);
 
-        // 断言验证
+        // 断言验证。
         Assert.assertEquals("原始 ID 应该与输入 ID 一致", id, result.getOriginalId());
         Assert.assertTrue(
                 "序列号应该在有效范围内",
@@ -58,7 +58,7 @@ public class ResolveServiceImplTest {
         );
         Assert.assertEquals("基准时间戳应该等于 twepoch 值", twepoch, result.getTwepoch());
 
-        // 验证解析结果与生成逻辑一致（反向计算验证）
+        // 验证解析结果与生成逻辑一致（反向计算验证）。
         long reconstructedId = ((result.getTimestampDelta() << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT)
                 | (result.getDatacenterId() << SnowflakeConstants.DATACENTER_ID_SHIFT)
                 | (result.getWorkerId() << SnowflakeConstants.WORKER_ID_SHIFT)
@@ -68,14 +68,14 @@ public class ResolveServiceImplTest {
 
     @Test
     public void testForResolveLongIdKey() throws ServiceException {
-        // 生成一个 LongIdKey
+        // 生成一个 LongIdKey。
         LongIdKey idKey = generateService.generateLongIdKey();
         long id = idKey.getLongId();
 
-        // 解析 LongIdKey
+        // 解析 LongIdKey。
         ResolveResult result = resolveService.resolveLongIdKey(idKey);
 
-        // 断言验证
+        // 断言验证。
         Assert.assertEquals("原始 ID 应该与 LongIdKey 的 ID 一致", id, result.getOriginalId());
         Assert.assertTrue(
                 "序列号应该在有效范围内",
@@ -96,7 +96,7 @@ public class ResolveServiceImplTest {
         );
         Assert.assertEquals("基准时间戳应该等于 twepoch 值", twepoch, result.getTwepoch());
 
-        // 验证解析结果与生成逻辑一致（反向计算验证）
+        // 验证解析结果与生成逻辑一致（反向计算验证）。
         long reconstructedId = ((result.getTimestampDelta() << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT)
                 | (result.getDatacenterId() << SnowflakeConstants.DATACENTER_ID_SHIFT)
                 | (result.getWorkerId() << SnowflakeConstants.WORKER_ID_SHIFT)
@@ -106,12 +106,12 @@ public class ResolveServiceImplTest {
 
     @Test
     public void testForResolveMultiple() throws ServiceException {
-        // 生成多个 ID 并解析
+        // 生成多个 ID 并解析。
         for (int i = 0; i < 10; i++) {
             long id = generateService.generateLong();
             ResolveResult result = resolveService.resolveLong(id);
 
-            // 基本验证
+            // 基本验证。
             Assert.assertEquals("原始 ID 应该与输入 ID 一致", id, result.getOriginalId());
             Assert.assertTrue("序列号应该在有效范围内",
                     result.getSequence() >= 0 && result.getSequence() <= SnowflakeConstants.SEQUENCE_MASK
@@ -125,7 +125,7 @@ public class ResolveServiceImplTest {
                     result.getDatacenterId() >= 0 && result.getDatacenterId() <= SnowflakeConstants.MAX_DATACENTER_ID
             );
 
-            // 验证反向计算
+            // 验证反向计算。
             long reconstructedId = ((result.getTimestampDelta() << SnowflakeConstants.TIMESTAMP_LEFT_SHIFT)
                     | (result.getDatacenterId() << SnowflakeConstants.DATACENTER_ID_SHIFT)
                     | (result.getWorkerId() << SnowflakeConstants.WORKER_ID_SHIFT)
