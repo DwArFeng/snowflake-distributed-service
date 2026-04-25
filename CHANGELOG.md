@@ -4,6 +4,9 @@
 
 ### 功能构建
 
+- `snowflake-distributed-service-sdk` 子模块类优化注释、文档注释格式、代码换行格式。
+  - com.dwarfeng.sfds.sdk.bean.BeanMapper。
+
 - 依赖升级。
   - 升级 `dubbo` 依赖版本为 `2.7.23` 以规避漏洞。
   - 升级 `zookeeper` 依赖版本为 `3.9.5` 以规避漏洞。

@@ -22,7 +22,8 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface BeanMapper {
 
-    // -----------------------------------------------------------Subgrade Key-----------------------------------------------------------
+    // region Subgrade Key
+
     FastJsonLongIdKey longIdKeyToFastJson(LongIdKey longIdKey);
 
     @InheritInverseConfiguration
@@ -38,7 +39,10 @@ public interface BeanMapper {
     @InheritInverseConfiguration
     LongIdKey longIdKeyFromWebInput(WebInputLongIdKey webInputLongIdKey);
 
-    // -----------------------------------------------------------Sfds DTO-----------------------------------------------------------
+    // endregion
+
+    // region Sfds DTO
+
     FastJsonResolveResult resolveResultToFastJson(ResolveResult resolveResult);
 
     @InheritInverseConfiguration
@@ -48,4 +52,6 @@ public interface BeanMapper {
 
     @InheritInverseConfiguration
     ResolveResult resolveResultFromJSFixedFastJson(JSFixedFastJsonResolveResult jSFixedFastJsonResolveResult);
+
+    // endregion
 }
