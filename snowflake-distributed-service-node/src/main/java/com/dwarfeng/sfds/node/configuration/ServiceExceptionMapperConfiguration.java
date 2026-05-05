@@ -16,6 +16,8 @@ public class ServiceExceptionMapperConfiguration {
     @Bean
     public MapServiceExceptionMapper mapServiceExceptionMapper() {
         Map<Class<? extends Exception>, ServiceException.Code> destination = ServiceExceptionHelper.putDefaultDestination(null);
+        destination = com.dwarfeng.springtelqos.sdk.util.ServiceExceptionHelper.putDefaultDestination(destination);
+        destination = com.dwarfeng.springterminator.sdk.util.ServiceExceptionHelper.putDefaultDestination(destination);
         // 添加异常映射。
         destination.put(ClockMovedBackwardsException.class, ServiceExceptionCodes.CLOCK_MOVED_BACKWARDS);
         // 添加过时的 stack.service.exception 包中的异常映射。
