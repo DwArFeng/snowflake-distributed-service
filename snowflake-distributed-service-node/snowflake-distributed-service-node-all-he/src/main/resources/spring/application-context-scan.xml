@@ -14,7 +14,7 @@
     <!-- 扫描 service 的实现包。 -->
     <context:component-scan base-package="com.dwarfeng.sfds.impl.service"/>
     <!-- 扫描配置的实现包。 -->
-    <context:component-scan base-package="com.dwarfeng.sfds.node.configuration"/>
+    <context:component-scan base-package="com.dwarfeng.sfds.node.all.he.configuration"/>
     <!-- 扫描 aop 增强所在的包。 -->
     <context:component-scan base-package="com.dwarfeng.subgrade.sdk.interceptor.analyse"/>
 </beans>

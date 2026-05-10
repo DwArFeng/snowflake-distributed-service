@@ -1,4 +1,4 @@
-package com.dwarfeng.sfds.node.launcher;
+package com.dwarfeng.sfds.node.all.he.launcher;
 
 import com.dwarfeng.springterminator.sdk.util.ApplicationUtil;
 

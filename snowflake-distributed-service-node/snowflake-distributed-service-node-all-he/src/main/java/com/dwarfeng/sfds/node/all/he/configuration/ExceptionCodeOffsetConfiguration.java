@@ -1,4 +1,4 @@
-package com.dwarfeng.sfds.node.configuration;
+package com.dwarfeng.sfds.node.all.he.configuration;
 
 import com.dwarfeng.sfds.sdk.util.ServiceExceptionCodes;
 import org.springframework.beans.factory.annotation.Value;

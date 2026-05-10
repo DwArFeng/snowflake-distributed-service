@@ -392,6 +392,16 @@
             </dependency>
             <dependency>
                 <groupId>com.dwarfeng</groupId>
+                <artifactId>snowflake-distributed-service-node-all-he</artifactId>
+                <version>2.0.0.a-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dwarfeng</groupId>
+                <artifactId>snowflake-distributed-service-distribute</artifactId>
+                <version>2.0.0.a-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dwarfeng</groupId>
                 <artifactId>snowflake-distributed-service-api</artifactId>
                 <version>2.0.0.a-SNAPSHOT</version>
             </dependency>
@@ -441,5 +451,6 @@
         <module>snowflake-distributed-service-impl</module>
         <module>snowflake-distributed-service-node</module>
         <module>snowflake-distributed-service-api</module>
+        <module>snowflake-distributed-service-distribute</module>
     </modules>
 </project>

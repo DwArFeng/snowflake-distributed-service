@@ -71,33 +71,33 @@ buildNumber.properties
 #################
 ## Logger Files
 #################
-/snowflake-distributed-service-node/logs/
 /snowflake-distributed-service-impl/logs/
+/snowflake-distributed-service-node/snowflake-distributed-service-node-all-he/logs/
 /snowflake-distributed-service-api/logs/
 
 #################
 ## Configuration Files
 #################
-/snowflake-distributed-service-node/conf/
 /snowflake-distributed-service-impl/conf/
+/snowflake-distributed-service-node/snowflake-distributed-service-node-all-he/conf/
 /snowflake-distributed-service-api/conf/
 
 #################
 ## Libext Files
 #################
-/snowflake-distributed-service-node/libext/
+/snowflake-distributed-service-node/snowflake-distributed-service-node-all-he/libext/
 
 #################
 ## Opt Files
 #################
-/snowflake-distributed-service-node/opt/
+/snowflake-distributed-service-node/snowflake-distributed-service-node-all-he/opt/
 
 #################
 ## Optext Files
 #################
-/snowflake-distributed-service-node/optext/
+/snowflake-distributed-service-node/snowflake-distributed-service-node-all-he/optext/
 
 #################
 ## Confext Files
 #################
-/snowflake-distributed-service-node/confext/
+/snowflake-distributed-service-node/snowflake-distributed-service-node-all-he/confext/
