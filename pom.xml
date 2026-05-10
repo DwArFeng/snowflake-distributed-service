@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
         http://maven.apache.org/xsd/maven-4.0.0.xsd"
 >
@@ -44,8 +44,8 @@
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <dutil.version>0.4.2.a-beta</dutil.version>
         <subgrade.version>1.8.2.a</subgrade.version>
-        <spring-terminator.version>1.1.0.a</spring-terminator.version>
         <spring-telqos.version>1.2.0.a</spring-telqos.version>
+        <spring-terminator.version>1.1.0.a</spring-terminator.version>
         <!-- Maven 插件版本声明 -->
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
@@ -347,12 +347,6 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!-- Spring-terminator 组件 -->
-            <dependency>
-                <groupId>com.dwarfeng</groupId>
-                <artifactId>spring-terminator</artifactId>
-                <version>${spring-terminator.version}</version>
-            </dependency>
             <!-- Spring-telqos 组件 -->
             <dependency>
                 <groupId>com.dwarfeng</groupId>
@@ -363,6 +357,12 @@
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>spring-telqos-api</artifactId>
                 <version>${spring-telqos.version}</version>
+            </dependency>
+            <!-- Spring-terminator 组件 -->
+            <dependency>
+                <groupId>com.dwarfeng</groupId>
+                <artifactId>spring-terminator</artifactId>
+                <version>${spring-terminator.version}</version>
             </dependency>
             <!-- 程序自身组件 -->
             <dependency>
