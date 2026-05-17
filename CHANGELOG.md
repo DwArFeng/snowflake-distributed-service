@@ -13,7 +13,12 @@
 
 ### 功能移除
 
-- (无)
+- 移除 `snowflake-distributed-service-api` 子模块不需要的配置文件。
+  - src/test/resources/spring/application-context-task.xml。
+  - src/test/resources/snowflake/background.properties。
+  - src/test/resources/snowflake/device.properties。
+  - src/test/resources/snowflake/exception.properties。
+  - src/test/resources/snowflake/twepoch.properties。
 
 ---
 
