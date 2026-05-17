@@ -5,6 +5,7 @@
 ### 功能构建
 
 - Wiki 更新。
+  - docs/wiki/zh-CN/QuickStart.md。
   - docs/wiki/zh-CN/CompileBySource.md。
 
 - `snowflake-distributed-service-distribute` 模块新增。

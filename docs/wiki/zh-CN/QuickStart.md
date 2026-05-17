@@ -15,14 +15,19 @@
 
 ## 解压软件包
 
-软件包的名称格式为 `snowflake-distributed-service-node-${version}-release.tar.gz`，其中 `${version}` 为软件包的版本号。
+交付用的发布包汇总到 `snowflake-distributed-service-distribute` 模块下的 `target/distribute/` 目录中， 按节点分子目录存放；
+功能、构型与制品路径说明见 [CompileBySource.md](./CompileBySource.md)。
+
+以节点 `snowflake-all-he` 为例， 软件包的名称格式为 `snowflake-all-he-${version}-release.tar.gz`，
+其中 `${version}` 为软件包的版本号。
+若使用其它功能与构型组合的节点，压缩包及解压目录名亦遵循相同规则。
 
 使用工具软件，将软件包上传至服务器 `/usr/local` 目录下，解压软件包。
 
 ```shell
 cd /usr/local
-tar -zxvf snowflake-distributed-service-node-${version}-release.tar.gz
-mv snowflake-distributed-service-node-${version}-release snowflake
+tar -zxvf snowflake-all-he-${version}-release.tar.gz
+mv snowflake-all-he-${version}-release snowflake
 ```
 
 ## 最小化配置
@@ -85,8 +90,12 @@ sh  bin/snowflake-start.sh
 
 ## 停止程序
 
-在 `/usr/local/snowfalke` 目录下执行如下命令：
+在 `/usr/local/snowflake` 目录下执行如下命令：
 
 ```shell
 sh  bin/snowflake-stop.sh
 ```
+
+## 参阅
+
+- [Compile by Source](./CompileBySource.md) - 源码编译，详细说明如何从源码编译本项目。
