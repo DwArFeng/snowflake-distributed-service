@@ -22,10 +22,12 @@
 
 - [System Requirements](./SystemRequirements.md) - 系统需求，详细说明本项目推荐的系统要求，以及其它版本的测试报告。
 - [Compile by Source](./CompileBySource.md) - 源码编译，详细说明如何从源码编译本项目。
+- [Install to Centos](./InstallToCentos.md) - CentOS 安装，详细说明如何在 CentOS 上安装本项目。
 
 ### 配置
 
 - [Conf Directory](./ConfDirectory.md) - 配置目录说明，详细说明如何配置本项目，即 `conf/` 目录下的内容。
+- [Opt Directory](./OptDirectory.md) - 可选配置目录说明，详细介绍了本项目的可选配置，即 `opt/` 目录下的内容。
 
 ### 脚本
 

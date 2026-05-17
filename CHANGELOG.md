@@ -4,6 +4,10 @@
 
 ### 功能构建
 
+- Wiki 编写。
+  - docs/wiki/zh-CN/InstallToCentos.md。
+  - docs/wiki/zh-CN/OptDirectory.md。
+
 - Wiki 更新。
   - docs/wiki/zh-CN/QuickStart.md。
   - docs/wiki/zh-CN/CompileBySource.md。
