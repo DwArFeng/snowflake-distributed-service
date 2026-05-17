@@ -16,12 +16,19 @@
     </dubbo:application>
 
     <!-- Zookeeper 注册中心。 -->
-    <dubbo:registry address="${dubbo.registry.zookeeper.address}" timeout="${dubbo.registry.zookeeper.timeout}"/>
+    <dubbo:registry
+            address="${com.dwarfeng.sfds.dubbo.registry.zookeeper.address}"
+            timeout="${com.dwarfeng.sfds.dubbo.registry.zookeeper.timeout}"
+    />
 
     <!-- Dubbo 协议。 -->
     <dubbo:protocol
-            name="dubbo" port="${dubbo.protocol.dubbo.port}" host="${dubbo.protocol.dubbo.host}"
-            dispatcher="message" threadpool="fixed" threads="100"
+            name="dubbo"
+            port="${com.dwarfeng.sfds.dubbo.protocol.dubbo.port}"
+            host="${com.dwarfeng.sfds.dubbo.protocol.dubbo.host}"
+            dispatcher="message"
+            threadpool="fixed"
+            threads="100"
     />
 
     <!-- endregion -->
@@ -33,19 +40,19 @@
     <dubbo:service
             interface="com.dwarfeng.sfds.stack.service.GenerateService"
             ref="generateServiceImpl"
-            group="${dubbo.provider.group}"
+            group="${com.dwarfeng.sfds.dubbo.provider.group}"
     />
     <dubbo:service
             interface="com.dwarfeng.sfds.stack.service.ResolveService"
             ref="resolveServiceImpl"
-            group="${dubbo.provider.group}"
+            group="${com.dwarfeng.sfds.dubbo.provider.group}"
     />
     <!-- 对外暴露此过时服务，以解决兼容性问题。 -->
     <!--suppress DeprecatedClassUsageInspection -->
     <dubbo:service
             interface="com.dwarfeng.sfds.stack.service.LongIdService"
             ref="longIdServiceImpl"
-            group="${dubbo.provider.group}"
+            group="${com.dwarfeng.sfds.dubbo.provider.group}"
     />
 
     <!-- endregion -->

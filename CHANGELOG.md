@@ -4,6 +4,13 @@
 
 ### 功能构建
 
+- 配置命名空间全局唯一化改造。
+  - 为 `snowflake-distributed-service-impl` 模块配置键统一增加全球唯一前缀，以消除跨微服务同名配置冲突。
+  - 为 `snowflake-distributed-service-node` 模块配置键统一增加全球唯一前缀，以消除跨微服务同名配置冲突。
+  - 为 `snowflake-distributed-service-api` 模块配置键统一增加全球唯一前缀，以消除跨微服务同名配置冲突。
+  - 同步调整 `*.java` 中的配置读取占位符。
+  - 同步调整 `*application-context-*.xml` 中的配置读取占位符。
+
 - 优化项目的异常处理机制。
   - `snowflake-distributed-service-sdk` 子模块新增 `ServiceExceptionHelper` 工具类，统一维护项目自身的异常映射关系。
   - `snowflake-distributed-service-impl` 子模块 `ServiceExceptionMapperConfiguration` 配置类的异常映射处理逻辑优化。

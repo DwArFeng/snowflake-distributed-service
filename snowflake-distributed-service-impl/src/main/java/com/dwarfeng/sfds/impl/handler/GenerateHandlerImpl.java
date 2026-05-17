@@ -65,13 +65,13 @@ public class GenerateHandlerImpl implements GenerateHandler {
     /**
      * 工作机器 ID (0~31)。
      */
-    @Value("${snowflake.worker_id}")
+    @Value("${com.dwarfeng.sfds.snowflake.worker_id}")
     private long workerId;
 
     /**
      * 数据中心 ID (0~31)。
      */
-    @Value("${snowflake.datacenter_id}")
+    @Value("${com.dwarfeng.sfds.snowflake.datacenter_id}")
     private long datacenterId;
 
     /**
@@ -83,7 +83,7 @@ public class GenerateHandlerImpl implements GenerateHandler {
      */
     // 该单词系专有术语，忽略相关的拼写警告。
     @SuppressWarnings({"SpellCheckingInspection", "RedundantSuppression"})
-    @Value("${snowflake.twepoch:#{T(com.dwarfeng.sfds.sdk.util.SnowflakeConstants).DEFAULT_TWEPOCH}}")
+    @Value("${com.dwarfeng.sfds.snowflake.twepoch:#{T(com.dwarfeng.sfds.sdk.util.SnowflakeConstants).DEFAULT_TWEPOCH}}")
     private long twepoch;
 
     /**

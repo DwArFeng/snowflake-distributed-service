@@ -26,7 +26,7 @@ public class ResolveServiceImplTest {
 
     // 该单词系专有术语，忽略相关的拼写警告。
     @SuppressWarnings({"SpellCheckingInspection", "RedundantSuppression"})
-    @Value("${snowflake.twepoch:#{T(com.dwarfeng.sfds.sdk.util.SnowflakeConstants).DEFAULT_TWEPOCH}}")
+    @Value("${com.dwarfeng.sfds.snowflake.twepoch:#{T(com.dwarfeng.sfds.sdk.util.SnowflakeConstants).DEFAULT_TWEPOCH}}")
     private long twepoch;
 
     @Test

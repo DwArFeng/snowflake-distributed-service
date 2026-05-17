@@ -9,13 +9,13 @@ import javax.annotation.PostConstruct;
 @Configuration
 public class ExceptionCodeOffsetConfiguration {
 
-    @Value("${snowflake.exception_code_offset}")
+    @Value("${com.dwarfeng.sfds.snowflake.exception_code_offset}")
     private int exceptionCodeOffset;
-    @Value("${snowflake.exception_code_offset.subgrade}")
+    @Value("${com.dwarfeng.sfds.snowflake.exception_code_offset.subgrade}")
     private int subgradeExceptionCodeOffset;
-    @Value("${snowflake.exception_code_offset.spring_telqos}")
+    @Value("${com.dwarfeng.sfds.snowflake.exception_code_offset.spring_telqos}")
     private int springTelqosExceptionCodeOffset;
-    @Value("${snowflake.exception_code_offset.spring_terminator}")
+    @Value("${com.dwarfeng.sfds.snowflake.exception_code_offset.spring_terminator}")
     private int springTerminatorExceptionCodeOffset;
 
     @PostConstruct
