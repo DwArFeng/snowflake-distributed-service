@@ -4,6 +4,9 @@
 
 ### 功能构建
 
+- Wiki 更新。
+  - docs/wiki/zh-CN/CompileBySource.md。
+
 - `snowflake-distributed-service-distribute` 模块新增。
   - 新增 `snowflake-distributed-service-distribute` 模块，负责各个构型的产物分发。
 
