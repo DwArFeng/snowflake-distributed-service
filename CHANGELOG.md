@@ -5,6 +5,7 @@
 ### 功能构建
 
 - Wiki 结构调整。
+  - docs/wiki/zh-CN/OptDirectory.md。
   - docs/wiki/zh-CN/ConfDirectory.md。
 
 - Wiki 更新。
