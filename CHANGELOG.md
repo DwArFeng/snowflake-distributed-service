@@ -4,6 +4,9 @@
 
 ### 功能构建
 
+- Wiki 更新。
+  - docs/wiki/zh-CN/ConfDirectory.md。
+
 - 依赖升级。
   - 升级 `subgrade` 依赖版本为 `1.8.3.a` 以规避漏洞。
   - 升级 `spring-telqos` 依赖版本为 `2.0.2.a` 以规避漏洞。
