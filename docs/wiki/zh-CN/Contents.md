@@ -27,6 +27,7 @@
 ### 配置
 
 - [Conf Directory](./ConfDirectory.md) - 配置目录说明，详细说明如何配置本项目，即 `conf/` 目录下的内容。
+- [Twepoch Configuration](./TwepochConfiguration.md) - 起始时间戳配置，说明 Snowflake TWEPOCH 配置项、分布式一致性要求及修改风险。
 - [Opt Directory](./OptDirectory.md) - 可选配置目录说明，详细介绍了本项目的可选配置，即 `opt/` 目录下的内容。
 
 ### 脚本
