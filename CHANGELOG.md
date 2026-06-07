@@ -10,7 +10,7 @@
 
 ### Bug 修复
 
-- (无)
+- 修正 `snowflake-distributed-service-node-all-he` 模块中错误的 dubbo 应用名称。
 
 ### 功能移除
 
