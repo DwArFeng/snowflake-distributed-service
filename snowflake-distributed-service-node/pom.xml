@@ -9,8 +9,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>snowflake-distributed-service</artifactId>
         <groupId>com.dwarfeng</groupId>
+        <artifactId>snowflake-distributed-service</artifactId>
         <version>2.0.2.a-SNAPSHOT</version>
     </parent>
 
