@@ -1,17 +1,17 @@
 package com.dwarfeng.sfds.api.integration.subgrade;
 
-import com.dwarfeng.dutil.basic.io.CT;
-import com.dwarfeng.subgrade.stack.exception.GenerateException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.dwarfeng.dutil.basic.sdk.io.CT;
+import com.dwarfeng.subgrade.basic.stack.exception.GenerateException;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring/application-context*.xml")
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(locations = "classpath:com/dwarfeng/sfds/api/spring/application-context*.xml")
 public class SnowflakeLongGeneratorTest {
 
     @Autowired

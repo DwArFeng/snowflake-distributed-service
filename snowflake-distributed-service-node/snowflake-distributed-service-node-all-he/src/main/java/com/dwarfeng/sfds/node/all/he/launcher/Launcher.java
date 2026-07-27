@@ -10,9 +10,9 @@ import com.dwarfeng.springterminator.sdk.util.ApplicationUtil;
  */
 public class Launcher {
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         ApplicationUtil.launch(
-                "classpath:spring/application-context*.xml",
+                "classpath:com/dwarfeng/sfds/node/all/he/spring/application-context*.xml",
                 "file:opt/opt*.xml",
                 "file:optext/opt*.xml"
         );

@@ -1,5 +1,7 @@
 package com.dwarfeng.sfds.impl.service.telqos;
 
+import com.dwarfeng.sfds.impl.internal.i18n.ImplMessageKey;
+import com.dwarfeng.sfds.impl.internal.i18n.ImplMessages;
 import com.dwarfeng.sfds.stack.service.GenerateQosService;
 import com.dwarfeng.springtelqos.sdk.command.CliCommand;
 import com.dwarfeng.springtelqos.sdk.configuration.TelqosCommand;
@@ -58,7 +60,7 @@ public class GenerateCommand extends CliCommand {
 
     @Override
     protected DescriptionProvider provideDescriptionProvider() {
-        return context -> "生成 ID 并导出到 CSV 操作";
+        return context -> ImplMessages.message(ImplMessageKey.TELQOS_GENERATE_DESCRIPTION);
     }
 
     @Override
@@ -80,13 +82,18 @@ public class GenerateCommand extends CliCommand {
     protected List<Option> provideOptions() {
         List<Option> list = new ArrayList<>();
 
-        list.add(Option.builder(COMMAND_OPTION_GENERATE).optionalArg(true).hasArg(false).desc("生成 ID").build());
+        list.add(Option.builder(COMMAND_OPTION_GENERATE).optionalArg(true).hasArg(false)
+                .desc(ImplMessages.message(ImplMessageKey.TELQOS_GENERATE_OPTION_GENERATE)).get());
 
         list.add(
-                Option.builder(COMMAND_SUB_OPTION_SIZE).desc("生成数量").hasArg().type(Number.class).build()
+                Option.builder(COMMAND_SUB_OPTION_SIZE)
+                        .desc(ImplMessages.message(ImplMessageKey.TELQOS_GENERATE_OPTION_SIZE))
+                        .hasArg().type(Number.class).get()
         );
         list.add(
-                Option.builder(COMMAND_SUB_OPTION_FILE).desc("生成的 CSV 的路径").hasArg().type(String.class).build()
+                Option.builder(COMMAND_SUB_OPTION_FILE)
+                        .desc(ImplMessages.message(ImplMessageKey.TELQOS_GENERATE_OPTION_FILE))
+                        .hasArg().type(String.class).get()
         );
         return list;
     }
@@ -105,7 +112,7 @@ public class GenerateCommand extends CliCommand {
                 handleGenerate(context, cmd);
                 break;
             default:
-                throw new IllegalStateException("不应该执行到此处, 请联系开发人员");
+                throw new IllegalStateException(ImplMessages.message(ImplMessageKey.TELQOS_INTERNAL_UNREACHABLE));
         }
     }
 
@@ -122,14 +129,14 @@ public class GenerateCommand extends CliCommand {
 
     private int parseSize(CommandExecutor.Context context, CommandLine cmd) throws Exception {
         if (cmd.hasOption(COMMAND_SUB_OPTION_SIZE)) {
-            Number sizeNumber = (Number) cmd.getParsedOptionValue(COMMAND_SUB_OPTION_SIZE);
+            Number sizeNumber = cmd.getParsedOptionValue(COMMAND_SUB_OPTION_SIZE);
             if (Objects.isNull(sizeNumber)) {
                 return DEFAULT_SIZE;
             } else {
                 return sizeNumber.intValue();
             }
         } else {
-            context.sendMessage("请输入需要生成的 ID 的数量:");
+            context.sendMessage(ImplMessages.message(ImplMessageKey.TELQOS_GENERATE_PROMPT_SIZE));
             return Integer.parseInt(context.receiveMessage());
         }
     }
@@ -137,7 +144,7 @@ public class GenerateCommand extends CliCommand {
     private void print2File(List<Long> longs, CommandExecutor.Context context, CommandLine cmd) throws Exception {
         File file;
 
-        String optionFileName = (String) cmd.getParsedOptionValue(COMMAND_SUB_OPTION_FILE);
+        String optionFileName = cmd.getParsedOptionValue(COMMAND_SUB_OPTION_FILE);
         if (Objects.nonNull(optionFileName)) {
             file = new File((optionFileName));
             if (file.isDirectory()) {
@@ -149,12 +156,14 @@ public class GenerateCommand extends CliCommand {
 
         if (file.exists()) {
             while (true) {
-                context.sendMessage("文件 \"" + file.getName() + "\" 已经存在，是否覆盖？ Y/N");
+                context.sendMessage(ImplMessages.message(
+                        ImplMessageKey.TELQOS_GENERATE_PROMPT_OVERWRITE, file.getName()
+                ));
                 String option = context.receiveMessage().toUpperCase();
                 if (Objects.equals(option, "Y")) {
                     break;
                 } else if (Objects.equals(option, "N")) {
-                    context.sendMessage("操作已取消！");
+                    context.sendMessage(ImplMessages.message(ImplMessageKey.TELQOS_GENERATE_OPERATION_CANCELLED));
                     return;
                 }
             }
@@ -170,9 +179,12 @@ public class GenerateCommand extends CliCommand {
             }
             bw.flush();
         }
-        context.sendMessage("CSV 文件已导出至 " + file.getAbsolutePath());
+        context.sendMessage(ImplMessages.message(
+                ImplMessageKey.TELQOS_GENERATE_EXPORT_SUCCEEDED, file.getAbsolutePath()
+        ));
     }
 
+    @SuppressWarnings("StringConcatenationInFormatCall")
     private void print2Screen(List<Long> longs, CommandExecutor.Context context) throws Exception {
         int digits = digits(longs.size() - 1);
         for (int i = 0; i < longs.size(); i++) {

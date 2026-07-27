@@ -1,5 +1,7 @@
 package com.dwarfeng.sfds.impl.service.telqos;
 
+import com.dwarfeng.sfds.impl.internal.i18n.ImplMessageKey;
+import com.dwarfeng.sfds.impl.internal.i18n.ImplMessages;
 import com.dwarfeng.sfds.stack.bean.dto.ResolveResult;
 import com.dwarfeng.sfds.stack.service.ResolveQosService;
 import com.dwarfeng.springtelqos.sdk.command.CliCommand;
@@ -48,7 +50,7 @@ public class ResolveCommand extends CliCommand {
 
     @Override
     protected DescriptionProvider provideDescriptionProvider() {
-        return context -> "解析 ID 操作";
+        return context -> ImplMessages.message(ImplMessageKey.TELQOS_RESOLVE_DESCRIPTION);
     }
 
     @Override
@@ -69,10 +71,13 @@ public class ResolveCommand extends CliCommand {
     protected List<Option> provideOptions() {
         List<Option> list = new ArrayList<>();
 
-        list.add(Option.builder(COMMAND_OPTION_RESOLVE).optionalArg(true).hasArg(false).desc("解析 ID").build());
+        list.add(Option.builder(COMMAND_OPTION_RESOLVE).optionalArg(true).hasArg(false)
+                .desc(ImplMessages.message(ImplMessageKey.TELQOS_RESOLVE_OPTION_RESOLVE)).get());
 
         list.add(
-                Option.builder(COMMAND_SUB_OPTION_ID).desc("待解析的 ID").hasArg().type(Number.class).build()
+                Option.builder(COMMAND_SUB_OPTION_ID)
+                        .desc(ImplMessages.message(ImplMessageKey.TELQOS_RESOLVE_OPTION_ID))
+                        .hasArg().type(Number.class).get()
         );
         return list;
     }
@@ -91,7 +96,7 @@ public class ResolveCommand extends CliCommand {
                 handleResolve(context, cmd);
                 break;
             default:
-                throw new IllegalStateException("不应该执行到此处, 请联系开发人员");
+                throw new IllegalStateException(ImplMessages.message(ImplMessageKey.TELQOS_INTERNAL_UNREACHABLE));
         }
     }
 
@@ -103,31 +108,45 @@ public class ResolveCommand extends CliCommand {
 
     private long parseId(CommandExecutor.Context context, CommandLine cmd) throws Exception {
         if (cmd.hasOption(COMMAND_SUB_OPTION_ID)) {
-            Number idNumber = (Number) cmd.getParsedOptionValue(COMMAND_SUB_OPTION_ID);
+            Number idNumber = cmd.getParsedOptionValue(COMMAND_SUB_OPTION_ID);
             if (Objects.isNull(idNumber)) {
-                context.sendMessage("请输入待解析的 ID:");
+                context.sendMessage(ImplMessages.message(ImplMessageKey.TELQOS_RESOLVE_PROMPT_ID));
                 return Long.parseLong(context.receiveMessage());
             } else {
                 return idNumber.longValue();
             }
         } else {
-            context.sendMessage("请输入待解析的 ID:");
+            context.sendMessage(ImplMessages.message(ImplMessageKey.TELQOS_RESOLVE_PROMPT_ID));
             return Long.parseLong(context.receiveMessage());
         }
     }
 
     private void printResult(ResolveResult result, CommandExecutor.Context context) throws Exception {
         if (result == null) {
-            context.sendMessage("解析结果: null");
+            context.sendMessage(ImplMessages.message(ImplMessageKey.TELQOS_RESOLVE_RESULT_NULL));
         } else {
-            context.sendMessage("解析结果: ");
-            context.sendMessage("  originalId: " + result.getOriginalId());
-            context.sendMessage("  sequence: " + result.getSequence());
-            context.sendMessage("  workerId: " + result.getWorkerId());
-            context.sendMessage("  datacenterId: " + result.getDatacenterId());
-            context.sendMessage("  timestampDelta: " + result.getTimestampDelta());
-            context.sendMessage("  timestamp: " + result.getTimestamp());
-            context.sendMessage("  twepoch: " + result.getTwepoch());
+            context.sendMessage(ImplMessages.message(ImplMessageKey.TELQOS_RESOLVE_RESULT_HEADER));
+            context.sendMessage(ImplMessages.message(
+                    ImplMessageKey.TELQOS_RESOLVE_RESULT_ORIGINAL_ID, result.getOriginalId()
+            ));
+            context.sendMessage(ImplMessages.message(
+                    ImplMessageKey.TELQOS_RESOLVE_RESULT_SEQUENCE, result.getSequence()
+            ));
+            context.sendMessage(ImplMessages.message(
+                    ImplMessageKey.TELQOS_RESOLVE_RESULT_WORKER_ID, result.getWorkerId()
+            ));
+            context.sendMessage(ImplMessages.message(
+                    ImplMessageKey.TELQOS_RESOLVE_RESULT_DATACENTER_ID, result.getDatacenterId()
+            ));
+            context.sendMessage(ImplMessages.message(
+                    ImplMessageKey.TELQOS_RESOLVE_RESULT_TIMESTAMP_DELTA, result.getTimestampDelta()
+            ));
+            context.sendMessage(ImplMessages.message(
+                    ImplMessageKey.TELQOS_RESOLVE_RESULT_TIMESTAMP, result.getTimestamp()
+            ));
+            context.sendMessage(ImplMessages.message(
+                    ImplMessageKey.TELQOS_RESOLVE_RESULT_TWEPOCH, result.getTwepoch()
+            ));
         }
     }
 }

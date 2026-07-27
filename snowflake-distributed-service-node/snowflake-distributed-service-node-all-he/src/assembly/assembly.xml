@@ -40,7 +40,7 @@
         </fileSet>
         <fileSet>
             <outputDirectory>bin</outputDirectory>
-            <directory>src/main/resources/binres</directory>
+            <directory>src/main/resources/com/dwarfeng/sfds/node/all/he/binres</directory>
             <includes>
                 <include>*.sh</include>
             </includes>
@@ -50,7 +50,7 @@
         </fileSet>
         <fileSet>
             <outputDirectory>bin</outputDirectory>
-            <directory>src/main/resources/binres</directory>
+            <directory>src/main/resources/com/dwarfeng/sfds/node/all/he/binres</directory>
             <includes>
                 <include>*.bat</include>
             </includes>
@@ -60,7 +60,7 @@
         </fileSet>
         <fileSet>
             <outputDirectory>conf/dubbo</outputDirectory>
-            <directory>src/main/resources/dubbo</directory>
+            <directory>src/main/resources/com/dwarfeng/sfds/node/all/he/dubbo</directory>
             <includes>
                 <include>*.properties</include>
             </includes>
@@ -68,7 +68,7 @@
         </fileSet>
         <fileSet>
             <outputDirectory>conf/snowflake</outputDirectory>
-            <directory>src/main/resources/snowflake</directory>
+            <directory>src/main/resources/com/dwarfeng/sfds/node/all/he/snowflake</directory>
             <includes>
                 <include>*.properties</include>
             </includes>
@@ -76,18 +76,15 @@
         </fileSet>
         <fileSet>
             <outputDirectory>conf/telqos</outputDirectory>
-            <directory>src/main/resources/telqos</directory>
+            <directory>src/main/resources/com/dwarfeng/sfds/node/all/he/telqos</directory>
             <includes>
                 <include>*.properties</include>
             </includes>
-            <excludes>
-                <exclude>banner.txt</exclude>
-            </excludes>
             <fileMode>0644</fileMode>
         </fileSet>
         <fileSet>
             <outputDirectory>conf/logging</outputDirectory>
-            <directory>src/main/resources/logging</directory>
+            <directory>src/main/resources/com/dwarfeng/sfds/node/all/he/logging</directory>
             <includes>
                 <include>README.md</include>
                 <include>*.xml</include>
@@ -96,7 +93,7 @@
         </fileSet>
         <fileSet>
             <outputDirectory>opt</outputDirectory>
-            <directory>src/main/resources/opt</directory>
+            <directory>src/main/resources/com/dwarfeng/sfds/node/all/he/opt</directory>
             <includes>
                 <include>README.md</include>
                 <include>*.xml</include>
@@ -105,7 +102,7 @@
         </fileSet>
         <fileSet>
             <outputDirectory>libext</outputDirectory>
-            <directory>src/main/resources/libext</directory>
+            <directory>src/main/resources/com/dwarfeng/sfds/node/all/he/libext</directory>
             <includes>
                 <include>README.md</include>
                 <include>*.xml</include>
@@ -114,7 +111,7 @@
         </fileSet>
         <fileSet>
             <outputDirectory>optext</outputDirectory>
-            <directory>src/main/resources/optext</directory>
+            <directory>src/main/resources/com/dwarfeng/sfds/node/all/he/optext</directory>
             <includes>
                 <include>README.md</include>
                 <include>*.xml</include>
@@ -123,7 +120,7 @@
         </fileSet>
         <fileSet>
             <outputDirectory>confext</outputDirectory>
-            <directory>src/main/resources/confext</directory>
+            <directory>src/main/resources/com/dwarfeng/sfds/node/all/he/confext</directory>
             <includes>
                 <include>README.md</include>
                 <include>*.properties</include>

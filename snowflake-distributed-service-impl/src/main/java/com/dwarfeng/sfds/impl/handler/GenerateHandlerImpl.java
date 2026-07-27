@@ -1,18 +1,19 @@
 package com.dwarfeng.sfds.impl.handler;
 
+import com.dwarfeng.sfds.impl.internal.i18n.ImplMessageKey;
+import com.dwarfeng.sfds.impl.internal.i18n.ImplMessages;
 import com.dwarfeng.sfds.sdk.util.SnowflakeConstants;
-import com.dwarfeng.sfds.sdk.util.SystemPropertyConstants;
 import com.dwarfeng.sfds.stack.exception.ClockMovedBackwardsException;
 import com.dwarfeng.sfds.stack.handler.GenerateHandler;
-import com.dwarfeng.subgrade.sdk.exception.HandlerExceptionHelper;
-import com.dwarfeng.subgrade.stack.bean.key.LongIdKey;
-import com.dwarfeng.subgrade.stack.exception.HandlerException;
+import com.dwarfeng.subgrade.basic.sdk.exception.HandlerExceptionHelper;
+import com.dwarfeng.subgrade.basic.stack.bean.key.LongIdKey;
+import com.dwarfeng.subgrade.basic.stack.exception.HandlerException;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
  *
  * <p>
  * <b>Twitter_Snowflake</b><br>
- * SnowFlake 的结构如下（每部分用-分开）：<br>
+ * Snowflake 的结构如下（每部分用-分开）：<br>
  * <code>0 - 0000000000 0000000000 0000000000 0000000000 0 - 00000 - 00000 - 000000000000 </code>
  * <ul>
  *     <li>
@@ -44,8 +45,8 @@ import java.util.stream.Collectors;
  * 以上比特位加起来刚好 64 位，为一个 {@link Long} 型。
  *
  * <p>
- * SnowFlake 的优点是，整体上按照时间自增排序，并且整个分布式系统内不会产生 ID 碰撞 （由数据中心 ID 和机器 ID 作区分），
- * 并且效率较高，经测试，SnowFlake 每秒能够产生 26 万 ID 左右。
+ * Snowflake 的优点是，整体上按照时间自增排序，并且整个分布式系统内不会产生 ID 碰撞 （由数据中心 ID 和机器 ID 作区分），
+ * 并且效率较高，经测试，Snowflake 每秒能够产生 26 万 ID 左右。
  *
  * @author DwArFeng
  * @since 1.5.0
@@ -54,13 +55,6 @@ import java.util.stream.Collectors;
 public class GenerateHandlerImpl implements GenerateHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GenerateHandlerImpl.class);
-
-    private static final boolean USE_DEPRECATED_CLOCK_MOVED_BACKWARDS_EXCEPTION = Boolean.parseBoolean(
-            System.getProperty(
-                    SystemPropertyConstants.USE_DEPRECATED_STACK_SERVICE_EXCEPTION,
-                    Boolean.FALSE.toString()
-            )
-    );
 
     /**
      * 工作机器 ID (0~31)。
@@ -99,15 +93,21 @@ public class GenerateHandlerImpl implements GenerateHandler {
     @PostConstruct
     public void paramCheck() {
         if (workerId > SnowflakeConstants.MAX_WORKER_ID || workerId < 0) {
-            LOGGER.error("Worker ID 不能大于 {} 或者小于 0, 将抛出异常...", SnowflakeConstants.MAX_WORKER_ID);
-            throw new IllegalArgumentException(String.format(
-                    "worker Id can't be greater than %d or less than 0", SnowflakeConstants.MAX_WORKER_ID
+            LOGGER.error(ImplMessages.message(
+                    ImplMessageKey.GENERATE_HANDLER_WORKER_ID_INVALID_LOG, SnowflakeConstants.MAX_WORKER_ID
+            ));
+            throw new IllegalArgumentException(ImplMessages.message(
+                    ImplMessageKey.GENERATE_HANDLER_WORKER_ID_INVALID_DETAIL, SnowflakeConstants.MAX_WORKER_ID
             ));
         }
         if (datacenterId > SnowflakeConstants.MAX_DATACENTER_ID || datacenterId < 0) {
-            LOGGER.error("Datacenter ID 不能大于 {} 或者小于 0, 将抛出异常...", SnowflakeConstants.MAX_DATACENTER_ID);
-            throw new IllegalArgumentException(String.format(
-                    "datacenter Id can't be greater than %d or less than 0", SnowflakeConstants.MAX_DATACENTER_ID
+            LOGGER.error(ImplMessages.message(
+                    ImplMessageKey.GENERATE_HANDLER_DATACENTER_ID_INVALID_LOG,
+                    SnowflakeConstants.MAX_DATACENTER_ID
+            ));
+            throw new IllegalArgumentException(ImplMessages.message(
+                    ImplMessageKey.GENERATE_HANDLER_DATACENTER_ID_INVALID_DETAIL,
+                    SnowflakeConstants.MAX_DATACENTER_ID
             ));
         }
     }
@@ -153,8 +153,10 @@ public class GenerateHandlerImpl implements GenerateHandler {
 
         // 如果当前时间小于上一次 ID 生成的时间戳，说明系统时钟回退过这个时候应当抛出异常。
         if (timestamp < lastTimestamp) {
-            LOGGER.warn("检测到系统时钟回退, 服务将会在 {} 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp);
-            throwClockMovedBackwardsException(lastTimestamp - timestamp);
+            LOGGER.warn(ImplMessages.message(
+                    ImplMessageKey.GENERATE_HANDLER_CLOCK_MOVED_BACKWARDS_LOG, lastTimestamp - timestamp
+            ));
+            throw new ClockMovedBackwardsException(lastTimestamp - timestamp);
         }
 
         // 如果是同一时间生成的，则进行毫秒内序列。
@@ -186,8 +188,10 @@ public class GenerateHandlerImpl implements GenerateHandler {
 
         // 如果当前时间小于上一次 ID 生成的时间戳，说明系统时钟回退过这个时候应当抛出异常。
         if (timestamp < lastTimestamp) {
-            LOGGER.warn("检测到系统时钟回退, 服务将会在 {} 毫秒之内拒绝服务, 将会抛出异常...", lastTimestamp - timestamp);
-            throwClockMovedBackwardsException(lastTimestamp - timestamp);
+            LOGGER.warn(ImplMessages.message(
+                    ImplMessageKey.GENERATE_HANDLER_CLOCK_MOVED_BACKWARDS_LOG, lastTimestamp - timestamp
+            ));
+            throw new ClockMovedBackwardsException(lastTimestamp - timestamp);
         }
 
         List<Long> result = new ArrayList<>(number);
@@ -221,28 +225,6 @@ public class GenerateHandlerImpl implements GenerateHandler {
 
         // 移位并通过或运算拼到一起组成 64 位的 ID。
         return result;
-    }
-
-    /**
-     * 抛出时钟回拨异常。
-     *
-     * <p>
-     * 该方法通过判断项目的系统参数，决定抛出新的 {@link ClockMovedBackwardsException} 或是过时的
-     * {@link com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException}。
-     *
-     * @param duration 时钟回拨的持续时间（毫秒）。
-     * @throws ClockMovedBackwardsException                                           新的时钟回拨异常。
-     * @throws com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException 过时的时钟回拨异常。
-     */
-    // 为了兼容旧版本，使用 @SuppressWarnings 注解来抑制过时警告。
-    @SuppressWarnings("deprecation")
-    private void throwClockMovedBackwardsException(long duration) throws
-            ClockMovedBackwardsException, com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException {
-        if (USE_DEPRECATED_CLOCK_MOVED_BACKWARDS_EXCEPTION) {
-            throw new com.dwarfeng.sfds.stack.service.exception.ClockMovedBackwardsException(duration);
-        } else {
-            throw new ClockMovedBackwardsException(duration);
-        }
     }
 
     /**

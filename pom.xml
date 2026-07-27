@@ -15,101 +15,123 @@
     <packaging>pom</packaging>
 
     <name>snowflake-distributed-service</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/DwArFeng/snowflake-distributed-service</url>
 
     <properties>
         <!-- 进行工程编码声明 -->
         <!-- 进行 JDK 版本声明 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.release>25</maven.compiler.release>
         <!-- 进行资源的统一声明 -->
         <!-- 进行版本声明 -->
         <!-- 集中定义依赖版本号 -->
-        <javassist.version>3.23.2-GA</javassist.version>
-        <junit.version>4.13.2</junit.version>
-        <spring.version>5.3.39</spring.version>
-        <fastjson.version>1.2.84</fastjson.version>
-        <gson.version>2.8.9</gson.version>
-        <snakeyaml.version>2.0</snakeyaml.version>
-        <dubbo.version>2.7.23</dubbo.version>
+        <jetbrains-annotations.version>26.1.0</jetbrains-annotations.version>
+        <junit.version>6.1.2</junit.version>
+        <slf4j.version>2.0.18</slf4j.version>
+        <log4j2.version>2.26.1</log4j2.version>
+        <commons-logging.version>1.3.5</commons-logging.version>
+        <jakarta-annotation.version>3.0.0</jakarta-annotation.version>
+        <commons-cli.version>1.11.0</commons-cli.version>
+        <commons-lang3.version>3.20.0</commons-lang3.version>
+        <spring-framework.version>7.0.8</spring-framework.version>
+        <micrometer.version>1.17.0</micrometer.version>
         <netty.version>4.2.9.Final</netty.version>
         <zookeeper.version>3.9.5</zookeeper.version>
-        <guava.version>32.0.1-jre</guava.version>
-        <curator.version>4.3.0</curator.version>
-        <aspectj.version>1.9.7</aspectj.version>
-        <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
-        <slf4j.version>1.7.36</slf4j.version>
-        <log4j2.version>2.25.4</log4j2.version>
-        <mapstruct.version>1.5.5.Final</mapstruct.version>
-        <dutil.version>0.4.2.a-beta</dutil.version>
-        <subgrade.version>1.8.4.a</subgrade.version>
-        <spring-telqos.version>2.0.3.a</spring-telqos.version>
-        <spring-terminator.version>2.0.3.a</spring-terminator.version>
+        <guava.version>33.6.0-jre</guava.version>
+        <jackson.version>2.21.2</jackson.version>
+        <curator.version>5.9.0</curator.version>
+        <dubbo.version>3.3.6</dubbo.version>
+        <fastjson2.version>2.0.61</fastjson2.version>
+        <aspectjweaver.version>1.9.25.1</aspectjweaver.version>
+        <mapstruct.version>1.6.3</mapstruct.version>
+        <dutil.version>2.0.1.a</dutil.version>
+        <subgrade.version>2.0.0.a</subgrade.version>
+        <spring-telqos.version>3.0.0.a</spring-telqos.version>
+        <spring-terminator.version>3.0.0.a</spring-terminator.version>
         <!-- Maven 插件版本声明 -->
-        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
+        <maven-resources-plugin.version>3.4.0</maven-resources-plugin.version>
+        <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
+        <maven-source-plugin.version>3.4.0</maven-source-plugin.version>
+        <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
+        <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
+        <maven-dependency-plugin.version>3.9.0</maven-dependency-plugin.version>
         <maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
-        <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
+        <!-- Surefire 参数定义 -->
+        <project.surefire.skip>true</project.surefire.skip>
     </properties>
 
     <!-- 声明资源的坐标 -->
     <!-- 只定义依赖的版本，并不实际依赖 -->
     <dependencyManagement>
         <dependencies>
-            <!-- Javassist 组件 -->
+            <!-- JetBrains 静态注解 -->
             <dependency>
-                <groupId>org.javassist</groupId>
-                <artifactId>javassist</artifactId>
-                <version>${javassist.version}</version>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>${jetbrains-annotations.version}</version>
             </dependency>
-            <!-- AspectJ 组件 -->
+            <!-- 单元测试 -->
             <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjweaver</artifactId>
-                <version>${aspectj.version}</version>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
-            <!-- FastJson Json 处理工具包 -->
+            <!-- 日志处理 -->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
             </dependency>
-            <!-- Gson 组件 -->
             <dependency>
-                <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>${gson.version}</version>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j2.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
-            <!-- Snakeyaml 组件 -->
             <dependency>
-                <groupId>org.yaml</groupId>
-                <artifactId>snakeyaml</artifactId>
-                <version>${snakeyaml.version}</version>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging.version}</version>
             </dependency>
-            <!-- Dubbo 分布式包 -->
+            <!-- Jakarta Annotation -->
             <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>${dubbo.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>gson</artifactId>
-                        <groupId>com.google.code.gson</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>snakeyaml</artifactId>
-                        <groupId>org.yaml</groupId>
-                    </exclusion>
-                </exclusions>
+                <groupId>jakarta.annotation</groupId>
+                <artifactId>jakarta.annotation-api</artifactId>
+                <version>${jakarta-annotation.version}</version>
             </dependency>
-            <!-- Netty 网络连接包 -->
+            <!-- Apache Commons 组件 -->
+            <dependency>
+                <groupId>commons-cli</groupId>
+                <artifactId>commons-cli</artifactId>
+                <version>${commons-cli.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <!-- Spring 框架 -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring-framework.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Micrometer 可观测性组件 -->
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-observation</artifactId>
+                <version>${micrometer.version}</version>
+            </dependency>
+            <!-- Netty 网络框架 -->
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
@@ -147,93 +169,75 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!-- Guava 组件 -->
+            <!-- Guava 工具库 -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
-            <!-- Curator 框架 -->
+            <!-- Jackson 组件 -->
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Curator 组件 -->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
             <dependency>
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-recipes</artifactId>
                 <version>${curator.version}</version>
                 <exclusions>
                     <exclusion>
-                        <artifactId>log4j</artifactId>
-                        <groupId>log4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>zookeeper</artifactId>
-                        <groupId>org.apache.zookeeper</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>guava</artifactId>
                         <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!-- 单元测试 -->
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- 日志处理 -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>${log4j2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-slf4j-impl</artifactId>
-                <version>${log4j2.version}</version>
-            </dependency>
-            <!-- Spring -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context-support</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
-                <version>${spring.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- Hibernate 验证器 -->
-            <dependency>
-                <groupId>org.hibernate.validator</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>${hibernate-validator.version}</version>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-x-discovery</artifactId>
+                <version>${curator.version}</version>
                 <exclusions>
                     <exclusion>
-                        <artifactId>jboss-logging</artifactId>
-                        <groupId>org.jboss.logging</groupId>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-databind</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <!-- Dubbo 微服务框架 -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <!-- FastJson Json 工具 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+            <!-- AspectJ 组件 -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjweaver.version}</version>
             </dependency>
             <!-- Mapstruct 框架 -->
             <dependency>
@@ -241,7 +245,12 @@
                 <artifactId>mapstruct</artifactId>
                 <version>${mapstruct.version}</version>
             </dependency>
-            <!-- Dutil 组件 -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <!-- Dutil 工具库 -->
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>dutil-basic</artifactId>
@@ -250,102 +259,18 @@
             <!-- Subgrade 组件 -->
             <dependency>
                 <groupId>com.dwarfeng</groupId>
-                <artifactId>subgrade-stack</artifactId>
+                <artifactId>subgrade-basic</artifactId>
                 <version>${subgrade.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.dwarfeng</groupId>
-                <artifactId>subgrade-sdk</artifactId>
+                <artifactId>subgrade-aop</artifactId>
                 <version>${subgrade.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>jaxb-api</artifactId>
-                        <groupId>javax.xml.bind</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>spring-orm</artifactId>
-                        <groupId>org.springframework</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>hibernate-core</artifactId>
-                        <groupId>org.hibernate</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>hibernate-validator</artifactId>
-                        <groupId>org.hibernate.validator</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>dozer</artifactId>
-                        <groupId>net.sf.dozer</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>dozer-spring</artifactId>
-                        <groupId>net.sf.dozer</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>fastjson</artifactId>
-                        <groupId>com.alibaba</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>mybatis</artifactId>
-                        <groupId>org.mybatis</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>mybatis-spring</artifactId>
-                        <groupId>org.mybatis</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>javax.servlet-api</artifactId>
-                        <groupId>javax.servlet</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>jedis</artifactId>
-                        <groupId>redis.clients</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>spring-data-redis</artifactId>
-                        <groupId>org.springframework.data</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>kafka-clients</artifactId>
-                        <groupId>org.apache.kafka</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>spring-kafka</artifactId>
-                        <groupId>org.springframework.kafka</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.mapstruct</groupId>
-                        <artifactId>mapstruct</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.dwarfeng</groupId>
-                <artifactId>subgrade-impl</artifactId>
+                <artifactId>subgrade-web</artifactId>
                 <version>${subgrade.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>commons-logging</artifactId>
-                        <groupId>commons-logging</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>dutil-develop</artifactId>
-                        <groupId>com.dwarfeng</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>dozer</artifactId>
-                        <groupId>net.sf.dozer</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>dozer-spring</artifactId>
-                        <groupId>net.sf.dozer</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.mapstruct</groupId>
-                        <artifactId>mapstruct</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <!-- Spring-telqos 组件 -->
             <dependency>
@@ -372,38 +297,28 @@
             <!-- 程序自身组件 -->
             <dependency>
                 <groupId>com.dwarfeng</groupId>
+                <artifactId>snowflake-distributed-service-base</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dwarfeng</groupId>
                 <artifactId>snowflake-distributed-service-stack</artifactId>
-                <version>3.0.0.a-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>snowflake-distributed-service-sdk</artifactId>
-                <version>3.0.0.a-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>snowflake-distributed-service-impl</artifactId>
-                <version>3.0.0.a-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dwarfeng</groupId>
-                <artifactId>snowflake-distributed-service-node</artifactId>
-                <version>3.0.0.a-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dwarfeng</groupId>
-                <artifactId>snowflake-distributed-service-node-all-he</artifactId>
-                <version>3.0.0.a-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dwarfeng</groupId>
-                <artifactId>snowflake-distributed-service-distribute</artifactId>
-                <version>3.0.0.a-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.dwarfeng</groupId>
                 <artifactId>snowflake-distributed-service-api</artifactId>
-                <version>3.0.0.a-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -418,8 +333,38 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -431,26 +376,17 @@
                     <artifactId>maven-assembly-plugin</artifactId>
                     <version>${maven-assembly-plugin.version}</version>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven-deploy-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
 
     <modules>
-        <module>snowflake-distributed-service-sdk</module>
+        <module>snowflake-distributed-service-base</module>
         <module>snowflake-distributed-service-stack</module>
+        <module>snowflake-distributed-service-sdk</module>
         <module>snowflake-distributed-service-impl</module>
-        <module>snowflake-distributed-service-node</module>
         <module>snowflake-distributed-service-api</module>
+        <module>snowflake-distributed-service-node</module>
         <module>snowflake-distributed-service-distribute</module>
     </modules>
 </project>

@@ -1,9 +1,10 @@
 package com.dwarfeng.sfds.sdk.bean.dto;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson2.annotation.JSONField;
 import com.dwarfeng.sfds.stack.bean.dto.ResolveResult;
-import com.dwarfeng.subgrade.stack.bean.Bean;
+import com.dwarfeng.subgrade.basic.stack.bean.Bean;
 
+import java.io.Serial;
 import java.util.Objects;
 
 /**
@@ -14,7 +15,8 @@ import java.util.Objects;
  */
 public class FastJsonResolveResult implements Bean {
 
-    private static final long serialVersionUID = 661685003462265140L;
+    @Serial
+    private static final long serialVersionUID = 3444722586298903606L;
 
     public static FastJsonResolveResult of(ResolveResult resolveResult) {
         if (Objects.isNull(resolveResult)) {

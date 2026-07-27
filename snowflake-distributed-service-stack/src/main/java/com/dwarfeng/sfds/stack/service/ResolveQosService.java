@@ -1,8 +1,8 @@
 package com.dwarfeng.sfds.stack.service;
 
 import com.dwarfeng.sfds.stack.bean.dto.ResolveResult;
-import com.dwarfeng.subgrade.stack.exception.ServiceException;
-import com.dwarfeng.subgrade.stack.service.Service;
+import com.dwarfeng.subgrade.basic.stack.exception.ServiceException;
+import com.dwarfeng.subgrade.basic.stack.service.Service;
 
 /**
  * 解析 QOS 服务。

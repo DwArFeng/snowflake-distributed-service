@@ -3,10 +3,10 @@ package com.dwarfeng.sfds.sdk.bean;
 import com.dwarfeng.sfds.sdk.bean.dto.FastJsonResolveResult;
 import com.dwarfeng.sfds.sdk.bean.dto.JSFixedFastJsonResolveResult;
 import com.dwarfeng.sfds.stack.bean.dto.ResolveResult;
-import com.dwarfeng.subgrade.sdk.bean.key.FastJsonLongIdKey;
-import com.dwarfeng.subgrade.sdk.bean.key.JSFixedFastJsonLongIdKey;
-import com.dwarfeng.subgrade.sdk.bean.key.WebInputLongIdKey;
-import com.dwarfeng.subgrade.stack.bean.key.LongIdKey;
+import com.dwarfeng.subgrade.basic.stack.bean.key.LongIdKey;
+import com.dwarfeng.subgrade.web.sdk.bean.key.FastJsonLongIdKey;
+import com.dwarfeng.subgrade.web.sdk.bean.key.JSFixedFastJsonLongIdKey;
+import com.dwarfeng.subgrade.web.sdk.bean.key.WebInputLongIdKey;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 

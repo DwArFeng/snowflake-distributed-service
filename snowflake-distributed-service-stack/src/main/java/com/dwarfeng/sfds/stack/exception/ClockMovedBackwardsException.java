@@ -1,6 +1,10 @@
 package com.dwarfeng.sfds.stack.exception;
 
-import com.dwarfeng.subgrade.stack.exception.HandlerException;
+import com.dwarfeng.sfds.stack.internal.i18n.StackMessageKey;
+import com.dwarfeng.sfds.stack.internal.i18n.StackMessages;
+import com.dwarfeng.subgrade.basic.stack.exception.HandlerException;
+
+import java.io.Serial;
 
 /**
  * 时钟回拨异常。
@@ -10,6 +14,7 @@ import com.dwarfeng.subgrade.stack.exception.HandlerException;
  */
 public class ClockMovedBackwardsException extends HandlerException {
 
+    @Serial
     private static final long serialVersionUID = -8838967308507708029L;
 
     private final long duration;
@@ -25,6 +30,6 @@ public class ClockMovedBackwardsException extends HandlerException {
 
     @Override
     public String getMessage() {
-        return "Clock moved backwards. Refusing to generate id for " + duration + " milliseconds";
+        return StackMessages.message(StackMessageKey.CLOCK_MOVED_BACKWARDS_DETAIL, duration);
     }
 }

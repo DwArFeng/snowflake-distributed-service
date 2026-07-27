@@ -1,10 +1,11 @@
 package com.dwarfeng.sfds.sdk.bean.dto;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.serializer.ToStringSerializer;
+import com.alibaba.fastjson2.annotation.JSONField;
+import com.alibaba.fastjson2.writer.ObjectWriterImplToString;
 import com.dwarfeng.sfds.stack.bean.dto.ResolveResult;
-import com.dwarfeng.subgrade.stack.bean.Bean;
+import com.dwarfeng.subgrade.basic.stack.bean.Bean;
 
+import java.io.Serial;
 import java.util.Objects;
 
 /**
@@ -15,7 +16,8 @@ import java.util.Objects;
  */
 public class JSFixedFastJsonResolveResult implements Bean {
 
-    private static final long serialVersionUID = -7450792500326448660L;
+    @Serial
+    private static final long serialVersionUID = -6942327244182150951L;
 
     public static JSFixedFastJsonResolveResult of(ResolveResult resolveResult) {
         if (Objects.isNull(resolveResult)) {
@@ -33,25 +35,25 @@ public class JSFixedFastJsonResolveResult implements Bean {
         }
     }
 
-    @JSONField(name = "original_id", ordinal = 1, serializeUsing = ToStringSerializer.class)
+    @JSONField(name = "original_id", ordinal = 1, serializeUsing = ObjectWriterImplToString.class)
     private long originalId;
 
-    @JSONField(name = "sequence", ordinal = 2, serializeUsing = ToStringSerializer.class)
+    @JSONField(name = "sequence", ordinal = 2, serializeUsing = ObjectWriterImplToString.class)
     private long sequence;
 
-    @JSONField(name = "worker_id", ordinal = 3, serializeUsing = ToStringSerializer.class)
+    @JSONField(name = "worker_id", ordinal = 3, serializeUsing = ObjectWriterImplToString.class)
     private long workerId;
 
-    @JSONField(name = "datacenter_id", ordinal = 4, serializeUsing = ToStringSerializer.class)
+    @JSONField(name = "datacenter_id", ordinal = 4, serializeUsing = ObjectWriterImplToString.class)
     private long datacenterId;
 
-    @JSONField(name = "timestamp_delta", ordinal = 5, serializeUsing = ToStringSerializer.class)
+    @JSONField(name = "timestamp_delta", ordinal = 5, serializeUsing = ObjectWriterImplToString.class)
     private long timestampDelta;
 
-    @JSONField(name = "timestamp", ordinal = 6, serializeUsing = ToStringSerializer.class)
+    @JSONField(name = "timestamp", ordinal = 6, serializeUsing = ObjectWriterImplToString.class)
     private long timestamp;
 
-    @JSONField(name = "twepoch", ordinal = 7, serializeUsing = ToStringSerializer.class)
+    @JSONField(name = "twepoch", ordinal = 7, serializeUsing = ObjectWriterImplToString.class)
     private long twepoch;
 
     public JSFixedFastJsonResolveResult() {

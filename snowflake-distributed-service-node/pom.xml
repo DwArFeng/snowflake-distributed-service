@@ -18,7 +18,7 @@
 
     <artifactId>snowflake-distributed-service-node</artifactId>
     <name>snowflake-distributed-service-node</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/DwArFeng/snowflake-distributed-service</url>
 
     <properties>
         <!-- 进行工程编码声明 -->

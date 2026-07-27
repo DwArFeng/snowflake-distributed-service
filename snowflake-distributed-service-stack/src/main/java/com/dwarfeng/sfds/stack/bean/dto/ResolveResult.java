@@ -1,6 +1,8 @@
 package com.dwarfeng.sfds.stack.bean.dto;
 
-import com.dwarfeng.subgrade.stack.bean.dto.Dto;
+import com.dwarfeng.subgrade.basic.stack.bean.dto.Dto;
+
+import java.io.Serial;
 
 /**
  * 解析结果。
@@ -10,7 +12,8 @@ import com.dwarfeng.subgrade.stack.bean.dto.Dto;
  */
 public class ResolveResult implements Dto {
 
-    private static final long serialVersionUID = -1230254312751245673L;
+    @Serial
+    private static final long serialVersionUID = -194548712407691539L;
 
     /**
      * 原始 ID。

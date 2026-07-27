@@ -1,17 +1,19 @@
 package com.dwarfeng.sfds.impl.handler;
 
+import com.dwarfeng.sfds.impl.internal.i18n.ImplMessageKey;
+import com.dwarfeng.sfds.impl.internal.i18n.ImplMessages;
 import com.dwarfeng.sfds.sdk.util.SnowflakeConstants;
 import com.dwarfeng.sfds.stack.bean.dto.ResolveResult;
 import com.dwarfeng.sfds.stack.handler.ResolveHandler;
-import com.dwarfeng.subgrade.sdk.exception.HandlerExceptionHelper;
-import com.dwarfeng.subgrade.stack.bean.key.LongIdKey;
-import com.dwarfeng.subgrade.stack.exception.HandlerException;
+import com.dwarfeng.subgrade.basic.sdk.exception.HandlerExceptionHelper;
+import com.dwarfeng.subgrade.basic.stack.bean.key.LongIdKey;
+import com.dwarfeng.subgrade.basic.stack.exception.HandlerException;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 
 /**
  * 解析处理器实现。
@@ -38,7 +40,7 @@ public class ResolveHandlerImpl implements ResolveHandler {
 
     @PostConstruct
     public void init() {
-        LOGGER.debug("ResolveHandlerImpl 初始化完成, twepoch={}", twepoch);
+        LOGGER.debug(ImplMessages.message(ImplMessageKey.RESOLVE_HANDLER_INITIALIZED, twepoch));
     }
 
     @Override

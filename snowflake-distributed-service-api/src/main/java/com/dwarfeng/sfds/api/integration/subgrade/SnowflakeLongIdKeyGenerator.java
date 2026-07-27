@@ -1,9 +1,9 @@
 package com.dwarfeng.sfds.api.integration.subgrade;
 
 import com.dwarfeng.sfds.stack.service.GenerateService;
-import com.dwarfeng.subgrade.stack.bean.key.LongIdKey;
-import com.dwarfeng.subgrade.stack.exception.GenerateException;
-import com.dwarfeng.subgrade.stack.generation.KeyGenerator;
+import com.dwarfeng.subgrade.basic.stack.bean.key.LongIdKey;
+import com.dwarfeng.subgrade.basic.stack.exception.GenerateException;
+import com.dwarfeng.subgrade.basic.stack.generation.KeyGenerator;
 
 import java.util.List;
 

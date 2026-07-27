@@ -1,8 +1,8 @@
 package com.dwarfeng.sfds.api.integration.subgrade;
 
 import com.dwarfeng.sfds.stack.service.GenerateService;
-import com.dwarfeng.subgrade.stack.exception.GenerateException;
-import com.dwarfeng.subgrade.stack.generation.Generator;
+import com.dwarfeng.subgrade.basic.stack.exception.GenerateException;
+import com.dwarfeng.subgrade.basic.stack.generation.Generator;
 
 import java.util.List;
 

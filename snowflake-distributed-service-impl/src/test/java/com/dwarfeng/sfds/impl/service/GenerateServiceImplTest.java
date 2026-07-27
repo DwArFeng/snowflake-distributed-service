@@ -1,19 +1,19 @@
 package com.dwarfeng.sfds.impl.service;
 
-import com.dwarfeng.dutil.basic.io.CT;
+import com.dwarfeng.dutil.basic.sdk.io.CT;
 import com.dwarfeng.sfds.stack.service.GenerateService;
-import com.dwarfeng.subgrade.stack.bean.key.LongIdKey;
-import com.dwarfeng.subgrade.stack.exception.ServiceException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.dwarfeng.subgrade.basic.stack.bean.key.LongIdKey;
+import com.dwarfeng.subgrade.basic.stack.exception.ServiceException;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring/application-context*.xml")
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(locations = "classpath:com/dwarfeng/sfds/impl/spring/application-context*.xml")
 public class GenerateServiceImplTest {
 
     @Autowired
