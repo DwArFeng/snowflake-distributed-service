@@ -7,7 +7,7 @@
 - 硬盘：10G 以上。
 - CentOS 7。
 - JRE 1.8。
-- Zookeeper 3.5.5。
+- Zookeeper 3.9.5。
 
 ## 获取软件包
 
@@ -27,7 +27,7 @@
 ```shell
 cd /usr/local
 tar -zxvf snowflake-all-he-${version}-release.tar.gz
-mv snowflake-all-he-${version}-release snowflake
+mv snowflake-all-he-${version} snowflake
 ```
 
 ## 最小化配置
@@ -39,16 +39,16 @@ mv snowflake-all-he-${version}-release snowflake
 
 ```properties
 # 改为服务连接的 zookeeper 的地址。
-dubbo.registry.zookeeper.address=zookeeper://your-host-here:2181
+com.dwarfeng.sfds.dubbo.registry.zookeeper.address=zookeeper://your-host-here:2181
 # 改为服务所在主机的 ip 地址。
-dubbo.protocol.dubbo.host=your-host-here
+com.dwarfeng.sfds.dubbo.protocol.dubbo.host=your-host-here
 ```
 
 `conf/telqos/connection.properties` 文件中配置 Telqos 服务信息。
 
 ```properties
 # 改为服务所在主机的未被占用的任意端口号。
-telqos.port=23
+com.dwarfeng.sfds.telqos.port=23
 ```
 
 ## 启动程序
@@ -66,8 +66,8 @@ sh  bin/snowflake-start.sh
    在终端输入指令：
 
    ```shell
-   # 将该命令中的 ${telqos.port} 替换为配置的端口号。
-   telnet localhost ${telqos.port}
+   # 将 <telqos-port> 替换为 com.dwarfeng.sfds.telqos.port 配置的端口号。
+   telnet localhost <telqos-port>
    ```
 
    观察 telqos 运维系统，您可以输入
@@ -83,7 +83,7 @@ sh  bin/snowflake-start.sh
    在 telqos 运维系统中输入指令：
 
    ```shell
-   gen -s 10
+   gen -generate -s 10
    ```
 
    观察服务的输出。

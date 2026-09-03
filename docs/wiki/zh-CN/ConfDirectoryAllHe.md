@@ -31,8 +31,8 @@ conf
 
 ## dubbo 目录
 
-| 文件名                   | 说明           |
-|-----------------------|--------------|
+| 文件名                | 说明               |
+|-----------------------|--------------------|
 | connection.properties | Dubbo 连接配置文件 |
 
 ### connection.properties
@@ -57,10 +57,10 @@ com.dwarfeng.sfds.dubbo.provider.group=
 
 ## logging 目录
 
-| 文件名                      | 说明                     |
-|--------------------------|------------------------|
-| README.md                | 说明文件                   |
-| settings.xml             | 日志配置的配置文件              |
+| 文件名                   | 说明                                 |
+|--------------------------|--------------------------------------|
+| README.md                | 说明文件                             |
+| settings.xml             | 日志配置的配置文件                   |
 | settings-ref-linux.xml   | Linux 系统中日志配置的配置参考文件   |
 | settings-ref-windows.xml | Windows 系统中日志配置的配置参考文件 |
 
@@ -112,12 +112,12 @@ com.dwarfeng.sfds.dubbo.provider.group=
 
 ## snowflake 目录
 
-| 文件名                   | 说明                                            |
-|-----------------------|-----------------------------------------------|
-| background.properties | 后台服务配置文件，包括线程池的线程数及其它                         |
+| 文件名                | 说明                                                    |
+|-----------------------|---------------------------------------------------------|
+| background.properties | 后台服务配置文件，包括线程池的线程数及其它              |
 | device.properties     | Snowflake 设备配置文件，包括 Worker ID 和 Datacenter ID |
-| exception.properties  | ServiceException 的异常代码的偏移量配置                  |
-| twepoch.properties    | Snowflake ID 生成算法的起始时间戳（TWEPOCH）配置            |
+| exception.properties  | ServiceException 的异常代码的偏移量配置                 |
+| twepoch.properties    | Snowflake ID 生成算法的起始时间戳（TWEPOCH）配置        |
 
 ### background.properties
 
@@ -219,8 +219,8 @@ com.dwarfeng.sfds.snowflake.twepoch=1420041600000
 
 ## telqos 目录
 
-| 文件名                   | 说明   |
-|-----------------------|------|
+| 文件名                | 说明     |
+|-----------------------|----------|
 | connection.properties | 连接配置 |
 
 ### connection.properties

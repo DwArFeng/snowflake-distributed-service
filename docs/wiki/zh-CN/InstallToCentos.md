@@ -28,7 +28,7 @@
 ```shell
 cd /usr/local
 tar -zxvf snowflake-all-he-${version}-release.tar.gz
-mv snowflake-all-he-${version}-release snowflake
+mv snowflake-all-he-${version} snowflake
 ```
 
 ## 更改启停脚本
