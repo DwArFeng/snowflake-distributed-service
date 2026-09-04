@@ -91,6 +91,7 @@ nohup /bin/java -classpath "lib/*:libext/*" \
 "$jvm_memory_opts" \
 "$java_jmxremote_opts" \
 "$java_logging_opts" \
+"$java_dubbo_opts" \
 "${mainClass}" \
 >/dev/null 2>&1 "&"
 echo $! >"$basedir/snowflake.pid"
@@ -104,6 +105,7 @@ nohup /bin/java -classpath "lib/*:libext/*" \
 "$jvm_memory_opts" \
 "$java_jmxremote_opts" \
 "$java_logging_opts" \
+"$java_dubbo_opts" \
 "${mainClass}" \
 >out.log 2>&1 "&"
 echo $! >"$basedir/snowflake.pid"

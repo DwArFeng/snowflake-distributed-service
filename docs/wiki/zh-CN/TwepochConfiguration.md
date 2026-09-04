@@ -21,7 +21,7 @@ conf/snowflake/twepoch.properties
 源码资源中对应的配置文件位于：
 
 ```text
-snowflake-distributed-service-node/snowflake-distributed-service-node-all-he/src/main/resources/snowflake/twepoch.properties
+snowflake-distributed-service-node/snowflake-distributed-service-node-all-he/src/main/resources/com/dwarfeng/sfds/node/all/he/snowflake/twepoch.properties
 ```
 
 ALL-HE 构型发布时，该资源会被放入发布包的 `conf/snowflake/` 目录下。

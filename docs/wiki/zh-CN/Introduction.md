@@ -98,70 +98,67 @@ wiki 为项目的开发人员为本项目编写的详细文档，包含不同语
 
 - 通过 rpc 进行调用。
 
-  `snowflake-distributed-service-impl/src/test/java/com/dwarfeng/sfds/impl/service/LongIdServiceImplTest.java`
+  `snowflake-distributed-service-impl/src/test/java/com/dwarfeng/sfds/impl/service/GenerateServiceImplTest.java`
 
    ```java
-   @RunWith(SpringJUnit4ClassRunner.class)
-   @ContextConfiguration(locations = "classpath:spring/application-context*.xml")
-   public class LongIdServiceImplTest {
-   
-     @Autowired
-     private LongIdService longIdService;
-   
-     @Test
-     public void nextLongId() throws ServiceException {
-         for (int i = 0; i < 100; i++) {
-             CT.trace(longIdService.nextLongId());
-         }
-     }
-   
-     @Test
-     public void nextLongIdKey() throws ServiceException {
-         for (int i = 0; i < 100; i++) {
-             CT.trace(longIdService.nextLongIdKey());
-         }
-     }
-   
-     @Test
-     public void nextLongIdSize() throws ServiceException {
-         List<Long> longs = longIdService.nextLongId(100);
-         longs.forEach(CT::trace);
-     }
-   
-     @Test
-     public void nextLongIdKeySize() throws ServiceException {
-         List<LongIdKey> longIdKeys = longIdService.nextLongIdKey(100);
-         longIdKeys.forEach(CT::trace);
-     }
+   @ExtendWith(SpringExtension.class)
+   @ContextConfiguration(locations = "classpath:com/dwarfeng/sfds/impl/spring/application-context*.xml")
+   public class GenerateServiceImplTest {
+
+       @Autowired
+       private GenerateService generateService;
+
+       @Test
+       public void testGenerateLong() throws ServiceException {
+           for (int i = 0; i < 100; i++) {
+               CT.trace(generateService.generateLong());
+           }
+       }
+
+       @Test
+       public void testGenerateLongIdKey() throws ServiceException {
+           for (int i = 0; i < 100; i++) {
+               CT.trace(generateService.generateLongIdKey());
+           }
+       }
+
+       @Test
+       public void testGenerateLongWithSize() throws ServiceException {
+           List<Long> longs = generateService.generateLong(100);
+           longs.forEach(CT::trace);
+       }
+
+       @Test
+       public void testGenerateLongIdKeyWithSize() throws ServiceException {
+           List<LongIdKey> longIdKeys = generateService.generateLongIdKey(100);
+           longIdKeys.forEach(CT::trace);
+       }
    }
    ```
 
 - 与 subgrade 集成
 
-  subgrade 是作者的全项目通用工具类，提供了基于 Spring 框架的大量快捷的开发工具，本项目与其集成，
-  提供了 `SnowflakeLongGenerator`。
+  subgrade 是作者的全项目通用工具类，提供了基于 Spring 框架的大量快捷的开发工具，本项目与其集成， 提供了
+  `SnowflakeLongIdKeyGenerator`。
 
-  `com.dwarfeng.sfds.api.integration.subgrade.SnowflakeLongIdKeyGeneratorTest`
+  `snowflake-distributed-service-api/src/test/java/com/dwarfeng/sfds/api/example/SnowflakeLongIdKeyGeneratorExample.java`
 
   ```java
-  @RunWith(SpringJUnit4ClassRunner.class)
-  @ContextConfiguration(locations = "classpath:spring/application-context*.xml")
-  public class SnowflakeLongIdKeyGeneratorTest {
-  
-      @Autowired
-      private SnowflakeLongIdKeyGenerator generator;
-  
-      @Test
-      public void testGenerate() throws GenerateException {
-          for (int i = 0; i < 100; i++) {
+  public class SnowflakeLongIdKeyGeneratorExample {
+
+      static void main() throws GenerateException {
+          try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+                  "classpath:spring/application-context*.xml"
+          )) {
+              context.start();
+              SnowflakeLongIdKeyGenerator generator = context.getBean(SnowflakeLongIdKeyGenerator.class);
+
+              CT.trace("生成单个 LongIdKey:");
               CT.trace(generator.generate());
+              CT.trace("批量生成 LongIdKey:");
+              generator.batchGenerate(10).forEach(CT::trace);
+              CT.trace("示例演示完毕。");
           }
-      }
-  
-      @Test
-      public void testBatchGenerate() throws GenerateException {
-          List<LongIdKey> longIdKeys = generator.batchGenerate(100);
-          longIdKeys.forEach(CT::trace);
       }
   }
   ```

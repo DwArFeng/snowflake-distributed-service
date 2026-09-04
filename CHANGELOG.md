@@ -4,6 +4,20 @@
 
 ### 功能构建
 
+- 更新 README.md。
+
+- Wiki 更新。
+  - docs/wiki/zh-CN/AboutSnowflake.md。
+  - docs/wiki/zh-CN/ConfDirectoryAllHe.md。
+  - docs/wiki/zh-CN/InstallToCentos.md。
+  - docs/wiki/zh-CN/Introduction.md。
+  - docs/wiki/zh-CN/QuickStart.md。
+  - docs/wiki/zh-CN/ShellScripts.md。
+  - docs/wiki/zh-CN/SystemRequirements.md。
+  - docs/wiki/zh-CN/TelqosCommands.md。
+  - docs/wiki/zh-CN/UsingTelqos.md。
+  - docs/wiki/zh-CN/VersionBlacklist.md。
+
 - 升级 JDK 版本至 25。
 
 ### Bug 修复
