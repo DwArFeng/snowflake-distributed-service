@@ -38,7 +38,7 @@
         <micrometer.version>1.17.0</micrometer.version>
         <netty.version>4.2.9.Final</netty.version>
         <zookeeper.version>3.9.5</zookeeper.version>
-        <guava.version>33.6.0-jre</guava.version>
+        <guava.version>33.7.1-jre</guava.version>
         <jackson.version>2.21.2</jackson.version>
         <curator.version>5.9.0</curator.version>
         <dubbo.version>3.3.6</dubbo.version>
